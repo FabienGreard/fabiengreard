@@ -15,17 +15,15 @@ var gulp = require('gulp'),
     // Gets all files ending with .scss in app/scss
 
     gulp.task('sass', function(){
-        return gulp.src('app/scss/**/*.scss')
+        return gulp.src('app/scss/*.scss')
             .pipe(plumber({
                 errorHandler: function (error) {
                     console.log(error.message);
                     this.emit('end');
                 }
             }))
-            .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-            .pipe(autoprefixer({
-                browsers: ['last 2 versions']
-            }))
+            .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+            .pipe(autoprefixer())
             .pipe(gulp.dest('app/css'))
             .pipe(browserSync.stream());
     });
@@ -81,7 +79,7 @@ var gulp = require('gulp'),
   // Reloads the browser whenever HTML or JS files change
 
   gulp.task('watch', ['browserSync', 'sass'], function (){
-    gulp.watch('app/scss/**/*.scss', ['sass']);
+    gulp.watch('app/scss/**/*.scss', ['sass']).on('change', browserSync.reload);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', browserSync.reload);
   });

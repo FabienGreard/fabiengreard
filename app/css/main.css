@@ -1,1 +1,130 @@
-@font-face{font-family:'Gotham Ultra';src:url("../fonts/gotham-ultra-webfont.eot");src:url("../fonts/gotham-ultra-webfont.eot?#iefix") format("embedded-opentype"),url("../fonts/gotham-ultra-webfont.woff2") format("woff2"),url("../fonts/gotham-ultra-webfont.woff") format("woff"),url("../fonts/gotham-ultra-webfont.ttf") format("truetype");font-weight:900;font-style:normal}@font-face{font-family:'Archive';src:url("../fonts/archive.otf");font-weight:normal;font-style:normal}section#loader{position:absolute;top:0;right:0;bottom:0;left:0;width:100px;height:100px;background:#151826;z-index:20}section#loader>div{position:absolute;top:50%;left:50%;transform:translate3d(-50%, -50%, 0);text-align:center}section#loader>div.active .h1 .h1-mask,section#loader>div.active .h1 .h1-mask>h1{transform:translateX(0%);transition:all ease-in-out 2.5s}section#loader>div.active span{color:#8AB0AB;transition:all ease-in-out 2.5s}section#loader>div .h1{height:48px;overflow:hidden;position:relative}section#loader>div .h1 h1,section#loader>div .h1 .h1-mask>h1{margin:0;font-family:"Gotham Ultra",sans-serif;font-size:60px;margin-bottom:15px;line-height:48px;color:rgba(255,255,255,0.1)}section#loader>div .h1 .h1-mask{position:absolute;overflow:hidden;width:100%;height:48px;transform:translateX(-100%)}section#loader>div .h1 .h1-mask>h1{position:absolute;color:#FF8A66;text-shadow:0px 0px 10px rgba(0,0,0,0.6);transform:translateX(100%)}section#loader>div span{margin-top:10px;display:block;font-size:20px;color:rgba(255,255,255,0.1)}@media screen and (max-width: 1024px){section#loader{display:none !important}}
+@font-face {
+  font-family: 'Gotham Ultra';
+  src: url("../fonts/gotham-ultra-webfont.eot");
+  src: url("../fonts/gotham-ultra-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/gotham-ultra-webfont.woff2") format("woff2"), url("../fonts/gotham-ultra-webfont.woff") format("woff"), url("../fonts/gotham-ultra-webfont.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Archive';
+  src: url("../fonts/archive.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+#frontpage {
+  display: none;
+}
+
+#frontpage > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 10%;
+  border: solid 2px #fcfdfd;
+}
+
+#frontpage > div .arrow-contener {
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+  border-radius: 100%;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #fcfdfd;
+}
+
+#frontpage > div .arrow-contener .arrow {
+  width: 40px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  cursor: pointer;
+}
+
+#frontpage h1 {
+  font-size: 35px;
+  margin: 10px;
+  text-shadow: 0px 0px 10px rgba(16, 16, 16, 0.9);
+  color: #fcfdfd;
+  font-family: "Archive", sans-serif;
+}
+
+#loader > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  text-align: center;
+  font-family: "Gotham Ultra", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#loader .background {
+  background-color: #f29c1f;
+  position: absolute;
+  border-radius: 100%;
+  left: 90px;
+  right: 90px;
+  top: 120px;
+  bottom: 110px;
+  z-index: -1;
+}
+
+#loader .background.active {
+  z-index: 100;
+  position: fixed !important;
+  border-radius: 0;
+  top: -2102px;
+  bottom: -2112px;
+  left: -2132px;
+  right: -2132px;
+  -webkit-transition: all ease-out 1s;
+  transition: all ease-out 1s;
+}
+
+#loader .h1 {
+  line-height: 5px;
+  height: 140px;
+  color: #101010;
+  overflow: hidden;
+}
+
+#loader .h1 h1,
+#loader .h1 .h1-mask > h1 {
+  width: 565px;
+  margin-bottom: 60px;
+  margin-top: 40px;
+  font-size: 90px;
+  text-shadow: 0px 0px 10px rgba(16, 16, 16, 0.9);
+}
+
+#loader .h1 .h1-mask {
+  height: 0px;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+#loader .h1 .h1-mask > h1 {
+  color: #fcfdfd;
+}
+
+#loader .h1 .h1-mask.active {
+  height: 140px;
+  -webkit-transition: all ease-in 2.5s;
+  transition: all ease-in 2.5s;
+}
+
+#loader h2 {
+  width: 565px;
+  color: #101010;
+  font-size: 45px;
+  text-shadow: 0px 0px 10px rgba(16, 16, 16, 0.9);
+}

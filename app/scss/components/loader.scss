@@ -1,76 +1,68 @@
-section#loader {
+#loader {
+  > div {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    background: $blue;
-    z-index: 20;
-
-    > div {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%,-50%,0);
-        text-align: center;
-
-        &.active {
-            .h1 {
-                .h1-mask, .h1-mask > h1 {
-                    transform: translateX(0%);
-                    transition: all ease-in-out 2.5s;
-                }
-            }
-
-            span {
-                color: $light;
-                transition: all ease-in-out 2.5s;
-            }
-        }
-
-        .h1 {
-            height: 48px;
-            overflow: hidden;
-            position: relative;
-
-            h1, .h1-mask > h1 {
-                margin: 0;
-                font-family: $gotham;
-                font-size: 60px;
-                margin-bottom: 15px;
-                line-height: 48px;
-                color: rgba($white,.1);
-            }
-
-            .h1-mask {
-                position: absolute;
-                overflow: hidden;
-                width: 100%;
-                height: 48px;
-                transform: translateX(-100%);
-                // transition: all ease-in-out 2.5s;
-
-                > h1 {
-                    position: absolute;
-                    color: $orange;
-                    text-shadow: $shadow;
-                    transform: translateX(100%);
-                    // transition: all ease-in-out 2.5s;
-                }
-            }
-        }
-
-        span {
-            margin-top: 10px;
-            display: block;
-            font-size: 20px;
-            color: rgba($white,.1);
-        }
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    text-align: center;
+    font-family: $gotham;
+    margin: 0;
+    padding: 0;
+  }
+  .background{
+    background-color: $background;
+    position: absolute;
+    border-radius: 100%;
+    left: 90px;
+    right: 90px;
+    top: 120px;
+    bottom: 110px;
+    z-index: -1;
+          &.active {
+        z-index: 100;
+        position: fixed!important;
+        border-radius: 0;
+        top: -2102px;
+        bottom: -2112px;
+        left: -2132px;
+        right: -2132px;
+        transition: all ease-out 1s;
+      }
+  }
+  .h1 {
+    line-height: 5px;
+    height: 140px;
+    color: $black;
+    overflow: hidden;
+    h1,
+    .h1-mask > h1 {
+      width: 565px;
+      margin-bottom: 60px;
+      margin-top: 40px;
+      font-size: 90px;
+      text-shadow: 0px 0px 10px rgba($black, 0.9);
     }
-
+    .h1-mask {
+      height: 0px;
+      position: absolute;
+      top: 0;
+      overflow: hidden;
+      > h1 {
+        color: $white;
+      }
+      &.active {
+        height: 140px;
+        transition: all ease-in 2.5s;
+      }
+    }
+  }
+  h2 {
+    width: 565px;
+    color: $black;
+    font-size: 45px;
+    text-shadow: 0px 0px 10px rgba($black, 0.9);
+  }
     @media screen and (max-width: $tablet) {
-        display: none !important;
+        //display: none !important;
     }
 }
