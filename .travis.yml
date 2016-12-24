@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "6"
+
+install:
+  - npm install
+  - npm run build
+before_script: null
+after_script:
+  - process.exit()
+after_success:
+  - chmod +x ./config/deploy.sh
+  - ./config/deploy.sh
+cache:
+  directories:
+    - $HOME/.nvm
+    - node_modules

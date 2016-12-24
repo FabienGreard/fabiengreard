@@ -1,0 +1,209 @@
+/*
+  SUMMARY
+
+  I.COMPTABILITY BROWSERS
+  II.DISPLAY
+  III.FONTS
+  IV.FORMS
+  V.ANIMATIONS
+
+*/
+
+/* COMPTABILITY BROWSERS & FUNCTIONS & SHINY STUFFS */
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin rounded($radius: 0.5em) {
+-webkit-border-radius: $radius;
+-moz-border-radius: $radius;
+border-radius: $radius;
+}
+
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+	     -o-transform-origin: $origin;
+	    -ms-transform-origin: $origin;
+	-webkit-transform-origin: $origin;
+          transform-origin: $origin;
+}
+
+/* DISPLAY */
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-direction($value) {
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  -webkit-flex-direction: $value;
+  flex-direction: $value;
+}
+
+/* FONTS */
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin Roboto($size) {
+  font-family: $Roboto;
+  @include font-size($size);
+  @content;
+}
+
+@mixin Open($size) {
+  font-family: $Open;
+  @include font-size($size);
+  @content;
+}
+
+/* FORMS */
+
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+@mixin x-appearance ($value) {
+	-webkit-appearance: $value;
+	   -moz-appearance: $value;
+	        appearance: $value;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin input($size, $rounded, $margin, $background, $color, $padding, $border) {
+  margin: $margin;
+  outline: 0;
+  @include x-appearance(none);
+  @include rounded($rounded);
+  @include Roboto($size);
+  background-color: $background;
+  color: $color;
+  padding: $padding;
+  border: $border;
+  @include placeholder{
+    color: $form-placeholder;
+  }
+  @content;
+}
+
+/* ANIMATIONS */
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@include keyframes(loadingSmooth){
+  0%{
+    @include opacity(0);
+  }
+  100%{
+    @include opacity(1);
+  }
+}
+
+@include keyframes(loadingSmoothMaterial){
+  0%{
+    @include opacity(0);
+    @include transform(translateY(-4px));
+  }
+  100%{
+    @include opacity(1);
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(loadingSmoothMaterialLateral){
+  0%{
+    @include opacity(0);
+    @include transform(translateX(4px));
+  }
+  100%{
+    @include opacity(1);
+    @include transform(translateX(0));
+  }
+}

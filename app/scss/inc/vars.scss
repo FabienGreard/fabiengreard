@@ -1,17 +1,44 @@
-// Colors
-$background: #f29c1f;
-$white: #fcfdfd;
-$red: #ef3c38;
-$black: #101010;
+// flat Color
+$black: #141414;
+$background: #34495e;
+$dark-background: #2c3e50;
+$white: #FFFFFF;
+$grey: #ecf0f1;
+$dark-grey: #bdc3c7;
+$red: #FE4A49;
+$dark-red: #c0392b;
+$green: #2ecc71;
+$dark-green: #27ae60;
+$blue: #3498db;
+$dark-blue: #2980b9;
+$yellow: #f1c40f;
+$purple: #9b59b6;
+$dark-purple: #8e44ad;
+
+//action
+$red-error: #c0392b;
+$green-valid: #2ecc71;
+
+//forms
+$form-transition: cubic-bezier(.42,0,.58,1);
+$form-border: #EDEDED;
+$form-placeholder: #9FACBD;
 
 // Shadows
+$black-shadow: #101010;
+$text-shadow: 0 0 10px $black-shadow;
+$box-shadow: include box-shadow(0, 0, 10px, $black-shadow);
+$box-inset-shadow: include box-shadow(0, 0, 10px, $black-shadow, true);
 
 // Fonts
-$archive: "Archive", sans-serif;
-$gotham: "Gotham Ultra", sans-serif;
+$Open: 'Open Sans', sans-serif; // Title
+$Roboto: 'Roboto', sans-serif; // Text
+
+// Font-Awesome
+$fa-font-path: "../fonts";
 
 // Breakpoints
 $desktop-large: 1400px;
 $desktop: 1200px;
 $tablet: 1024px;
-$mobile: 500px;
+$mobile: 600px;
