@@ -1,14 +1,20 @@
 h1, h2, h3, h4, h5{
-  @include Open(20px);
-  font-weight: 200;
+  @include JosefinSlab(25px){
+    font-weight: bold;
+  }
 }
 p, span, div, input, select, button{
-  @include Roboto(16px);
+    @include Inconsolata(16px){
+      font-weight: inherit;
+    }
 }
 
 html{
+  height: 100vh;
   @include font-size(16px);
   body{
+    height: 100vh;
+    padding: 0;
     margin: 0;
   }
 }

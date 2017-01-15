@@ -1,4 +1,4 @@
-/* Fonts & Vars also base template & mixins
+/* Fonts & Vars also base template & mixins */
 
 @import 'inc/fonts';
 @import 'inc/vars';
@@ -8,7 +8,13 @@
 @import 'inc/font-awesome/font-awesome';
 
 /* Templates */
-
-
+@import "templates/article.template";
+@import "templates/info.template";
+@import "templates/tag.template";
+@import "templates/social.template";
+@import "templates/alert.template";
 
 /* Components */
+
+@import "components/console.component";
+@import "components/dashboard.component";

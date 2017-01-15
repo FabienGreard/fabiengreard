@@ -1,0 +1,30 @@
+$color-tag: #2d3047;
+$color-tag-hover: #f49d37;
+
+$background-tag: #f49d37;
+
+$transition-tag: cubic-bezier(.25,.1,.25,1);
+
+.tag-container{
+  margin: 1em auto;
+  $background-tag: #f49d37;
+  .container{
+    .tag-list{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      @include Lobster(16px);
+      color: $color-tag;
+      .tag{
+        @include transition(0.2s $transition-tag);
+        cursor: pointer;
+        &:hover{
+          color: $color-tag-hover;
+        }
+      }
+      .active{
+        color: $color-tag-hover;
+      }
+    }
+  }
+}

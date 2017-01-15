@@ -1,0 +1,36 @@
+$color-info: #2d3047;
+$color-info-hover: #f49d37;
+
+$background-info: #f49d37;
+
+$transition-info: cubic-bezier(.25,.1,.25,1);
+
+.info-container{
+  margin: 1em auto;
+  $background-info: #f49d37;
+  .container{
+    @include flexbox;
+    @include flex-direction(column);
+    .picture{
+      cursor: pointer;
+      margin: auto;
+      width: calculateRem(60px);
+    }
+    .summary{
+      @include flexbox;
+      @include flex-direction(column);
+      width: calculateRem(135px);
+      margin-top: calculateRem(14px);
+      & > p {
+        margin: 0;
+        text-align: justify;
+        color: $color-info;
+        @include Inconsolata(14px);
+      }
+      .tea{
+        font-weight: bold;
+        @include Inconsolata(14px);
+      }
+    }
+  }
+}

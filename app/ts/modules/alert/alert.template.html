@@ -1,0 +1,6 @@
+<div *ngIf="message" class="alert-template">
+  <div class="alert-container-template" [ngClass]="{ 'alert-info': message.type === 'info', 'alert-success': message.type === 'success', 'alert-error': message.type === 'error' }">
+    <h1 class="alert-title-template">{{message.title}}</h1>
+    <p class="alert-text-template">{{message.text}}</p>
+  </div>
+</div>

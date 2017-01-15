@@ -18,10 +18,11 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* Build a dynamic Console
-* blog simple control
+* Pagination
+* Simple Module Admin
 * api
-* Karma
+* CRUD Article
+* CRUD User
 
 # License
 

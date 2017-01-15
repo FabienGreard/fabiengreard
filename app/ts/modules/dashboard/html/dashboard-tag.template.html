@@ -1,0 +1,8 @@
+<!-- tag container -->
+<div class="tag-container">
+  <div class="container">
+    <ul class="tag-list">
+      <li *ngFor="let tag of tags" [ngClass]="{ active: tag.active }" (click)="toggleTag(tag.name)" class="tag">{{ tag.name }}</li>
+    </ul>
+  </div>
+</div>

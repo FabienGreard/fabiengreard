@@ -1,0 +1,11 @@
+<div *ngFor="let article of articles" class="article-container">
+  <div [@fadeInOutTranslate] *ngIf="checkIfTag(article.tags)" class="article-link">
+    <a [routerLink]="['/article', { 'id': article.id }]" class="title-link-article">{{ article.title }}</a>
+    <p class="text-link-article">
+      {{ article.content }}
+      <span class="tag-container-link-article">
+        <span *ngFor="let tag of article.tags" (click)="toggleTag(tag)" class="tag-link-article">{{ tag }}</span>
+      </span>
+      <span class="date-link-article">[{{ article.date }}]</span></p>
+  </div>
+</div>

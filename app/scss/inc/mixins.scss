@@ -68,6 +68,32 @@ border-radius: $radius;
   flex-direction: $value;
 }
 
+@mixin flex-wrap($value: nowrap) {
+	-webkit-flex-wrap: $value;
+	-moz-flex-wrap: $value;
+	@if $value == nowrap {
+		-ms-flex-wrap: none;
+	} @else {
+		-ms-flex-wrap: $value;
+	}
+	flex-wrap: $value;
+}
+
+@mixin flex-flow($values: (row nowrap)) {
+	-webkit-flex-flow: $values;
+	-moz-flex-flow: $values;
+	-ms-flex-flow: $values;
+	flex-flow: $values;
+}
+
+@mixin order($int: 0) {
+	-webkit-box-ordinal-group: $int + 1;
+	-webkit-order: $int;
+	-moz-order: $int;
+	-ms-flex-order: $int;
+	order: $int;
+}
+
 /* FONTS */
 
 @function calculateRem($size) {
@@ -80,14 +106,26 @@ border-radius: $radius;
   font-size: calculateRem($size);
 }
 
-@mixin Roboto($size) {
-  font-family: $Roboto;
+@mixin Inconsolata($size) {
+  font-family: $Inconsolata;
   @include font-size($size);
   @content;
 }
 
-@mixin Open($size) {
-  font-family: $Open;
+@mixin Raleway($size) {
+  font-family: $Raleway;
+  @include font-size($size);
+  @content;
+}
+
+@mixin JosefinSlab($size) {
+  font-family: $JosefinSlab;
+  @include font-size($size);
+  @content;
+}
+
+@mixin Lobster($size) {
+  font-family: $Lobster;
   @include font-size($size);
   @content;
 }

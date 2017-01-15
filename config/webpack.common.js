@@ -1,12 +1,13 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 var webpack = require('webpack');
 
 module.exports = {
   entry: {
-  'polyfills': './app/js/lib/polyfills.js',
-  'vendor': './app/js/lib/vendor.js',
-  'app': ['babel-polyfill', './app/js/main.js']
+  'vendor': './app/ts/lib/vendor.ts',
+  'polyfills': './app/ts/lib/polyfills.ts',
+  'app': ['babel-polyfill', './app/ts/main.ts']
   },
   resolve: {
     extensions: ['', '.js', '.ts']
@@ -15,7 +16,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader']
       },
       {
         test: /\.scss$/,
@@ -41,8 +42,17 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
+    new CheckerPlugin(),
+    new  webpack.optimize.CommonsChunkPlugin({
+      name: 'polyfills',
+      chunks: ['polyfills']
+    }),
+    new  webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      chunks: ['vendor']
+    }),
+    new  webpack.optimize.CommonsChunkPlugin({
+      name: ['polyfills', 'vendor'].reverse()
     }),
     new HtmlWebpackPlugin({
       template: 'app/index.html',

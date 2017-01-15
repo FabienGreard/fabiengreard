@@ -1,0 +1,90 @@
+/*
+  CONSOLE Component
+*/
+
+
+
+$color-header-console: $black;
+$background-header-console: $white;
+
+$color-console: #00FF00;
+$background-console: $black;
+$color-console: #00FF00;
+$box-shadow-console: $black-shadow;
+$transition-console: $form-transition;
+
+$background-close-hover-console: $grey;
+$color-close-hover-console: $red;
+
+$box-shadow-span-console: $black-shadow;
+$background-color-span-console: $white;
+$color-hover-span-console: $color-console;
+
+.console-container{
+  position: fixed;;
+  top: 0;
+  left: 50%;
+  width: 400px;
+  position: relative;
+  @include box-shadow(0, 0, 10px, $box-shadow-console);
+  .header{
+    cursor: grab;
+    @include flexbox;
+    background-color: $background-header-console;
+    height: 35px;
+    .title{
+      margin: auto 5px;
+      color: $color-header-console;
+      @include Inconsolata(16px);
+    }
+    .close{
+      cursor: pointer;
+      margin: auto 0 auto auto;
+      width: 35px;
+      height: 35px;
+      @include flexbox;
+      color: $color-header-console;
+      @include transition(0.2s $transition-console);
+      @include font-size(14px);
+      &:hover{
+        color: $color-close-hover-console;
+        background-color: $background-close-hover-console;
+      }
+      &:before {
+        margin: auto;
+      }
+    }
+  }
+  .content{
+    @include flexbox;
+    @include flex-direction(column);
+    color: $color-console;
+    background-color: $background-console;
+    overflow-y: scroll;
+    @include Inconsolata(12px);
+    height: 300px;
+    & > * {
+      margin: 3px 0;
+    }
+  }
+}
+
+.console-toggle{
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  @include transition(0.2s $transition-console);
+  @include flexbox;
+  @include box-shadow(0, 0, 10px, $box-shadow-span-console);
+  background-color: $background-color-span-console;
+  @include rounded(50%);
+  .fa-terminal{
+    margin: auto;
+  }
+  &:hover{
+    color: $color-hover-span-console;
+  }
+}

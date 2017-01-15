@@ -177,7 +177,7 @@ interface RequireConfig {
 	* 	}
 	* });
 	**/
-	urlArgs?: string | ((id: string, url: string) => string); 
+	urlArgs?: string | ((id: string, url: string) => string);
 
 	/**
 	* Specify the value for the type="" attribute used for script
@@ -384,5 +384,5 @@ interface RequireDefine {
 
 // Ambient declarations for 'require' and 'define'
 declare var requirejs: Require;
-declare var require: Require;
+declare var require: NodeRequire;
 declare var define: RequireDefine;

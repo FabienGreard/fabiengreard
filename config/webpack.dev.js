@@ -5,7 +5,8 @@ var webpack = require('webpack');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'source-map',
+  cache: true,
+  devtool: 'cheap-module-source-map',
   output: {
     path: 'dist',
     publicPath: 'http://localhost:8080/',

@@ -1,46 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+/* ROUTING */
 import { routing } from './app.routing';
 
-import { DashboardComponent } from './components/dashboard/index';
-import { LoginComponent } from './components/login/index';
-import { RegisterComponent } from './components/register/index';
-import { AdminComponent } from './components/admin/index';
+/* MODULES */
+import { DashboardModule } from './modules/dashboard/index';
+import { ConsoleLogModule } from './modules/console-log/index';
 
-import { UserService, PostService } from './services/index';
+/* COMPONENTS */
+import { AppComponent } from './app.component';
 
+/* SERVICES */
+
+/* DIRECTIVES */
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    routing
+    routing,
+    DashboardModule,
+    ConsoleLogModule
   ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    LoginComponent,
-    RegisterComponent,
-    AdminComponent
-  ],
-  providers:[
-    PostService,
-    UserService
-  ],
+  declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(){
-    if (process.env.ENV === 'production') {
-      console.log("production mode enable");
-    }else{
-      console.log("developement mode enable");
-    }
-  }
-}
+export class AppModule {}

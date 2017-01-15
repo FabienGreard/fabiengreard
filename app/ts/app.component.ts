@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import '../css/app.css';
+import { ConsoleLogService } from './modules/console-log/index';
 
 @Component({
-  moduleId: 'module.id',
   selector: 'app',
-  template: require('../html/app.component.html')
+  template: require('./app.component.html')
 })
-export class AppComponent {
-  year: number;
-  version: string;
-  constructor(){
-    this.year = new Date().getFullYear();
-    this.version = 'v1.0.0'
+export class AppComponent implements OnInit{
+  constructor(private consoleLogService: ConsoleLogService){}
+
+  ngOnInit(){
+      this.consoleLogService.message("developement mode enable");
   }
 }

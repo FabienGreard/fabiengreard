@@ -3,6 +3,7 @@ node_js:
   - "6"
 
 install:
+  - npm cache clean
   - npm install
   - npm run build
 before_script: null

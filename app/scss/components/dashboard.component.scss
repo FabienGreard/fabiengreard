@@ -1,0 +1,114 @@
+
+//https://coolors.co/2d3047-4bddcc-f7f7f7-f49d37-8b2635
+
+$background-dashboard: #f7f7f7;
+
+$color-headline-header: #f49d37;
+$color-subline-header: #2d3047;
+$color-border-header: #2d3047;
+$background-header: #f7f7f7;
+
+$color-content: #2d3047;
+$background-content: #f7f7f7;
+
+$color-aside: #2d3047;
+$background-aside: #f7f7f7;
+
+$color-footer: #2d3047;
+$background-footer: #f7f7f7;
+
+dashboard{
+  position: relative;
+  background-color: $background-dashboard;
+  @include flexbox;
+  @include flex-direction(column);
+  dashboard-header{
+    background-color: $background-header;
+    .header-container{
+      @include flexbox;
+      padding: calculateRem(10px);
+      .container{
+        cursor: pointer;
+        margin: 0 auto;
+        padding-left: calculateRem(5px);
+        border-left: calculateRem(2px) solid $color-border-header;
+        .headline{
+          margin: 0;
+          @include JosefinSlab(36px);
+          color: $color-headline-header;
+        }
+        .subline{
+          @include Inconsolata(16px);
+          margin: 0;
+          font-weight: bold;
+          color: $color-subline-header;
+        }
+      }
+    }
+  }
+  dashboard-content{
+    min-height: 100vh;
+    @include flexbox;
+    margin: 1em 0;
+    .main-content{
+      @include order(2);
+      width: 60%;
+      @media screen and (max-width: $tablet){
+        width: 40%;
+      }
+      @media screen and (max-width: $mobile){
+        margin: auto;
+        width: 90%;
+      }
+      & > :nth-child(n+2){
+        @include flex-wrap(wrap);
+        @include flexbox;
+      }
+    }
+    .sidebar-content{
+      @include flexbox;
+      @include flex-direction(column);
+      @include order(1);
+      width: 20%;
+      @media screen and (max-width: $tablet){
+        width: 30%;
+      }
+      @media screen and (max-width: $mobile){
+        display: none;
+      }
+      dashboard-info{
+        margin: 1em auto;
+        color: $color-aside;
+        background-color: $background-aside;
+      }
+      dashboard-social{
+        margin: 1em auto;
+        color: $color-aside;
+        background-color: $background-aside;
+      }
+      dashboard-tag{
+        margin: 1em auto;
+        color: $color-aside;
+        background-color: $background-aside;
+      }
+    }
+    .sidebar-content-right{
+      @include order(3);
+    }
+  }
+  dashboard-footer{
+    margin: 4em auto 2em auto;
+    color: $color-footer;
+    background-color: $background-footer;
+    .footer-content{
+      @include flexbox;
+      & > *{
+        margin: auto;
+        @include Inconsolata(16px);
+      }
+      .fa{
+        @include font-size(14px);
+      }
+    }
+  }
+}
