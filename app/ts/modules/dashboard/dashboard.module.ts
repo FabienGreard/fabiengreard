@@ -6,7 +6,6 @@ import { routing } from './dashboard.routing';
 
 /* MODULES */
 import { ArticleModule } from '../article/index';
-import { AlertModule } from '../alert/index';
 
 /* COMPONENTS */
 import { DashboardComponent } from './components/dashboard.component';
@@ -26,8 +25,7 @@ import { DashboardTagService } from './services/dashboard-tag.service';
   imports: [
     CommonModule,
     routing,
-    ArticleModule,
-    AlertModule
+    ArticleModule
   ],
   declarations: [
     DashboardComponent,

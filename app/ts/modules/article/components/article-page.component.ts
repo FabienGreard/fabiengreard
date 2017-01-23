@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
+
+import { AlertComponent } from '../../alert/index';
 
 @Component({
   selector: 'page',
@@ -8,6 +10,10 @@ export class ArticlePageComponent implements OnInit {
   pageWrapper: string = "0-9";
   pageActive: number = 0;
   pageArray: Array<number> = [];
+  alertMessage: string = '';
+  alert: boolean = false;
+
+  @ViewChild(AlertComponent) AlertComponent: AlertComponent;
 
   constructor() { }
 
@@ -18,6 +24,10 @@ export class ArticlePageComponent implements OnInit {
       this.pageArray.push(i);
     }
 
+  }
+
+  ngAfterContentChecked () {
+    this.alert = (this.AlertComponent.message) ? true : false;
   }
 
   pageNav(length: number): number{

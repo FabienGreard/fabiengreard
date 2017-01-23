@@ -18,11 +18,11 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* fix-layout
 * api
 * Simple Module Admin
 * CRUD Article
 * CRUD User
+* global compatibility 
 
 # License
 

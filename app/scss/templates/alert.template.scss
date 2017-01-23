@@ -8,6 +8,7 @@ $color-tag-hover-link-article: #2d3047;
 $transition-link-article: cubic-bezier(.25,.1,.25,1);
 
 .alert-template{
+  min-height: 50vh;
   margin: auto;
   .alert-container-template{
     @include flexbox;

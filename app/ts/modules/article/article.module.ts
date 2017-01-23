@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { routing } from './article.routing';
 
 /* MODULES */
+import { AlertModule } from '../alert/index';
 
 /* COMPONENTS */
 import { ArticleComponent } from './components/article.component';
@@ -18,7 +19,8 @@ import { ArticleService } from './article.service';
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    AlertModule
   ],
   declarations: [
     ArticleComponent,

@@ -75,6 +75,9 @@ article{
 /* PAGEINATION */
 
 .article-page-container{
+  @include flexbox;
+  @include flex-direction(column);
+  width: 100%;
   .page-nav-container{
     @include flexbox;
     @include justify-content(flex-end);

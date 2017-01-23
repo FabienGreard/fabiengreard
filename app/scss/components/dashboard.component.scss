@@ -1,5 +1,5 @@
 /*
-  DASHBOARD COMPONENT 
+  DASHBOARD COMPONENT
 */
 //https://coolors.co/2d3047-4bddcc-f7f7f7-f49d37-8b2635
 
@@ -65,6 +65,9 @@ dashboard{
       & > :nth-child(n+2){
         @include flex-wrap(wrap);
         @include flexbox;
+      }
+      .blog-coms{
+        margin: 2em 0;
       }
     }
     .sidebar-content{
