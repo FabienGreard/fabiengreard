@@ -8,6 +8,7 @@ import { routing } from './article.routing';
 
 /* COMPONENTS */
 import { ArticleComponent } from './components/article.component';
+import { ArticlePageComponent } from './components/article-page.component';
 import { ArticleDetailComponent } from './components/article-detail.component';
 
 /* SERVICES */
@@ -21,6 +22,7 @@ import { ArticleService } from './article.service';
   ],
   declarations: [
     ArticleComponent,
+    ArticlePageComponent,
     ArticleDetailComponent
   ],
   providers: [ArticleService]

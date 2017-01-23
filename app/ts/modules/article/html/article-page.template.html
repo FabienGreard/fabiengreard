@@ -1,0 +1,6 @@
+<div class="article-page-container">
+  <article [idArticle]="pageWrapper"></article>
+  <ul class="page-nav-container">
+    <li *ngFor="let page of pageArray" (click)="pageHandlerEvent(page)" [ngClass]="{ 'page-active': page == pageActive}">{{ page }}</li>
+  </ul>
+</div>

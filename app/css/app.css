@@ -3196,11 +3196,19 @@ html body {
 }
 
 /* Templates */
-.article-container {
+article {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+article .article-container {
   margin: auto;
 }
 
-.article-container .article-link {
+article .article-container .article-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3213,7 +3221,7 @@ html body {
   width: 350px;
 }
 
-.article-container .article-link .title-link-article {
+article .article-container .article-link .title-link-article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3234,22 +3242,22 @@ html body {
   color: #2d3047;
 }
 
-.article-container .article-link .title-link-article:after {
+article .article-container .article-link .title-link-article:after {
   cursor: default;
   margin: 0.5em auto;
   content: "***";
   height: 0.5rem;
 }
 
-.article-container .article-link .title-link-article:hover {
+article .article-container .article-link .title-link-article:hover {
   color: #f49d37;
 }
 
-.article-container .article-link .title-link-article:hover:after {
+article .article-container .article-link .title-link-article:hover:after {
   color: #2d3047;
 }
 
-.article-container .article-link .text-link-article {
+article .article-container .article-link .text-link-article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3263,7 +3271,7 @@ html body {
   color: #2d3047;
 }
 
-.article-container .article-link .text-link-article .date-link-article {
+article .article-container .article-link .text-link-article .date-link-article {
   margin: 1em 0 auto auto;
   height: 1em;
   font-family: "Inconsolata", monospace;
@@ -3272,12 +3280,12 @@ html body {
   color: #2d3047;
 }
 
-.article-container .article-link .text-link-article .tag-container-link-article {
+article .article-container .article-link .text-link-article .tag-container-link-article {
   height: 1em;
   margin: 1em auto auto 0;
 }
 
-.article-container .article-link .text-link-article .tag-container-link-article .tag-link-article {
+article .article-container .article-link .text-link-article .tag-container-link-article .tag-link-article {
   margin: auto 2px;
   cursor: pointer;
   color: #a9aab3;
@@ -3288,10 +3296,11 @@ html body {
   font-size: 1rem;
 }
 
-.article-container .article-link .text-link-article .tag-container-link-article .tag-link-article:hover {
+article .article-container .article-link .text-link-article .tag-container-link-article .tag-link-article:hover {
   color: #2d3047;
 }
 
+/* PAGEINATION */
 .info-container {
   margin: 1em auto;
 }
@@ -3540,6 +3549,9 @@ html body {
   color: #00FF00;
 }
 
+/*
+  DASHBOARD COMPONENT 
+*/
 dashboard {
   position: relative;
   background-color: #f7f7f7;

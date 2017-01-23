@@ -18,9 +18,9 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* Pagination
-* Simple Module Admin
+* fix-layout
 * api
+* Simple Module Admin
 * CRUD Article
 * CRUD User
 

@@ -7,63 +7,95 @@ $color-tag-hover-link-article: #2d3047;
 
 $transition-link-article: cubic-bezier(.25,.1,.25,1);
 
-.article-container{
-  margin: auto;
-  .article-link{
-    @include flexbox;
-    @include flex-direction(column);
-    margin: 2em auto;
-    width: 350px;
-    .title-link-article{
+article{
+  @include flex-wrap(wrap);
+  @include flexbox;
+  .article-container{
+    margin: auto;
+    .article-link{
       @include flexbox;
       @include flex-direction(column);
-      @include transition(0.2 $transition-link-article);
-      cursor: pointer;
-      margin: 0 auto;
-      @include JosefinSlab(22px);
-      font-weight: bold;
-      text-decoration: none;
-      color: $color-title-link-article;
-      &:after{
-        cursor: default;
-        margin: 0.5em auto;
-        content: "***";
-        height: calculateRem(8px);
-      }
-      &:hover{
-        color: $color-title-hover-link-article;
+      margin: 2em auto;
+      width: 350px;
+      .title-link-article{
+        @include flexbox;
+        @include flex-direction(column);
+        @include transition(0.2 $transition-link-article);
+        cursor: pointer;
+        margin: 0 auto;
+        @include JosefinSlab(22px);
+        font-weight: bold;
+        text-decoration: none;
+        color: $color-title-link-article;
         &:after{
-          color: $color-title-link-article;
+          cursor: default;
+          margin: 0.5em auto;
+          content: "***";
+          height: calculateRem(8px);
         }
-      }
-    }
-    .text-link-article{
-      @include flexbox;
-      @include flex-wrap(wrap);
-      text-align: justify;
-      margin: 0;
-      @include Inconsolata(16px);
-      color: $color-text-link-article;
-      .date-link-article{
-        margin: 1em 0 auto auto;
-        height: 1em;
-        @include Inconsolata(16px);
-        color: $color-text-link-article;
-      }
-      .tag-container-link-article{
-        height: 1em;
-        margin: 1em auto auto 0;
-        .tag-link-article{
-          margin: auto 2px;
-          cursor: pointer;
-          color: $color-tag-link-article;
-          @include transition(0.2 $transition-link-article);
-          @include Lobster(16px);
-          &:hover{
-            color: $color-tag-hover-link-article;
+        &:hover{
+          color: $color-title-hover-link-article;
+          &:after{
+            color: $color-title-link-article;
           }
         }
       }
+      .text-link-article{
+        @include flexbox;
+        @include flex-wrap(wrap);
+        text-align: justify;
+        margin: 0;
+        @include Inconsolata(16px);
+        color: $color-text-link-article;
+        .date-link-article{
+          margin: 1em 0 auto auto;
+          height: 1em;
+          @include Inconsolata(16px);
+          color: $color-text-link-article;
+        }
+        .tag-container-link-article{
+          height: 1em;
+          margin: 1em auto auto 0;
+          .tag-link-article{
+            margin: auto 2px;
+            cursor: pointer;
+            color: $color-tag-link-article;
+            @include transition(0.2 $transition-link-article);
+            @include Lobster(16px);
+            &:hover{
+              color: $color-tag-hover-link-article;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* PAGEINATION */
+
+.article-page-container{
+  .page-nav-container{
+    @include flexbox;
+    @include justify-content(flex-end);
+    margin: 0 1em;
+    padding: 0;
+    li{
+      cursor: pointer;
+      @include transition(0.2 $transition-link-article);
+      @include Inconsolata(14px);
+      margin: 2px;
+      list-style: none;
+      padding: 2px 4px;
+      border: 1px solid $black;
+      &:hover{
+        color: $white;
+        background-color: $black;
+      }
+    }
+    .page-active{
+      color: $white;
+      background-color: $black;
     }
   }
 }

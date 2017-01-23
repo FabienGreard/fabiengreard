@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import '../css/app.css';
+import '../scss/app.scss';
 import { ConsoleLogService } from './modules/console-log/index';
 
 @Component({
