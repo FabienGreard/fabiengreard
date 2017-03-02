@@ -34,8 +34,7 @@ $box-shadow: include box-shadow(0, 0, 10px, $black-shadow);
 $box-inset-shadow: include box-shadow(0, 0, 10px, $black-shadow, true);
 
 // Fonts
-$Inconsolata: 'Inconsolata', monospace;
-$Raleway: 'Raleway', sans-serif; // text
+$Inconsolata: 'Inconsolata', monospace; // text
 $Lobster: 'Lobster', cursive;
 $JosefinSlab: 'Josefin Slab', serif; // title / headline
 // console

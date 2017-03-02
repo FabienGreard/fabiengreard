@@ -9,7 +9,7 @@ export class ConsoleLogService {
 
   constructor() {}
 
-  message(value: string){
+  message(value: any){
     this.subject.next(value);
   }
 

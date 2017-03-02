@@ -51,6 +51,16 @@ border-radius: $radius;
           transform-origin: $origin;
 }
 
+@mixin grab-cursor {
+  // http://www.google.com/intl/en_ALL/mapfiles/openhand.cur
+  cursor: url('data:image/vnd.microsoft.icon;base64,AAACAAEAICACAAcABQAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAA/AAAAfwAAAP+AAAH/gAAB/8AAA//AAAd/wAAGf+AAAH9gAADbYAAA2yAAAZsAAAGbAAAAGAAAAAAAAA//////////////////////////////////////////////////////////////////////////////////////gH///4B///8Af//+AD///AA///wAH//4AB//8AAf//AAD//5AA///gAP//4AD//8AF///AB///5A////5///8='), all-scroll;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
 /* DISPLAY */
 
 @mixin flexbox() {
@@ -115,12 +125,6 @@ border-radius: $radius;
 
 @mixin Inconsolata($size) {
   font-family: $Inconsolata;
-  @include font-size($size);
-  @content;
-}
-
-@mixin Raleway($size) {
-  font-family: $Raleway;
   @include font-size($size);
   @content;
 }

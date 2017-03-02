@@ -1,1 +1,15 @@
-article id : {{ idArticle }}
+<div [@fadeInOutTranslate] class="article-detail-container">
+  <div class="article-detail-header">
+    <div routerLink='' class="article-dashboard">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </div>
+    <h1 class="article-title">{{ article.title }}</h1>
+  </div>
+  <div class="article-detail-content">
+    <p class="article-content">{{ article.content }}</p>
+  </div>
+  <div class="article-detail-footer">
+    <p routerLink='' *ngFor="let tag of article.tags" (click)="toggleTag(tag)" class="article-tags">{{ tag }}</p>
+    <p class="article-date">{{ article.date }}</p>
+  </div>
+</div>

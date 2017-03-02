@@ -4,6 +4,8 @@ var webpackMerge = require('webpack-merge');
 var webpack = require('webpack');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
+const ENV = process.env.NODE_ENV = process.env.ENV = 'dev';
+
 module.exports = webpackMerge(commonConfig, {
   cache: true,
   devtool: 'cheap-module-source-map',
@@ -24,7 +26,12 @@ module.exports = webpackMerge(commonConfig, {
       {
         reload: true
       }
-    )
+    ),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'ENV': JSON.stringify(ENV)
+      }
+    })
   ],
   devServer: {
     port: 8080,

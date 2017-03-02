@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { ArticleService } from '../article.service';
 import { AlertService } from '../../alert/index';
+import { ConsoleLogService } from '../../console-log/index';
 
 @Component({
   selector: 'article',
@@ -27,13 +28,14 @@ export class ArticleComponent implements OnChanges, OnInit {
 
    constructor(
      private articleService: ArticleService,
-     private alertService: AlertService) {
-     this.articleService.getTags().subscribe((tags) => { this.tags = tags; });
-   }
+     private alertService: AlertService,
+     private consoleLogService: ConsoleLogService) {}
 
   ngOnInit() {
-    for(let i = parseInt(this.idArticle.split("-")[0]); i < parseInt(this.idArticle.split("-")[1]); i++){
-      this.articles.push({id: i, title: 'Lorem ipsum dolor sit amet', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur in nulla sed tempus. Vestibulum sed sem at urna porttitor pharetra sit amet id felis. Quisque non dolor sapien. Etiam egestas sit amet dolor eu gravida. In convallis dictum lectus eu fermentum. Vestibulum ornare quis urna eu finibus. Nulla eleifend nibh at rhoncus vulputate', date: '13 janvier 2017', tags: ['#Random', '#Design', '#React']});
+    if(this.articles == []){
+      for(let i = parseInt(this.idArticle.split("-")[0]); i < parseInt(this.idArticle.split("-")[1]); i++){
+        this.articles.push({id: i, title: 'Lorem ipsum dolor sit amet', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur in nulla sed tempus. Vestibulum sed sem at urna porttitor pharetra sit amet id felis. Quisque non dolor sapien. Etiam egestas sit amet dolor eu gravida. In convallis dictum lectus eu fermentum. Vestibulum ornare quis urna eu finibus. Nulla eleifend nibh at rhoncus vulputate', date: '13 janvier 2017', tags: ['#Random', '#Design', '#React']});
+      }
     }
 
     // create a readeable post
@@ -58,6 +60,9 @@ export class ArticleComponent implements OnChanges, OnInit {
 
     // create a readeable post
     this.articles = this.defineArticleTemplate();
+
+    //set local storage
+    localStorage.setItem('articles', JSON.stringify(this.articles));
   }
 
   defineArticleTemplate(): Array<{'id': any, 'title': string, 'content': any, 'date': string, 'tags': string[]}>{
@@ -70,8 +75,12 @@ export class ArticleComponent implements OnChanges, OnInit {
 
   checkIfTag(tags: string[]): boolean{
     let tagBoolean: boolean = false;
+
     //check if all tabs are false by default
     if(this.articleService.isEverything()){ this.alertService.clear(); return !tagBoolean; }
+
+    //in case there is an url change (temporary fix)
+    this.tags = this.articleService.getStaticTabs();
 
     _.forEach(this.tags, (tagActive) => {
       if(tagActive.active){
@@ -85,6 +94,7 @@ export class ArticleComponent implements OnChanges, OnInit {
   }
 
   toggleTag(value: string){
+
     this.articleService.toggleTag(value);
   }
 

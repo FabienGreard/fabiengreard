@@ -32,6 +32,10 @@ export class ArticleService {
     this.subject.next(this.tags);
   }
 
+  getStaticTabs(): Array<{name: string, active: boolean}>{
+    return this.tags;
+  }
+
   isEverything(){
     return _.isUndefined(_.find(this.tags, { 'active': true }));
   }

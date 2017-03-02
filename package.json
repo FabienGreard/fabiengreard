@@ -58,7 +58,7 @@
   "scripts": {
     "start": "clear && webpack-dev-server --progress --colors --profile",
     "build": "clear && rimraf dist && mkdir dist && webpack --config config/webpack.prod.js --colors --progress",
-    "deploy": "node server.js",
+    "deploy": "node ./api/server.js",
     "test": "echo 'ok'"
   },
   "repository": {
