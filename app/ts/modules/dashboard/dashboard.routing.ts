@@ -11,6 +11,8 @@ const DashboardRoute: Routes = [
       { path: 'article', component: ArticleDetailComponent }
     ]
   },
+  { path: 'admin', loadChildren: '../admin/admin.module#AdminModule' },
+  { path: 'login', loadChildren: '../login/login.module#LoginModule' }
 ];
 
 export const routing = RouterModule.forRoot(DashboardRoute);

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  moduleId: 'module.id',
   selector: 'admin',
-  template: require('../../../html/admin.component.html')
+  template: require('../html/admin.template.html')
 })
 export class AdminComponent implements OnInit {
   constructor() {  }

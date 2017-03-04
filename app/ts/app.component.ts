@@ -12,5 +12,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
       this.consoleLogService.message("developement mode enable");
+      //localStorage.clear();
   }
 }

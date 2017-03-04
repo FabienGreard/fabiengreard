@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 /* SERVICES */
 
 /* DIRECTIVES */
-
 @NgModule({
   imports: [
     BrowserModule,

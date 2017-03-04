@@ -4,7 +4,7 @@ var webpackMerge = require('webpack-merge');
 var webpack = require('webpack');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'dev';
+const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
 module.exports = webpackMerge(commonConfig, {
   cache: true,

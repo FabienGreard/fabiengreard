@@ -9,4 +9,4 @@
   </div>
 </div>
 
-<span class="console-toggle" (click)="toggleConsole()"><i class="fa fa-terminal" aria-hidden="true"></i></span>
+<span *ngIf="isDev()" class="console-toggle" (click)="toggleConsole()"><i class="fa fa-terminal" aria-hidden="true"></i></span>

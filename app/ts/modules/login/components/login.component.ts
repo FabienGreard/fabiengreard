@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { AuthentificationService } from '../../../services/api/index';
+import { ConsoleLogService } from '../../../modules/console-log/index';
+import { AlertService } from '../../alert/index';
+
+@Component({
+    selector: 'login',
+    template: require('../html/login.template.html'),
+})
+
+export class LoginComponent implements OnInit {
+    model: any = {};
+    returnUrl: string;
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private authenticationService: AuthentificationService,
+        private alertService: AlertService,
+        private consoleLogService: ConsoleLogService) { }
+
+    ngOnInit() {
+        // reset login status
+        this.authenticationService.logout();
+
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+
+    login() {
+      this.authenticationService.login(this.model)
+      .subscribe(
+          data => {
+              this.router.navigate([this.returnUrl]);
+          },
+          error => {
+              this.alertService.error(error);
+          });
+    }
+}

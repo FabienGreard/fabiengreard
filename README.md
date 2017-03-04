@@ -6,7 +6,7 @@ Fabien greard's blog.
 # QuickStart
 
 ```sh
-gulp => watch pug&sass file
+gulp => watch pug&sass file (optional)
 
 npm run start => webpack start default dev server
 
@@ -18,11 +18,10 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* api
 * Simple Module Admin
-* CRUD Article
-* CRUD User
-* global compatibility 
+* Create article
+* Link api
+* global check compatibility
 
 # License
 

@@ -16,6 +16,10 @@ export class ConsoleLogComponent {
     this.consoleService.getMessage().subscribe(value => {this.logs.push(JSON.stringify(value)); console.log(value)});
   }
 
+  isDev(){
+    return (process.env.ENV !== 'production') ? true : false;
+  }
+
   toggleConsole(){
     this.display = !this.display;
   }
