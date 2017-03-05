@@ -14,11 +14,11 @@ export class AuthentificationService extends ApiHelper{
       super.setApiUrl('users')
     }
 
-    login(model: string) {
+    login(model: string): Observable<any> {
         return this.http.post(super.getApiUrl() + "/login", model)
         .map((res: Response) => {
             // store user id in local storage
-            localStorage.setItem('user', JSON.stringify({ id: res.json().userId, token : res.json().id }));
+            localStorage.setItem('currentUser', JSON.stringify({ id: res.json().userId, token : res.json().id }));
             //this.consoleLogService.message(res.json());
             return res.json();
           })
@@ -27,20 +27,8 @@ export class AuthentificationService extends ApiHelper{
           });
     }
 
-    getUserById(){
-      if(!JSON.parse(localStorage.getItem('user'))){ return Observable.throw("cannot find user"); }
-      return this.http.get(super.getApiUrl() + "/" + JSON.parse(localStorage.getItem('user')).id + "?access_token=" + super.getToken())
-      .map((res: Response) => {
-          //this.consoleLogService.message(res.json());
-          return res.json();
-        })
-        .catch((err) => {
-          return Observable.throw(err.message || err);
-        });
-    }
-
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('user');
+        localStorage.removeItem('currentUser');
     }
 }

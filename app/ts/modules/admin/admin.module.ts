@@ -13,7 +13,7 @@ import { AdminComponent } from './components/admin.component';
 
 /* SERVICES */
 import { AuthGuard } from '../../guards/auth.guard';
-import { AuthentificationService} from '../../services/api/index';
+import { UserService} from '../../services/api/index';
 
 /* DIRECTIVES */
 @NgModule({
@@ -28,7 +28,7 @@ import { AuthentificationService} from '../../services/api/index';
   ],
   providers: [
     AuthGuard,
-    AuthentificationService
+    UserService
   ]
 })
 export class AdminModule { }

@@ -1,8 +1,8 @@
 import { RequestOptions } from '@angular/http';
+import { User } from '../../models/index';
 
 export class ApiHelper {
   protected apiUrl: string = 'http://213.32.91.42:3000/api/';
-
 
   constructor(){}
 
@@ -16,10 +16,10 @@ export class ApiHelper {
   }
 
   getToken(){
-    if(JSON.parse(localStorage.getItem('user'))){
-      let user = JSON.parse(localStorage.getItem('user'));
-      if (user.token) {
-        return user.token;
+    if(JSON.parse(localStorage.getItem('currentUser'))){
+      let currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser.token) {
+        return currentUser.token;
       }
     }
   }
