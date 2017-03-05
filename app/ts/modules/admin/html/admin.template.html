@@ -1,2 +1,10 @@
-Admin Bonjour
-<router-outlet></router-outlet>
+<div class="admin-container">
+  <ul class="admin-nav">
+    <li title="logout" class="admin-nav-li" (click)="logout()" [routerLink]="['/']"><i class="fa fa-sign-out" aria-hidden="true"></i></li>
+    <li title="user" class="admin-nav-li" [routerLink]="['./user']"><i class="fa fa-user-o" aria-hidden="true"></i></li>
+    <li title="article" class="admin-nav-li" [routerLink]="['./article']"><i class="fa fa-file-o" aria-hidden="true"></i></li>
+  </ul>
+  <div class="admin-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

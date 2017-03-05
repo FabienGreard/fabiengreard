@@ -4,7 +4,6 @@ import { FormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 /* ROUTING */
-import { routing } from './login.routing';
 
 /* MODULES */
 import { AlertModule } from '../alert/index';
@@ -22,13 +21,9 @@ import { AuthentificationService} from '../../services/api/index';
     CommonModule,
     FormsModule,
     HttpModule,
-    routing,
     AlertModule
   ],
-  providers: [
-    AuthentificationService,
-  ],
   declarations: [LoginComponent],
-  exports: [LoginComponent]
+  providers: [AuthentificationService]
 })
 export class LoginModule {}

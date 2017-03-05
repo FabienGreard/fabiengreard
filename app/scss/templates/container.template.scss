@@ -1,0 +1,27 @@
+$color-container-template: #2d3047;
+$background-container-template: #f7f7f7;
+$dark-background-container-template: $white;
+.container-template{
+  margin: calculateRem(40px) calculateRem(20px);
+  @include calc(width, 98%, '100% - 40px');
+  @include calc(height, 96%, '100% - 80px');
+  color: $color-container-template;
+  background-color: $dark-background-container-template;
+  @include flexbox;
+  @include flex-direction(column);
+  @include box-shadow(0, 0, 10px, $black-shadow);
+  @include rounded(3px);
+  @include animation(loadingSmoothMaterialLateralLeft 0.4s linear);
+  .section-container-template{
+    background-color: $background-container-template;
+    border: 1px solid $form-border;
+    margin: calculateRem(14px) calculateRem(14px);
+    @include calc(width, 99%, '100% - 30px');
+    @include calc(height, 99%, '100% - 30px');
+    @include rounded(3px);
+    @include flexbox;
+    & > * {
+      margin: auto;
+    }
+  }
+}

@@ -17,20 +17,20 @@ export class LoginComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthentificationService,
+        private authentificationService: AuthentificationService,
         private alertService: AlertService,
         private consoleLogService: ConsoleLogService) { }
 
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        this.authentificationService.logout();
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
     login() {
-      this.authenticationService.login(this.model)
+      this.authentificationService.login(this.model)
       .subscribe(
           data => {
               this.router.navigate([this.returnUrl]);

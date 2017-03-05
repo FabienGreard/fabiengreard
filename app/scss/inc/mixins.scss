@@ -29,6 +29,13 @@
   }
 }
 
+@mixin calc($property, $default, $expression) {
+  #{$property}: $default;
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
 @mixin rounded($radius: 0.5em) {
 -webkit-border-radius: $radius;
 -moz-border-radius: $radius;
@@ -250,6 +257,17 @@ border-radius: $radius;
   0%{
     @include opacity(0);
     @include transform(translateX(4px));
+  }
+  100%{
+    @include opacity(1);
+    @include transform(translateX(0));
+  }
+}
+
+@include keyframes(loadingSmoothMaterialLateralLeft){
+  0%{
+    @include opacity(0.2);
+    @include transform(translateX(-6px));
   }
   100%{
     @include opacity(1);

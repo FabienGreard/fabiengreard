@@ -14,8 +14,10 @@
 @import "templates/social.template";
 @import "templates/alert.template";
 @import "templates/form.template";
+@import "templates/container.template";
 
 /* Components */
 @import "components/console.component";
 @import "components/dashboard.component";
 @import "components/login.component";
+@import "components/admin.component";
