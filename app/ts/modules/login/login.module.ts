@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './login.routing';
 
 /* MODULES */
+import { AlertModule } from '../alert/index';
 
 /* COMPONENTS */
 import { LoginComponent } from './components/login.component';
@@ -22,6 +23,7 @@ import { AuthentificationService} from '../../services/api/index';
     FormsModule,
     HttpModule,
     routing,
+    AlertModule
   ],
   providers: [
     AuthentificationService,

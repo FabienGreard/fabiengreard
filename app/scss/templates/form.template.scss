@@ -1,0 +1,136 @@
+$form-border-form-template: $form-border;
+$placeholder-color-form-template: $form-placeholder;
+$background-form-template: $white;
+$color-form-template: #f49d37;
+$transition-form-template: $form-transition;
+$valid-form-template: $green-valid;
+$error-form-template: $red-error;
+
+.input{
+  position: relative;
+  @include flexbox;
+  margin: 10px auto;
+  input{
+    //@mixin input($size, $rounded, $margin, $background, $color, $padding, $border)
+    @include input(16px, 0px , auto, $background-form-template, $placeholder-color-form-template, 7px 5px 7px 36px, 1px solid $form-border-form-template){
+      width: 100%;
+      @include transition(0.2s $transition-form-template);
+      @include placeholder{
+        color: $placeholder-color-form-template;
+      }
+      &:hover{
+        border-color: $color-form-template;
+      }
+      &:focus{
+        padding: 7px 5px;
+        color: $color-form-template;
+        border-color: $color-form-template;
+        @include placeholder{
+          color: $color-form-template;
+        }
+        &+span{
+          @include opacity(0);
+        }
+      }
+    }
+  }
+  span{
+    @include transition(0.2s $transition-form-template);
+    position: absolute;
+    color: $placeholder-color-form-template;
+    left: 10px;
+    top: 8px;
+    @include font-size(16px);
+  }
+  .valid{
+    color: $valid-form-template!important;
+    border-color: $valid-form-template!important;
+    &+span{
+      color: $valid-form-template!important;
+    }
+  }
+  .error{
+    color: $error-form-template!important;
+    border-color: $error-form-template!important;
+    &+span{
+    color: $error-form-template!important;
+    }
+  }
+}
+
+/* SUBMIT BUTTON */
+
+$form-border-form-template: #f49d37;
+$placeholder-color-form-template: $dark-orange;
+$background-form-template: #f49d37;
+$color-form-template: $white;
+$transition-form-template: $form-transition;
+
+.submit{
+  position: relative;
+  @include flexbox;
+  margin: 10px auto;
+  input{
+    @include input(16px, 0px , auto, $background-form-template, $color-form-template, 7px 5px, 1px solid $form-border-form-template){
+      width: 100%;
+      cursor: pointer;
+      @include transition(0.2s $transition-form-template);
+      &:hover, &:focus{
+        padding: 7px 5px;
+        border-color: $placeholder-color-form-template;
+      }
+    }
+  }
+}
+
+/* TEXT AERA */
+
+$form-border-form-template: $form-border;
+$placeholder-color-form-template: $form-placeholder;
+$background-form-template: $white;
+$color-form-template: $dark-blue;
+$transition-form-template: $form-transition;
+$valid-form-template: $green-valid;
+$error-form-template: $red-error;
+
+.textarea {
+  position: relative;
+  @include flexbox;
+  margin: 10px auto;
+  textarea{
+    @include input(16px, 0px , auto, $background-form-template, $placeholder-color-form-template, 7px 5px 7px 7px, 1px solid $form-border-form-template){
+      width: 100%;
+      @include transition(0.2s $transition-form-template);
+      @include placeholder{
+        color: $placeholder-color-form-template;
+      }
+      &:hover{
+        border-color: $color-form-template;
+      }
+      &:focus{
+        color: $color-form-template;
+        border-color: $color-form-template;
+        @include placeholder{
+          color: $color-form-template;
+        }
+        &+span{
+          @include opacity(0);
+        }
+      }
+    }
+  }
+  .valid{
+    color: $valid-form-template!important;
+    border-color: $valid-form-template!important;
+    &+span{
+      color: $valid-form-template!important;
+    }
+  }
+  .error{
+    color: $error-form-template!important;
+    border-color: $error-form-template!important;
+    &+span{
+    color: $error-form-template!important;
+    }
+  }
+}

@@ -1,7 +1,9 @@
 <!-- login container -->
 <div class="login-container">
+  <alert class="login-alert"></alert>
   <form class="login-form" name="login-form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-    <h1 class="login-title">ADMIN</h1>
+    <h1 class="login-title">Login</h1>
+    <h2 class="login-subline">*Author and admin acces</h2>
     <div class="form-group">
       <div class="input">
         <input class="form-control" [ngClass]="{ 'error': f.submitted && !email.valid }" type="text" name="email" placeholder="Email" [(ngModel)]="model.email" #email="ngModel" required/>

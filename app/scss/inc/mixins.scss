@@ -179,7 +179,7 @@ border-radius: $radius;
   outline: 0;
   @include x-appearance(none);
   @include rounded($rounded);
-  @include Roboto($size);
+  @include Inconsolata($size);
   background-color: $background;
   color: $color;
   padding: $padding;
