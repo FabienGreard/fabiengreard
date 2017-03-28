@@ -14,7 +14,7 @@ export class AuthentificationService extends ApiHelper{
       super.setApiUrl('users')
     }
 
-    login(model: string): Observable<any> {
+    login(model: any): Observable<any> {
         return this.http.post(super.getApiUrl() + "/login", model)
         .map((res: Response) => {
             // store user id in local storage

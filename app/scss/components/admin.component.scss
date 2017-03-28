@@ -7,6 +7,12 @@ $background-color-content-admin-component: $background;
 
 $transition-nav-admin-component: cubic-bezier(.25,.1,.25,1);
 
+$user-form-title-color-admin-component: $white;
+$user-form-title-background-admin-component: #f49d37;
+$user-border-title-background-admin-component: #f49d37;
+
+$password-return-color: #f49d37;
+
 admin{
   position: absolute;
   top: 0;
@@ -41,13 +47,13 @@ admin{
         }
         .fa{
           margin: auto;
-          padding: 10px;
+          padding: calculateRem(10px);
         }
       }
       .admin-nav-li:first-child{
         margin: 0;
         padding: calculateRem(20px) auto calculateRem(22px);
-        border-bottom: 2px solid $red;
+        border-bottom: calculateRem(2px) solid $red;
         &:hover{
           color: $red;
         }
@@ -59,5 +65,76 @@ admin{
       height: 100vh;
       background-color: $background-color-content-admin-component;
     }
+  }
+}
+
+/* USER */
+.user-form{
+  margin: calculateRem(50px) calculateRem(10px)!important;
+  .title-container{
+    border-bottom: calculateRem(1px) solid $user-border-title-background-admin-component;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    .user-title{
+      width: calculateRem(150px);
+      margin: 0;
+      padding: calculateRem(5px) calculateRem(10px);
+      background-color: $user-form-title-background-admin-component;
+      color: $user-form-title-color-admin-component;
+    }
+  }
+  .account-container{
+    border-right: calculateRem(2px) solid $form-border;
+    width: calculateRem(250px);
+    padding: calculateRem(5px) calculateRem(10px);
+    height: 100%;
+    .account-title{
+      @include JosefinSlab(22px);
+    }
+    .password-container-disclaimer{
+      @include flexbox;
+      cursor: pointer;
+      padding: calculateRem(7.4px);
+      border: 1px solid $black;
+      .password-text{
+        margin: auto;
+        @include font-size(16px);
+      }
+      .password-forward{
+        margin: auto calculateRem(2px);
+        color: #f49d37;
+        @include font-size(20px);
+        cursor: pointer;
+      }
+    }
+    .password-container{
+      @include flexbox;
+      .input{
+        margin: auto 0;
+        width: 100%;
+      }
+      .password-return{
+        margin: auto calculateRem(2px);
+        color: $password-return-color;
+        @include font-size(20px);
+        cursor: pointer;
+      }
+    }
+  }
+  .ng-invalid{
+    border-color: $red!important;
+    color: $red!important;
+    @include placeholder{
+      color: $red!important;
+    };
+  }
+  .submit{
+    position: absolute;
+    width: calculateRem(100px);
+    margin: auto;
+    right: calculateRem(10px);
+    bottom: calculateRem(10px);
   }
 }

@@ -18,7 +18,6 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* Simple Module Admin
 * Create article
 * Link api
 * global check compatibility

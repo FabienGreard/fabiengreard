@@ -1,6 +1,10 @@
 $color-container-template: #2d3047;
 $background-container-template: #f7f7f7;
 $dark-background-container-template: $white;
+
+$color-alert-container-template: $white;
+$background-alert-container-template: #f49d37;
+
 .container-template{
   margin: calculateRem(40px) calculateRem(20px);
   @include calc(width, 98%, '100% - 40px');
@@ -13,15 +17,36 @@ $dark-background-container-template: $white;
   @include rounded(3px);
   @include animation(loadingSmoothMaterialLateralLeft 0.4s linear);
   .section-container-template{
+    position: relative;
     background-color: $background-container-template;
     border: 1px solid $form-border;
-    margin: calculateRem(14px) calculateRem(14px);
-    @include calc(width, 99%, '100% - 30px');
-    @include calc(height, 99%, '100% - 30px');
+    margin: auto;
+    @include calc(width, 99%, '100% - 15px');
+    @include calc(height, 99%, '100% - 15px');
     @include rounded(3px);
     @include flexbox;
     & > * {
       margin: auto;
+    }
+    .container-alert{
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      .alert-template{
+        min-height: inherit;
+        width: calculateRem(300px);
+        padding: calculateRem(5px) calculateRem(20px);
+        background-color: $background-alert-container-template;
+        color: $color-alert-container-template;
+        @include animation(loadingSmoothMaterial 0.4s linear);
+      }
+      .alert-error{
+        background-color: $red;
+      }
+      .alert-success{
+        background-color: $green;
+      }
     }
   }
 }

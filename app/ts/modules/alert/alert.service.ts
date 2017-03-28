@@ -9,15 +9,15 @@ export class AlertService {
     constructor() { }
 
     success(message: string) {
-        this.subject.next({ route: '/', title: 'Succès', text: message });
+        this.subject.next({ type: 'success', route: '/', title: 'Success', text: message });
     }
 
     info(message: string) {
-        this.subject.next({ route: '/', title: 'Info', text: message });
+        this.subject.next({ type: 'info', route: '/', title: 'Info', text: message });
     }
 
     error(message: string) {
-        this.subject.next({ route: '/', title: 'Erreur', text: message });
+        this.subject.next({ type: 'error', route: '/', title: 'Error', text: message });
     }
 
     clear(){

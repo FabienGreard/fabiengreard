@@ -29,10 +29,9 @@ $color-alert-login-component: $white;
     }
   }
   .login-form{
-    margin: auto;
-    width: 300px;
+    margin: calculateRem(150px) auto;
+    width: calculateRem(300px);
     color: $color-login-component;
-    @include transform(translate(0%, -100%));
     .login-title{
       margin: 0;
       @include JosefinSlab(36px);

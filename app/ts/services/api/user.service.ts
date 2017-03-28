@@ -20,7 +20,20 @@ export class UserService extends ApiHelper{
       .map((res: Response) => {
           //this.consoleLogService.message(res.json());
           let currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
-          localStorage.setItem('currentUser', JSON.stringify({ id: currentUser.id, name: res.json().username, token : currentUser.token }));
+          localStorage.setItem('currentUser', JSON.stringify({ id: currentUser.id, username: res.json().username, token : currentUser.token, email: res.json().email}));
+          return res.json();
+        })
+        .catch((err) => {
+          return Observable.throw(err.message || err);
+        });
+    }
+
+    update(user: User){
+      return this.http.put(super.getApiUrl() + "/" + JSON.parse(localStorage.getItem('currentUser')).id + "?access_token=" + super.getToken(), user)
+      .map((res: Response) => {
+          let currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
+          localStorage.setItem('currentUser', JSON.stringify({ id: res.json().id, username: res.json().username, token : currentUser.token, email: res.json().email}));
+          //this.consoleLogService.message(res.json());
           return res.json();
         })
         .catch((err) => {
