@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule  } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -16,12 +17,13 @@ import { AdminUserComponent } from './components/admin-user.component';
 
 /* SERVICES */
 import { AuthGuard } from '../../guards/auth.guard';
-import { UserService} from '../../services/api/index';
+import { UserService, ArticleService } from '../../services/api/index';
 
 /* DIRECTIVES */
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpModule,
     routing,
@@ -34,7 +36,8 @@ import { UserService} from '../../services/api/index';
   ],
   providers: [
     AuthGuard,
-    UserService
+    UserService,
+    ArticleService
   ]
 })
 export class AdminModule { }

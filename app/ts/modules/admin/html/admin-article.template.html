@@ -1,5 +1,61 @@
 <div class="container-template">
-  <div class="section-container-template">
-    <a [routerLink]="['/admin']">ok</a>
+  <div class="section-container-template article">
+    <div class="article-publisher-container">
+      <div class="header-article-publisher">
+        <h1 class="title-article-publisher">Title: </h1>
+        <div class="input">
+          <input class="form-control" type="text" name="title" [(ngModel)]="currentArticle.title" placeholder="Ex: A Good Headline"/>
+        </div>
+        <h2 class="date-article-publisher">Date : </h2>
+        <div class="input">
+          <input class="form-control" type="date" name="date" [(ngModel)]="currentArticle.date" placeholder=""/>
+        </div>
+        <h2 class="tags-article-publisher">Tags :</h2>
+        <div class="input">
+          <input class="form-control" type="text" name="tags" [(ngModel)]="currentArticle.tags" placeholder="Ex: Angular2, dev"/>
+        </div>
+        <i class="fa fa-paper-plane-o send-article-publisher" aria-hidden="true" (click)="send()"></i>
+      </div>
+      <div class="option-article-publisher">
+        <i class="fa fa-bold" aria-hidden="true"></i>
+        <i class="fa fa-italic" aria-hidden="true"></i>
+        <i class="fa fa-underline" aria-hidden="true"></i>
+        <span class="space"></span>
+        <select class="size-option" name="size">
+          <option *ngFor="let number of [14, 16, 18, 20, 22]" value="{{number}}" [selected]="number == 16">{{number}}</option>
+        </select>
+        <select class="size-option" name="size">
+          <option *ngFor="let font of ['Inconsolata', 'JosefinSlab', 'Lobster']" value="{{font}}">{{font}}</option>
+        </select>
+        <span class="space"></span>
+        <i class="fa fa-align-left" aria-hidden="true"></i>
+        <i class="fa fa-align-center" aria-hidden="true"></i>
+        <i class="fa fa-align-right" aria-hidden="true"></i>
+        <span class="space"></span>
+        <i class="fa fa-list-ol" aria-hidden="true"></i>
+        <i class="fa fa-list-ul" aria-hidden="true"></i>
+        <span class="space"></span>
+        <i class="fa fa-code" aria-hidden="true"></i>
+      </div>
+      <div class="textarea textarea-article-publisher">
+        <textarea [(ngModel)]="currentArticle.content" type="textarea" name="textarea" placeholder="">
+        </textarea>
+      </div>
+    </div>
+    <div class="article-list-container">
+      <div *ngFor="let article of articles">
+        <div (click)="selectArticle(article)" class="article-container">
+          <div class="header-article-container">
+            <h1 class="article-title">{{ article.title }}</h1>
+            <p class="article-date">[{{ article.date | date:'dd/MM/yyyy' }}]</p>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="delete(article.id)"></i>
+          </div>
+          <ul class="article-tag-container" >
+            <li *ngFor="let tag of article.tags" class="article-tag">#{{ tag }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <alert class="container-alert"></alert>
   </div>
 </div>
