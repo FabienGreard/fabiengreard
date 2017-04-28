@@ -109,6 +109,17 @@ article{
 .article-detail-container{
   .article-detail-header{
     @include flexbox;
+    .article-detail-header-title{
+      margin: auto calculateRem(-16px) auto auto;
+    }
+    .fa-times{
+      margin: auto 0 auto auto;
+      @include transition(0.2s linear);
+      cursor: pointer;
+      &:hover{
+        color: $red;
+      }
+    }
     .article-dashboard{
       margin: auto 10px auto 0;
       width: 25px;
@@ -132,6 +143,41 @@ article{
   .article-detail-content{
     @include font-size(16px);
     text-align: justify;
+    .bold{
+      font-weight: bold;
+    }
+    .itailic{
+      font-style: italic;
+    }
+    .underline{
+      text-decoration: underline;
+    }
+    @for $i from 14 to 23{
+      .size-#{$i}{
+      @include font-size(0px + $i);
+      }
+    }
+    $list: inconsolata josefinslab lobster;
+    @each $font in $list{
+      .font-#{$font}{
+        font-family: $font;
+      }
+    }
+    .align-lef{
+      text-align: left;
+    }
+    .align-right{
+      text-align: right;
+    }
+    .align-center{
+      text-align: center;
+    }
+    .code{
+      @include Inconsolata(16px);
+      background-color: #f7F7F7;
+      padding: calculateRem(8px) calculateRem(16px);
+      margin: calculateRem(20px);
+    }
   }
   .article-detail-footer{
     @include font-size(14px);
@@ -151,5 +197,27 @@ article{
     .article-date{
       margin: auto 0 auto auto;
     }
+  }
+}
+
+/* EXTERNAL */
+
+.external{
+  position: absolute;
+  padding: calculateRem(10px);
+  top: 50%;
+  left: 50%;
+  bottom: 0;
+  right: 0;
+  width: 90%;
+  height: 95%;
+  @include transform(translate(-50%, -50%));
+  @include box-shadow(0, 0, 10px, $black);
+  @include rounded;
+  border: 1px solid $black;
+  background-color: $white;
+  overflow:auto;
+  .external-content{
+    @include calc(height, '92%', '100% - 70px');
   }
 }

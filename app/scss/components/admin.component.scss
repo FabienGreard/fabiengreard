@@ -166,8 +166,26 @@ admin{
       @include font-size(18px);
       margin: auto calculateRem(5px);
     }
-    .send-article-publisher{
+    .show-article-publisher{
       margin: auto 0 auto auto;
+      @include transition(0.1s linear);
+      cursor: pointer;
+      @include font-size(20px);
+      &:hover{
+        color: $send-color-hover-article-publisher;
+      }
+    }
+    .new-article-publisher{
+      margin: auto 0 auto calculateRem(10px);
+      @include transition(0.1s linear);
+      cursor: pointer;
+      @include font-size(20px);
+      &:hover{
+        color: $send-color-hover-article-publisher;
+      }
+    }
+    .send-article-publisher{
+      margin: auto 0 auto calculateRem(10px);
       @include transition(0.1s linear);
       cursor: pointer;
       color: $green;
@@ -240,6 +258,7 @@ admin{
   @include calc(width, 20%, '25% - 30px');
   @include calc(height, 95%, '100% - 30px');
   padding: calculateRem(10px);
+  overflow: auto;
   .article-container{
     background-color: $white;
     border: 1px solid $form-placeholder;

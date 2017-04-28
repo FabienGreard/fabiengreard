@@ -15,6 +15,7 @@ export class AdminArticleComponent implements OnInit {
   currentArticle: Article = {
     'date': new Date().toISOString().substr(0, 10),
   };
+  showArticle: boolean = false;
 
   constructor(
     private articleService: ArticleService,
@@ -22,11 +23,7 @@ export class AdminArticleComponent implements OnInit {
     private consoleLogService: ConsoleLogService) {  }
 
   ngOnInit() {
-    if(JSON.parse(localStorage.getItem('articles'))){
-      this.articles = JSON.parse(localStorage.getItem('articles'));
-    }else{
-      this.get();
-    }
+    this.get();
     this.consoleLogService.message(this.articles);
     this.consoleLogService.message(this.currentArticle);
   }
@@ -34,6 +31,16 @@ export class AdminArticleComponent implements OnInit {
   selectArticle(article: Article){
     Object.assign(this.currentArticle, article);
     this.currentArticle.date = article.date.substr(0, 10);
+  }
+
+  new(){
+    this.currentArticle = {
+      'date': new Date().toISOString().substr(0, 10),
+    };
+  }
+
+  show(){
+    this.showArticle = !this.showArticle;
   }
 
   send(){
@@ -103,5 +110,93 @@ export class AdminArticleComponent implements OnInit {
         this.consoleLogService.message(error);
         this.alertService.error("Something went wrong");
       });
+  }
+
+  bold(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<span class='bold'></span>";
+    }else{
+      this.currentArticle.content = "<span class='bold'></span>";
+    }
+  }
+
+  italic(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<span class='italic'></span>";
+    }else{
+      this.currentArticle.content = "<span class='italic'></span>";
+    }
+  }
+
+  underline(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<span class='underline'></span>";
+    }else{
+      this.currentArticle.content = "<span class='underline'></span>";
+    }
+  }
+
+  size(size: number){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<span class='size-" + size +"'></span>";
+    }else{
+      this.currentArticle.content = "<span class='size-" + size +"'></span>";
+    }
+  }
+
+  font(font: string){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<span class='font-" + font.toLowerCase() +"'></span>";
+    }else{
+      this.currentArticle.content = "<span class='font-" + font.toLowerCase() +"'></span>";
+    }
+  }
+
+  alignLeft(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<div class='align-left'></div>";
+    }else{
+      this.currentArticle.content = "<div class='align-left'></div>";
+    }
+  }
+
+  alignCenter(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<div class='align-center'></div>";
+    }else{
+      this.currentArticle.content = "<div class='align-center'></div>";
+    }
+  }
+
+  alignRight(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<div class='align-right'></div>";
+    }else{
+      this.currentArticle.content = "<div class='align-right'></div>";
+    }
+  }
+
+  listOl(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<ol><li></li></ol>";
+    }else{
+      this.currentArticle.content = "<ol><li></li></ol>";
+    }
+  }
+
+  listUl(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<ul><li></li></ul>";
+    }else{
+      this.currentArticle.content = "<ul><li></li></ul>";
+    }
+  }
+
+  code(){
+    if(typeof this.currentArticle.content !== 'undefined'){
+      this.currentArticle.content += "<div class='code'></div>";
+    }else{
+      this.currentArticle.content = "<div class='code'></div>";
+    }
   }
 }

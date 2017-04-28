@@ -14,28 +14,30 @@
         <div class="input">
           <input class="form-control" type="text" name="tags" [(ngModel)]="currentArticle.tags" placeholder="Ex: Angular2, dev"/>
         </div>
+        <i (click)="show()" class="fa fa-external-link show-article-publisher" aria-hidden="true"></i>
+        <i (click)="new()" class="fa fa-file-o new-article-publisher" aria-hidden="true"></i>
         <i class="fa fa-paper-plane-o send-article-publisher" aria-hidden="true" (click)="send()"></i>
       </div>
       <div class="option-article-publisher">
-        <i class="fa fa-bold" aria-hidden="true"></i>
-        <i class="fa fa-italic" aria-hidden="true"></i>
-        <i class="fa fa-underline" aria-hidden="true"></i>
+        <i (click)="bold()" class="fa fa-bold" aria-hidden="true"></i>
+        <i (click)="italic()" class="fa fa-italic" aria-hidden="true"></i>
+        <i (click)="underline()" class="fa fa-underline" aria-hidden="true"></i>
         <span class="space"></span>
-        <select class="size-option" name="size">
+        <select (change)="size($event.target.value)" class="size-option" name="size">
           <option *ngFor="let number of [14, 16, 18, 20, 22]" value="{{number}}" [selected]="number == 16">{{number}}</option>
         </select>
-        <select class="size-option" name="size">
+        <select (change)="font($event.target.value)" class="size-option" name="size">
           <option *ngFor="let font of ['Inconsolata', 'JosefinSlab', 'Lobster']" value="{{font}}">{{font}}</option>
         </select>
         <span class="space"></span>
-        <i class="fa fa-align-left" aria-hidden="true"></i>
-        <i class="fa fa-align-center" aria-hidden="true"></i>
-        <i class="fa fa-align-right" aria-hidden="true"></i>
+        <i (click)="alignLeft()" class="fa fa-align-left" aria-hidden="true"></i>
+        <i (click)="alignCenter()" class="fa fa-align-center" aria-hidden="true"></i>
+        <i (click)="alignRight()" class="fa fa-align-right" aria-hidden="true"></i>
         <span class="space"></span>
-        <i class="fa fa-list-ol" aria-hidden="true"></i>
-        <i class="fa fa-list-ul" aria-hidden="true"></i>
+        <i (click)="listOl()" class="fa fa-list-ol" aria-hidden="true"></i>
+        <i (click)="listUl()" class="fa fa-list-ul" aria-hidden="true"></i>
         <span class="space"></span>
-        <i class="fa fa-code" aria-hidden="true"></i>
+        <i (click)="code()" class="fa fa-code" aria-hidden="true"></i>
       </div>
       <div class="textarea textarea-article-publisher">
         <textarea [(ngModel)]="currentArticle.content" type="textarea" name="textarea" placeholder="">
@@ -57,5 +59,18 @@
       </div>
     </div>
     <alert class="container-alert"></alert>
+  </div>
+</div>
+
+<div *ngIf="showArticle "class="article-detail-container external">
+  <div class="article-detail-header">
+    <h1 class="article-detail-header-title">{{ currentArticle.title}}</h1>
+    <i (click)="show()" class="fa fa-times" aria-hidden="true"></i>
+  </div>
+  <div class="article-detail-content external-content" [innerHTML]="currentArticle.content" >
+  </div>
+  <div class="article-detail-footer">
+    <p *ngFor="let tag of currentArticle.tags" class="article-tags">{{ tag }}</p>
+    <p class="article-date">{{ currentArticle.date }}</p>
   </div>
 </div>

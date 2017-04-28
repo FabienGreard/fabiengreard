@@ -18,8 +18,8 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* Create article
-* Link api
+* Link api with article
+* Link article with comments
 * global check compatibility
 
 # License
