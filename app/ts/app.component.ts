@@ -8,10 +8,14 @@ import { ConsoleLogService } from './modules/console-log/index';
   template: require('./app.component.html')
 })
 export class AppComponent implements OnInit{
+  prod: boolean = false;
+
   constructor(private consoleLogService: ConsoleLogService){}
 
   ngOnInit(){
+    if (process.env.ENV !== 'production'){
       this.consoleLogService.message("developement mode enable");
-      //localStorage.clear();
+      this.prod = true;
+    }
   }
 }

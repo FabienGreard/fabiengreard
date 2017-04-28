@@ -48,6 +48,9 @@ article{
         margin: 0;
         @include Inconsolata(16px);
         color: $color-text-link-article;
+        .article-content{
+          width: 100%;
+        }
         .date-link-article{
           margin: 1em 0 auto auto;
           height: 1em;
@@ -107,6 +110,9 @@ article{
 /* DETAILS */
 
 .article-detail-container{
+  width: 100%;
+  @include flexbox;
+  @include flex-direction(column);
   .article-detail-header{
     @include flexbox;
     .article-detail-header-title{
@@ -143,6 +149,9 @@ article{
   .article-detail-content{
     @include font-size(16px);
     text-align: justify;
+    .article-content{
+      width: 100%;
+    }
     .bold{
       font-weight: bold;
     }
@@ -174,7 +183,7 @@ article{
     }
     .code{
       @include Inconsolata(16px);
-      background-color: #f7F7F7;
+      background-color: $white;
       padding: calculateRem(8px) calculateRem(16px);
       margin: calculateRem(20px);
     }
@@ -182,6 +191,7 @@ article{
   .article-detail-footer{
     @include font-size(14px);
     text-align: justify;
+    justify-content: space-between;
     @include flexbox;
     .article-tags{
       margin: auto auto auto 0;
@@ -198,6 +208,12 @@ article{
       margin: auto 0 auto auto;
     }
   }
+}
+
+/* DISQUS */
+.disqus{
+  width: 100%;
+  margin: auto;
 }
 
 /* EXTERNAL */
@@ -219,5 +235,8 @@ article{
   overflow:auto;
   .external-content{
     @include calc(height, '92%', '100% - 70px');
+  }
+  .code{
+    background-color: #F7F7F7!important;
   }
 }

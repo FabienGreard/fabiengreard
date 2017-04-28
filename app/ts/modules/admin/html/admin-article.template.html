@@ -12,7 +12,7 @@
         </div>
         <h2 class="tags-article-publisher">Tags :</h2>
         <div class="input">
-          <input class="form-control" type="text" name="tags" [(ngModel)]="currentArticle.tags" placeholder="Ex: Angular2, dev"/>
+          <input class="form-control" type="text" name="tags" [(ngModel)]="currentArticle.tags" placeholder="Ex: #Angular2, #dev"/>
         </div>
         <i (click)="show()" class="fa fa-external-link show-article-publisher" aria-hidden="true"></i>
         <i (click)="new()" class="fa fa-file-o new-article-publisher" aria-hidden="true"></i>
@@ -53,7 +53,7 @@
             <i class="fa fa-trash-o" aria-hidden="true" (click)="delete(article.id)"></i>
           </div>
           <ul class="article-tag-container" >
-            <li *ngFor="let tag of article.tags" class="article-tag">#{{ tag }}</li>
+            <li *ngFor="let tag of article.tags" class="article-tag">{{ tag }}</li>
           </ul>
         </div>
       </div>
@@ -67,8 +67,7 @@
     <h1 class="article-detail-header-title">{{ currentArticle.title}}</h1>
     <i (click)="show()" class="fa fa-times" aria-hidden="true"></i>
   </div>
-  <div class="article-detail-content external-content" [innerHTML]="currentArticle.content" >
-  </div>
+  <p class="article-detail-content external-content" [innerHTML]="currentArticle.content"></p>
   <div class="article-detail-footer">
     <p *ngFor="let tag of currentArticle.tags" class="article-tags">{{ tag }}</p>
     <p class="article-date">{{ currentArticle.date }}</p>

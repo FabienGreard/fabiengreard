@@ -6,6 +6,7 @@ import { routing } from './article.routing';
 
 /* MODULES */
 import { AlertModule } from '../alert/index';
+import { DisqusModule } from 'angular2-disqus';
 
 /* COMPONENTS */
 import { ArticleComponent } from './components/article.component';
@@ -13,20 +14,25 @@ import { ArticlePageComponent } from './components/article-page.component';
 import { ArticleDetailComponent } from './components/article-detail.component';
 
 /* SERVICES */
-import { ArticleService } from './article.service';
+import { ArticleHelper } from './article.helper';
+import { ArticleService } from '../../services/api/index';
 
 /* DIRECTIVES */
 @NgModule({
   imports: [
     CommonModule,
     routing,
-    AlertModule
+    AlertModule,
+    DisqusModule
   ],
   declarations: [
     ArticleComponent,
     ArticlePageComponent,
     ArticleDetailComponent
   ],
-  providers: [ArticleService]
+  providers: [
+    ArticleService,
+    ArticleHelper
+  ]
 })
 export class ArticleModule { }

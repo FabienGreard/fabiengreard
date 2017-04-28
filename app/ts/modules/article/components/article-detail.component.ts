@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges, Input, trigger, style, transit
 import { ActivatedRoute } from '@angular/router';
 
 import { ConsoleLogService } from '../../console-log/index';
-import { ArticleService } from '../article.service';
+import { ArticleHelper } from '../article.helper';
 
 @Component({
   selector: 'article-detail',
@@ -26,7 +26,7 @@ export class ArticleDetailComponent implements OnInit {
   article: {'id': any, 'title': string, 'content': any, 'date': string, 'tags': Array<string>};
    constructor(
      private route: ActivatedRoute,
-     private articleService: ArticleService,
+     private articleHelper: ArticleHelper,
      private consoleLogService: ConsoleLogService) {}
 
   ngOnInit() {
@@ -47,7 +47,7 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   toggleTag(value: string){
-    this.articleService.toggleTag(value);
+    this.articleHelper.toggleTag(value);
   }
 
   ngOnDestroy() {

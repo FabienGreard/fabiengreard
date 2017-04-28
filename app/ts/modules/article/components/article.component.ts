@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges, Input, trigger, style, transition, animate } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-import { ArticleService } from '../article.service';
+import { ArticleHelper } from '../article.helper';
+import { ArticleService } from '../../../services/api/index';
 import { AlertService } from '../../alert/index';
 import { ConsoleLogService } from '../../console-log/index';
 
@@ -27,22 +28,15 @@ export class ArticleComponent implements OnChanges, OnInit {
   @Input() idArticle: string;
 
    constructor(
+     private articleHelper: ArticleHelper,
      private articleService: ArticleService,
      private alertService: AlertService,
      private consoleLogService: ConsoleLogService) {}
 
   ngOnInit() {
     if(this.articles == []){
-      for(let i = parseInt(this.idArticle.split("-")[0]); i < parseInt(this.idArticle.split("-")[1]); i++){
-        this.articles.push({id: i, title: 'Lorem ipsum dolor sit amet', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur in nulla sed tempus. Vestibulum sed sem at urna porttitor pharetra sit amet id felis. Quisque non dolor sapien. Etiam egestas sit amet dolor eu gravida. In convallis dictum lectus eu fermentum. Vestibulum ornare quis urna eu finibus. Nulla eleifend nibh at rhoncus vulputate', date: '13 janvier 2017', tags: ['#Random', '#Design', '#React']});
-      }
+      this.get();
     }
-
-    // create a readeable post
-    this.articles = this.defineArticleTemplate();
-
-    //set local storage
-    localStorage.setItem('articles', JSON.stringify(this.articles));
   }
 
   ngOnChanges(changes) {
@@ -51,25 +45,38 @@ export class ArticleComponent implements OnChanges, OnInit {
     }
   }
 
-  refresh(){
-    this.articles = [];
+  get(){
+    this.articleService.get().subscribe(
+      data => {
+        this.initArticle();
+        this.consoleLogService.message(data);
+      },
+      error =>{
+        this.consoleLogService.message(error);
+        this.alertService.error("Something went wrong");
+      });
+  }
 
+  initArticle(){
     for(let i = parseInt(this.idArticle.split("-")[0]); i < parseInt(this.idArticle.split("-")[1]); i++){
-      this.articles.push({id: i, title: 'Lorem ipsum dolor sit amet', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur in nulla sed tempus. Vestibulum sed sem at urna porttitor pharetra sit amet id felis. Quisque non dolor sapien. Etiam egestas sit amet dolor eu gravida. In convallis dictum lectus eu fermentum. Vestibulum ornare quis urna eu finibus. Nulla eleifend nibh at rhoncus vulputate', date: '13 janvier 2017', tags: ['#Random', '#Design', '#React']});
+      if(JSON.parse(localStorage.getItem('articles'))[i]){
+        this.articles.push(JSON.parse(localStorage.getItem('articles'))[i]);
+      }
     }
-
     // create a readeable post
     this.articles = this.defineArticleTemplate();
+  }
 
-    //set local storage
-    localStorage.setItem('articles', JSON.stringify(this.articles));
+  refresh(){
+    this.articles = [];
+    this.get();
   }
 
   defineArticleTemplate(): Array<{'id': any, 'title': string, 'content': any, 'date': string, 'tags': string[]}>{
-    return _.forEach(this.articles, (key) => {
-      let split = key.content.split("");
-      key.content = split.slice(0, 200).join("");
-      return key.content += "[..]";
+    return _.forEach(this.articles, (article) => {
+      let split = article.content.toString().split("");
+      article.content = split.slice(0, 200).join("");
+      return article.content += "[..]";
      });
   }
 
@@ -77,25 +84,23 @@ export class ArticleComponent implements OnChanges, OnInit {
     let tagBoolean: boolean = false;
 
     //check if all tabs are false by default
-    if(this.articleService.isEverything()){ this.alertService.clear(); return !tagBoolean; }
+    if(this.articleHelper.isEverything()){ return !tagBoolean; }
 
     //in case there is an url change (temporary fix)
-    this.tags = this.articleService.getStaticTabs();
+    this.tags = this.articleHelper.getStaticTabs();
 
     _.forEach(this.tags, (tagActive) => {
       if(tagActive.active){
-        if(_.includes(tags, tagActive.name)){ tagBoolean = true; } }
+        if(_.includes(tags, tagActive.name)){
+          tagBoolean = true;
+        }
+      }
     });
 
-    if(!tagBoolean){
-      this.alertService.error("Sorry, there is no article (yet) with this tag.");
-    }
     return tagBoolean;
   }
 
   toggleTag(value: string){
-
-    this.articleService.toggleTag(value);
+    this.articleHelper.toggleTag(value);
   }
-
 }

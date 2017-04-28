@@ -12,12 +12,13 @@
     "@angular/platform-browser": "~2.3.0",
     "@angular/platform-browser-dynamic": "~2.3.0",
     "@angular/router": "~3.3.0",
-    "core-js": "^2.4.1",
-    "rxjs": "5.0.0-rc.4",
-    "zone.js": "^0.7.2",
+    "angular2-disqus": "^6.0.0",
     "body-parser": "^1.15.2",
+    "core-js": "^2.4.1",
     "express": "^4.14.0",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "rxjs": "5.0.0-rc.4",
+    "zone.js": "^0.7.2"
   },
   "devDependencies": {
     "angular2-router-loader": "^0.3.4",

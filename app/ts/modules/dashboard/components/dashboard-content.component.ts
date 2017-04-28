@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { ConsoleLogService } from '../../console-log/index';
 
@@ -8,7 +9,9 @@ import { ConsoleLogService } from '../../console-log/index';
 })
 export class DashboardContentComponent implements OnInit {
   private id: string = "mdr";
-  constructor(private consoleLogService: ConsoleLogService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private consoleLogService: ConsoleLogService) {}
 
   ngOnInit() {}
 }

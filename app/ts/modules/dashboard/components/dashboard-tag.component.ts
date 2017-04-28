@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ConsoleLogService } from '../../console-log/index';
-import { ArticleService } from '../../article/index';
+import { ArticleHelper } from '../../article/index';
 
 @Component({
   selector: 'dashboard-tag',
@@ -11,15 +11,15 @@ export class DashboardTagComponent implements OnInit {
   private tags: Array<{name: string, active: boolean}>;
   constructor(
     private consoleLogService: ConsoleLogService,
-    private articleService: ArticleService) { }
+    private articleHelper: ArticleHelper) { }
 
   ngOnInit() {
-    this.articleService.getTags().subscribe((tags) => { this.tags = tags });
+    this.articleHelper.getTags().subscribe((tags) => { this.tags = tags });
     //init list
-    this.articleService.sendTag();
+    this.articleHelper.sendTag();
   }
 
   toggleTag(value: string){
-    this.articleService.toggleTag(value);
+    this.articleHelper.toggleTag(value);
   }
 }

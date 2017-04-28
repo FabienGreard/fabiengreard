@@ -7,6 +7,7 @@ import { routing } from './dashboard.routing';
 /* MODULES */
 import { ArticleModule } from '../article/index';
 import { LoginModule } from '../login/index';
+import { DisqusModule } from 'angular2-disqus';
 
 /* COMPONENTS */
 import { DashboardComponent } from './components/dashboard.component';
@@ -27,7 +28,8 @@ import { DashboardTagService } from './services/dashboard-tag.service';
     CommonModule,
     routing,
     ArticleModule,
-    LoginModule
+    LoginModule,
+    DisqusModule
   ],
   declarations: [
     DashboardComponent,

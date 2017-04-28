@@ -1,4 +1,4 @@
-<div [@fadeInOutTranslate] class="article-detail-container">
+<div [@fadeInOutTranslate] data-disqus-identifier="article.id" class="article-detail-container">
   <div class="article-detail-header">
     <div routerLink='' class="article-dashboard">
       <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -6,10 +6,11 @@
     <h1 class="article-title">{{ article.title }}</h1>
   </div>
   <div class="article-detail-content">
-    <p class="article-content">{{ article.content }}</p>
+    <p class="article-content" [innerHTML]="article.content"></p>
   </div>
   <div class="article-detail-footer">
     <p routerLink='' *ngFor="let tag of article.tags" (click)="toggleTag(tag)" class="article-tags">{{ tag }}</p>
-    <p class="article-date">{{ article.date }}</p>
+    <p class="article-date">[{{ article.date | date:'dd/MM/yyyy' }}]</p>
   </div>
 </div>
+<disqus-thread class="disqus" [page-identifier]="article.id" [page-url]="route.url"></disqus-thread>
