@@ -2,7 +2,8 @@ var express = require('express'),
     bodyParser  = require('body-parser'),
     morgan  = require('morgan'),
     fallback = require('express-history-api-fallback'),
-    port    = process.env.PORT || 80;
+    https = require('https'),
+    http = require('http');
 
 var app = express();
 
@@ -15,6 +16,14 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/dist'));
 app.use(fallback(__dirname + '/dist/index.html'));
 
-app.listen(app.get('port'), function() {
-  console.log('Blog is running here: http://localhost:' + app.get('port'));
-});
+
+// This line is from the Node.js HTTPS documentation.
+var options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/cert.pem')
+};
+
+// Create an HTTP service.
+http.createServer(app).listen(80);
+// Create an HTTPS service identical to the HTTP service.
+https.createServer(options, app).listen(443);

@@ -19,7 +19,6 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* https
 * global check compatibility
 
 # License
