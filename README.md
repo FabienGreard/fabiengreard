@@ -18,7 +18,6 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* Tags error (admin)
 * save api/data
 * Github integration
 * https

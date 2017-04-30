@@ -49,7 +49,6 @@ export class AdminArticleComponent implements OnInit {
       this.put();
       this.consoleLogService.message(this.currentArticle);
     }else{
-      this.formatTags();
       this.post();
       this.consoleLogService.message(this.currentArticle);
     }

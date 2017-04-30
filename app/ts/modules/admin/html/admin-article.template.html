@@ -12,7 +12,8 @@
         </div>
         <h2 class="tags-article-publisher">Tags :</h2>
         <div class="input">
-          <input class="form-control" type="text" name="tags" [(ngModel)]="currentArticle.tags" placeholder="Ex: #Angular2, #dev"/>
+          <input class="form-control" type="text" name="tags" [(ngModel)]="currentArticle.tags"
+          (ngModelChange)="formatTags($event)" placeholder="Ex: #Angular2, #dev"/>
         </div>
         <i (click)="show()" class="fa fa-external-link show-article-publisher" aria-hidden="true"></i>
         <i (click)="new()" class="fa fa-file-o new-article-publisher" aria-hidden="true"></i>
