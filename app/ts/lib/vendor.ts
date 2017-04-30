@@ -10,4 +10,4 @@ import '@angular/router';
 import 'rxjs';
 
 // Lodash
-import 'Lodash';
+import 'lodash';
