@@ -18,6 +18,7 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
+* Github integration
 * https
 * global check compatibility
 * first article 'yolo'
