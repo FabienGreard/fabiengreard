@@ -1,6 +1,7 @@
 ![Build status][travis-image]
 
 # DevBlog
+
 Fabien greard's blog.
 
 # QuickStart
