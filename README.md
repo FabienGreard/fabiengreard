@@ -18,7 +18,6 @@ npm run deploy => nodejs server
 
 # Dev-Roadmap
 
-* save api/data
 * Github integration
 * https
 * global check compatibility
