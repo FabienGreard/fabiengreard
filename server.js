@@ -3,6 +3,7 @@ var express = require('express'),
     morgan  = require('morgan'),
     fallback = require('express-history-api-fallback'),
     https = require('https'),
+    fs = = require('fs'),
     http = require('http');
 
 var app = express();
