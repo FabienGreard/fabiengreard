@@ -2,7 +2,7 @@ import { RequestOptions } from '@angular/http';
 import { User } from '../../models/index';
 
 export class ApiHelper {
-  protected apiUrl: string = 'https://fabiengreard:3000/api/';
+  protected apiUrl: string = 'https://fabiengreard.com:3000/api/';
   //protected apiUrl: string = 'https://213.32.91.42:3000/api/';
 
   constructor(){}
