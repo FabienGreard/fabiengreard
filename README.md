@@ -20,7 +20,6 @@ npm run deploy => nodejs server
 
 * https
 * global check compatibility
-* first article 'yolo'
 
 # License
 
