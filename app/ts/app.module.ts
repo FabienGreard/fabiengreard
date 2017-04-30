@@ -7,7 +7,6 @@ import { routing } from './app.routing';
 /* MODULES */
 import { DashboardModule } from './modules/dashboard/index';
 import { ConsoleLogModule } from './modules/console-log/index';
-import { DisqusModule } from 'angular2-disqus';
 
 /* COMPONENTS */
 import { AppComponent } from './app.component';
@@ -20,7 +19,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     routing,
     DashboardModule,
-    DisqusModule,
     ConsoleLogModule
   ],
   declarations: [AppComponent],

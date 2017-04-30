@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, OnChanges, Input, trigger, style, transition, animate } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, Inject, Input, trigger, style, transition, animate } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { ConsoleLogService } from '../../console-log/index';
@@ -22,12 +23,16 @@ import { ArticleHelper } from '../article.helper';
 })
 export class ArticleDetailComponent implements OnInit {
   private sub: any;
+  url: any;
   idArticle: any;
   article: {'id': any, 'title': string, 'content': any, 'date': string, 'tags': Array<string>};
    constructor(
      private route: ActivatedRoute,
      private articleHelper: ArticleHelper,
-     private consoleLogService: ConsoleLogService) {}
+     private consoleLogService: ConsoleLogService,
+     @Inject(DOCUMENT) private document: any) {
+       this.url = this.document.location.href;
+     }
 
   ngOnInit() {
       this.sub = this.route.params.subscribe(params => {

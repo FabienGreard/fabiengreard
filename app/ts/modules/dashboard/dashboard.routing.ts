@@ -9,7 +9,7 @@ const DashboardRoute: Routes = [
   { path: '', component: DashboardComponent,
     children:[
       { path: '', component: ArticlePageComponent },
-      { path: 'article', component: ArticleDetailComponent }
+      { path: 'article/:id', component: ArticleDetailComponent }
     ]
   },
   { path: 'admin', loadChildren: '../admin/admin.module#AdminModule' },

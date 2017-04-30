@@ -66,12 +66,6 @@ dashboard{
         @include flex-wrap(wrap);
         @include flexbox;
       }
-      .blog-coms{
-        margin: 2em 0;
-        #disqus_thread{
-          width: 100%;
-        }
-      }
     }
     .sidebar-content{
       @include flexbox;

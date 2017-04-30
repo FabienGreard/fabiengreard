@@ -6,7 +6,7 @@ import { routing } from './article.routing';
 
 /* MODULES */
 import { AlertModule } from '../alert/index';
-import { DisqusModule } from 'angular2-disqus';
+import { DisqusModule } from '../disqus/index';
 
 /* COMPONENTS */
 import { ArticleComponent } from './components/article.component';

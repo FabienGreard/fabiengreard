@@ -11,6 +11,3 @@ import 'rxjs';
 
 // Lodash
 import 'Lodash';
-
-//disqus
-import 'angular2-disqus';

@@ -1,4 +1,4 @@
-<div [@fadeInOutTranslate] data-disqus-identifier="article.id" class="article-detail-container">
+<div [@fadeInOutTranslate] class="article-detail-container">
   <div class="article-detail-header">
     <div routerLink='' class="article-dashboard">
       <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -13,4 +13,4 @@
     <p class="article-date">[{{ article.date | date:'dd/MM/yyyy' }}]</p>
   </div>
 </div>
-<disqus-thread class="disqus" [page-identifier]="article.id" [page-url]="route.url"></disqus-thread>
+<disqus class="blog-coms" [page-url]="url" [page-identifier]="article.id" [page-title]="article.title"></disqus>

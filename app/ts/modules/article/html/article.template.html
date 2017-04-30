@@ -1,6 +1,6 @@
-<div *ngFor="let article of articles" class="article-container">
+<div *ngFor="let article of articles" [ngClass]="{ 'display-none': !checkIfTag(article.tags) }" class="article-container">
   <div [@fadeInOutTranslate] *ngIf="checkIfTag(article.tags)" class="article-link">
-    <a [routerLink]="['/article', { 'id': article.id }]" class="title-link-article">{{ article.title }}</a>
+    <a [routerLink]="['/article', article.id]" class="title-link-article">{{ article.title }}</a>
     <div class="text-link-article">
       <p class="article-content" [innerHTML]="article.content"></p>
       <span class="tag-container-link-article">

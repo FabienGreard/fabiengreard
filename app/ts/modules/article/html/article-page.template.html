@@ -5,3 +5,4 @@
     <li *ngFor="let page of pageArray" (click)="pageHandlerEvent(page)" [ngClass]="{ 'page-active': page == pageActive}">{{ page }}</li>
   </ul>
 </div>
+<disqus class="blog-coms" [page-url]="url" [page-identifier]="'dashboard'"></disqus>

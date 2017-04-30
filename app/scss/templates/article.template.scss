@@ -11,6 +11,9 @@ $transition-link-article: cubic-bezier(.25,.1,.25,1);
 article{
   @include flex-wrap(wrap);
   @include flexbox;
+  .display-none{
+    display: none;
+  }
   .article-container{
     margin: auto;
     .article-link{
@@ -107,9 +110,22 @@ article{
   }
 }
 
+/* DISQUS */
+.blog-coms{
+  margin: 2em 0;
+  width: 100%;
+  #disqus_thread{
+    width: 100%;
+  }
+}
 /* DETAILS */
 
-.article-detail-container{
+.article-detail-container{      .blog-coms{
+        margin: 2em 0;
+        #disqus_thread{
+          width: 100%;
+        }
+      }
   width: 100%;
   @include flexbox;
   @include flex-direction(column);

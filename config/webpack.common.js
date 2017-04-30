@@ -36,8 +36,12 @@ module.exports = {
         loaders: [ExtractTextPlugin.extract('style', 'css?sourceMap'), 'to-string', 'css']
       },
       {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file?name=asset/[name].[ext]'
+          test: /\.(jpg|jpeg|gif|png)$/,
+          loader:'url-loader?limit=1024&name=images/[name].[ext]'
+      },
+      {
+          test: /\.(woff|woff2|eot|ttf|svg)$/,
+          loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
       },
     ]
   },

@@ -70,6 +70,6 @@
   <p class="article-detail-content external-content" [innerHTML]="currentArticle.content"></p>
   <div class="article-detail-footer">
     <p *ngFor="let tag of currentArticle.tags" class="article-tags">{{ tag }}</p>
-    <p class="article-date">{{ currentArticle.date }}</p>
+    <p class="article-date">[{{ currentArticle.date }}]</p>
   </div>
 </div>

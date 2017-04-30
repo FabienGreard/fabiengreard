@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 
 import { AlertComponent } from '../../alert/index';
 import { ArticleService } from '../../../services/api/index';
@@ -15,23 +16,24 @@ export class ArticlePageComponent implements OnInit {
   alertMessage: string = '';
   alert: boolean = false;
   private articles : Array<{'id': any, 'title': string, 'content': any, 'date': string, 'tags': Array<string>}> = [];
+  url: string;
   @ViewChild(AlertComponent) AlertComponent: AlertComponent;
 
   constructor(
     private articleService: ArticleService,
-    private consoleLogService: ConsoleLogService) { }
+    private consoleLogService: ConsoleLogService,
+    @Inject(DOCUMENT) private document: any) {
+      this.url = this.document.location.href;
+    }
 
   ngOnInit() {
     if(!JSON.parse(localStorage.getItem('articles'))){
       this.get();
+    }else{
+      for(let i = 0; i < this.pageNav(JSON.parse(localStorage.getItem('articles')).length); i++){
+        this.pageArray.push(i);
+      }
     }
-
-    const articles = JSON.parse(localStorage.getItem('articles'));
-
-    for(let i = 0; i < this.pageNav(articles.length); i++){
-      this.pageArray.push(i);
-    }
-
   }
 
   get(){
@@ -40,6 +42,11 @@ export class ArticlePageComponent implements OnInit {
         this.articles = data;
         // create a readeable post
         this.articles = this.defineArticleTemplate();
+
+        for(let i = 0; i < this.pageNav(JSON.parse(localStorage.getItem('articles')).length); i++){
+          this.pageArray.push(i);
+        }
+
         this.consoleLogService.message(data);
       },
       error =>{
