@@ -71,7 +71,7 @@ export class ArticlePageComponent implements OnInit {
   defineArticleTemplate(): Array<{'id': any, 'title': string, 'content': any, 'date': string, 'tags': string[]}>{
     return _.forEach(this.articles, (key) => {
       let split = key.content.split("");
-      key.content = split.slice(0, 200).join("");
+      key.content = split.slice(0, 300).join("");
       return key.content += "[..]";
      });
   }

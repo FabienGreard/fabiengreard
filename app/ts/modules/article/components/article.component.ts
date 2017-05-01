@@ -75,7 +75,7 @@ export class ArticleComponent implements OnChanges, OnInit {
   defineArticleTemplate(): Array<{'id': any, 'title': string, 'content': any, 'date': string, 'tags': string[]}>{
     return _.forEach(this.articles, (article) => {
       let split = article.content.toString().split("");
-      article.content = split.slice(0, 200).join("");
+      article.content = split.slice(0, 300).join("");
       return article.content += "[..]";
      });
   }

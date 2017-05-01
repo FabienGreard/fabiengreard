@@ -53,6 +53,12 @@ article{
         color: $color-text-link-article;
         .article-content{
           width: 100%;
+          & > div {
+            display: initial;
+          }
+          br{
+            display: none;
+          }
         }
         .date-link-article{
           margin: 1em 0 auto auto;
