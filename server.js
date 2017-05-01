@@ -24,6 +24,9 @@ var options = {
 };
 
 // Create an HTTP service.
-http.createServer(app).listen(80);
+http.createServer(app, function(req, res){
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  res.end();
+}).listen(80);
 // Create an HTTPS service identical to the HTTP service.
 https.createServer(options, app).listen(443);
