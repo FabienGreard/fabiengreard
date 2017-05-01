@@ -16,16 +16,16 @@ export class DisqusComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         const pageIdentifier = (changes['pageIdentifier'] && changes['pageIdentifier'].currentValue) ? changes['pageIdentifier'].currentValue : this.pageIdentifier;
-        //const pageUrl = (changes['pageUrl'] && changes['pageUrl'].currentValue) ? changes['pageUrl'].currentValue : this.pageUrl;
-        //const pageTitle = (changes['pageTitle'] && changes['pageTitle'].currentValue) ? changes['pageTitle'].currentValue : this.pageTitle;
+        const pageUrl = (changes['pageUrl'] && changes['pageUrl'].currentValue) ? changes['pageUrl'].currentValue : this.pageUrl;
+        const pageTitle = (changes['pageTitle'] && changes['pageTitle'].currentValue) ? changes['pageTitle'].currentValue : this.pageTitle;
 
 
             DISQUS.reset({
                 reload: true,
                 config: function () {
                     this.page.identifier = pageIdentifier;
-                    //this.page.url = pageUrl;
-                    //this.page.title = pageTitle;
+                    this.page.url = pageUrl;
+                    this.page.title = pageTitle;
                     this.language = 'en';
                 }
             });
