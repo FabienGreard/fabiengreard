@@ -17,7 +17,6 @@ $transition-social: cubic-bezier(.25,.1,.25,1);
       @include Lobster(16px);
       color: $color-social;
       .social{
-        @include transition(0.2s $transition-social);
         cursor: pointer;
         margin: auto 2px;
         &:hover{
@@ -25,21 +24,29 @@ $transition-social: cubic-bezier(.25,.1,.25,1);
         }
       }
       .fa-linkedin{
+        color: $black;
+        @include transition(0.2s $transition-social);
         &:hover{
           color: $color-social-hover;
         }
       }
       .fa-twitter{
+        color: $black;
+        @include transition(0.2s $transition-social);
         &:hover{
           color: $color-social-hover;
         }
       }
       .fa-codepen{
+        color: $black;
+        @include transition(0.2s $transition-social);
         &:hover{
           color: $color-social-hover;
         }
       }
       .fa-github{
+        color: $black;
+        @include transition(0.2s $transition-social);
         &:hover{
           color: $color-social-hover;
         }

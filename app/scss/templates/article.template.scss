@@ -24,7 +24,7 @@ article{
       .title-link-article{
         @include flexbox;
         @include flex-direction(column);
-        @include transition(0.2 $transition-link-article);
+        @include transition(0.2s $transition-link-article);
         cursor: pointer;
         margin: 0 auto;
         @include JosefinSlab(22px);
@@ -250,7 +250,7 @@ article{
   background-color: $white;
   overflow:auto;
   .external-content{
-    
+
   }
   .code{
     background-color: #F7F7F7!important;
