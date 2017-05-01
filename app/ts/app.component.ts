@@ -16,6 +16,8 @@ export class AppComponent implements OnInit{
     if (process.env.ENV !== 'production'){
       this.consoleLogService.message("developement mode enable");
       this.prod = true;
+    }else{
+      console.error("You shall not pass ! *Gandal is watching you*");
     }
   }
 }
