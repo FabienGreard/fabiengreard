@@ -17,16 +17,15 @@ app.use(express.static(__dirname + '/dist'));
 app.use(fallback(__dirname + '/dist/index.html'));
 
 
-// This line is from the Node.js HTTPS documentation.
+//This line is from the Node.js HTTPS documentation.
 var options = {
   key: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/cert.pem')
 };
 
 // Create an HTTP service.
-http.createServer(app, function(req, res){
-  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-  res.end();
+http.createServer(app, function (req, res) {
+  res.redirect('https://fabiengreard.com'+req.url)
 }).listen(80);
 // Create an HTTPS service identical to the HTTP service.
 https.createServer(options, app).listen(443);
