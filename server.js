@@ -8,6 +8,8 @@ var express = require('express'),
 
 var app = express();
 
+app.all('*', ensureSecure); // at top of routing calls
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -23,9 +25,15 @@ var options = {
   cert: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/cert.pem')
 };
 
-// Create an HTTP service.
-http.createServer(app, function (req, res) {
-  res.redirect('https://fabiengreard.com'+req.url)
-}).listen(80);
 // Create an HTTPS service identical to the HTTP service.
 https.createServer(options, app).listen(443);
+
+// Create an HTTP service.
+http.createServer(app).listen(80);
+
+function ensureSecure(req, res, next){
+  if(req.secure){
+    return next();
+  };
+  res.redirect('https://' + req.hostname + req.url);
+}
