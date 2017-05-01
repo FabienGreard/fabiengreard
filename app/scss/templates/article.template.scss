@@ -250,7 +250,7 @@ article{
   background-color: $white;
   overflow:auto;
   .external-content{
-    @include calc(height, '92%', '100% - 70px');
+    
   }
   .code{
     background-color: #F7F7F7!important;
