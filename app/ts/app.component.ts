@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
       this.consoleLogService.message("developement mode enable");
       this.prod = true;
     }else{
-      console.error("You shall not pass ! *Gandal is watching you*");
+      console.error("You shall not pass ! *Gandalf is watching you*");
     }
   }
 }
