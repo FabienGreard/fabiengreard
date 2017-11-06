@@ -173,6 +173,11 @@ article{
     text-align: justify;
     .article-content{
       width: 100%;
+      ul li{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     .bold{
       font-weight: bold;
