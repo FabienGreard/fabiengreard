@@ -16,6 +16,8 @@ article{
   }
   .article-container{
     margin: auto;
+    width: 100%;
+    @include flexbox;
     .article-link{
       @include flexbox;
       @include flex-direction(column);
@@ -173,6 +175,11 @@ article{
     text-align: justify;
     .article-content{
       width: 100%;
+      ul li{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     .bold{
       font-weight: bold;
