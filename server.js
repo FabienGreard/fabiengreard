@@ -4,7 +4,8 @@ var express = require('express'),
     fallback = require('express-history-api-fallback'),
     https = require('https'),
     fs = require('fs'),
-    http = require('http');
+    http = require('http'),
+    expressStaticGzip = require('express-static-gzip');
 
 var app = express();
 
@@ -15,7 +16,8 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-app.use(express.static(__dirname + '/dist'));
+app.use(expressStaticGzip(path.join(__dirname, 'dist')))
+//app.use(express.static(__dirname + '/dist'));
 app.use(fallback(__dirname + '/dist/index.html'));
 
 
