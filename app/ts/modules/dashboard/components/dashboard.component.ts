@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ConsoleLogService } from '../../console-log/index';
+import '../../../../scss/app.scss';
 
 @Component({
   selector: 'dashboard',

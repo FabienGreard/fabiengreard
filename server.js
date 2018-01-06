@@ -7,7 +7,6 @@ var express = require('express'),
     fs = require('fs'),
     http = require('http'),
     compression = require('compression');
-var expressStaticGzip = require("express-static-gzip");
 
 var app = express();
 
