@@ -5,7 +5,9 @@ var express = require('express'),
     fallback = require('express-history-api-fallback'),
     https = require('https'),
     fs = require('fs'),
-    http = require('http');
+    http = require('http'),
+    compression = require('compression');
+var expressStaticGzip = require("express-static-gzip");
 
 var app = express();
 
@@ -15,13 +17,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'dist'), {
-  extensions: ['gz']
-}));
 
-//app.use(express.static(__dirname + '/dist'));
-//app.use(fallback(__dirname + '/dist/index.html'));
-
+app.use(compression());
+app.use('/', express.static(__dirname + '/dist'));
+app.use(fallback(__dirname + '/dist/index.html'));
 
 //This line is from the Node.js HTTPS documentation.
 var options = {
