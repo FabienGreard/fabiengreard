@@ -32,7 +32,8 @@ module.exports = webpackMerge(commonConfig, {
       }
     }),
     new CompressionPlugin({
-      algorithm: 'gzip'
+      algorithm: 'gzip',
+      deleteOriginalAssets: true
     }),
     new CopyWebpackPlugin([
       // Copy directory contents to {output}/to/directory/
