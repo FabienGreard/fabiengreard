@@ -11,5 +11,8 @@ import '../../../../images/picture.jpg';
 export class DashboardInfoComponent implements OnInit {
   constructor(private consoleLogService: ConsoleLogService) {}
 
+  image = '../../../../images/picture.jpg';
+  offset = 100;
+
   ngOnInit() {}
 }

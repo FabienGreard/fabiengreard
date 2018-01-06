@@ -7,6 +7,7 @@ import { routing } from './dashboard.routing';
 /* MODULES */
 import { ArticleModule } from '../article/index';
 import { LoginModule } from '../login/index';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 /* COMPONENTS */
 import { DashboardComponent } from './components/dashboard.component';
@@ -27,6 +28,7 @@ import { DashboardTagService } from './services/dashboard-tag.service';
     CommonModule,
     routing,
     ArticleModule,
+    LazyLoadImageModule,
     LoginModule
   ],
   declarations: [

@@ -4,6 +4,8 @@ var commonConfig = require('./webpack.common.js');
 var webpackMerge = require('webpack-merge');
 var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CompressionPlugin = require("compression-webpack-plugin")
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
@@ -28,6 +30,9 @@ module.exports = webpackMerge(commonConfig, {
       'process.env': {
         'ENV': JSON.stringify(ENV)
       }
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip'
     }),
     new CopyWebpackPlugin([
       // Copy directory contents to {output}/to/directory/
