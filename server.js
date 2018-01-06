@@ -9,7 +9,7 @@ var express = require('express'),
 
 var app = express();
 
-//app.all('*', ensureSecure); // at top of routing calls
+app.all('*', ensureSecure); // at top of routing calls
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -18,25 +18,26 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist'), {
   extensions: ['gz']
 }));
+
 //app.use(express.static(__dirname + '/dist'));
 //app.use(fallback(__dirname + '/dist/index.html'));
 
 
 //This line is from the Node.js HTTPS documentation.
-/*var options = {
+var options = {
   key: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/privkey.pem'),
   cert: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/cert.pem')
 };
 
 // Create an HTTPS service identical to the HTTP service.
-https.createServer(options, app).listen(443);*/
+https.createServer(options, app).listen(443);
 
 // Create an HTTP service.
-http.createServer(app).listen(3006);
+http.createServer(app).listen(80);
 
-/*function ensureSecure(req, res, next){
+function ensureSecure(req, res, next){
   if(req.secure){
     return next();
   };
   res.redirect('https://' + req.hostname + req.url);
-}*/
+}
