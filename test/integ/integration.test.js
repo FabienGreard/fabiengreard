@@ -7,7 +7,7 @@ describe('integration', () => {
       .get(`/`)
       .expect(200)
       .end(err => {
-        if (err) throw done(err);
+        if (err) throw err;
         done();
       });
   });
@@ -16,7 +16,7 @@ describe('integration', () => {
       .get(`/not-found`)
       .expect(404)
       .end(err => {
-        if (err) throw done(err);
+        if (err) throw err;
         done();
       });
   });

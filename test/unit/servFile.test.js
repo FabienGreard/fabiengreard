@@ -2,12 +2,69 @@ const servFile = require('../../utils/servFile'),
   config = require('../../config/main'),
   request = require('supertest'),
   express = require('express'),
+  fs = require('fs'),
   path = require('path');
+
+const writeFile = (path, data) => {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(path, data, err => {
+      if (err) reject(err);
+      else resolve(path);
+    });
+  });
+};
+
+const deleteFile = path => {
+  return new Promise((resolve, reject) => {
+    fs.unlink(path, err => {
+      if (err) reject(err);
+      else resolve(path);
+    });
+  });
+};
+
+const writeDir = path => {
+  return new Promise((resolve, reject) => {
+    fs.mkdir(path, err => {
+      if (err) reject(err);
+      else resolve(path);
+    });
+  });
+};
+
+const deleteDir = path => {
+  return new Promise((resolve, reject) => {
+    fs.rmdir(path, err => {
+      if (err) reject(err);
+      else resolve(path);
+    });
+  });
+};
 
 describe('servfile', () => {
   let app;
   beforeEach(() => {
     app = express();
+  });
+  beforeAll(async () => {
+    for (const path of [
+      { dir: 'generateHTML', file: 'index.html' },
+      { dir: 'generateMD', file: 'index.md' },
+      { dir: 'generatePUG', file: 'index.pug' }
+    ]) {
+      await writeDir(`./routes/${path.dir}`);
+      await writeFile(`./routes/${path.dir}/${path.file}`, 'generate-auto');
+    }
+  });
+  afterAll(async () => {
+    for (const path of [
+      { dir: 'generateHTML', file: 'index.html' },
+      { dir: 'generateMD', file: 'index.md' },
+      { dir: 'generatePUG', file: 'index.pug' }
+    ]) {
+      await deleteFile(`./routes/${path.dir}/${path.file}`);
+      await deleteDir(`./routes/${path.dir}`);
+    }
   });
   it('Should serv a static folder', done => {
     servFile(app, [{ name: 'public' }]);
@@ -20,7 +77,7 @@ describe('servfile', () => {
       });
   });
   it('Should serv a private folder', done => {
-    servFile(app, [{ name: 'html', url: '/html' }], {
+    servFile(app, [{ name: 'generateHTML', url: '/html' }], {
       baseDir: '../routes/',
       isProtected: true,
       exts: ['html', 'md', 'pug']
@@ -41,7 +98,7 @@ describe('servfile', () => {
       });
   });
   it('Should serv a public folder', done => {
-    servFile(app, [{ name: 'html', url: '/html' }], {
+    servFile(app, [{ name: 'generateHTML', url: '/html' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
     });
@@ -54,7 +111,7 @@ describe('servfile', () => {
       });
   });
   it('Should serv a markdown file', done => {
-    servFile(app, [{ name: 'md', url: '/md' }], {
+    servFile(app, [{ name: 'generateMD', url: '/md' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
     });
@@ -70,7 +127,7 @@ describe('servfile', () => {
     app.set('views', [path.join(__dirname, '../../routes')]);
     app.set('view engine', 'pug');
 
-    servFile(app, [{ name: 'pug', url: '/pug' }], {
+    servFile(app, [{ name: 'generatePUG', url: '/pug' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
     });

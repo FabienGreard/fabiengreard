@@ -35,12 +35,14 @@ module.exports = servFile = (app, directories, options = {}) => {
           //Check if it is a markdown or pug file
           app.get(`${directory.url}`, async (req, res, next) => {
             ext === 'md'
-              ? res.send(
-                  await markdown(
-                    path.join(__dirname, `${_baseDir}/${req.url}`),
-                    'index.md'
+              ? res
+                  .location(`${directory.url}`)
+                  .send(
+                    await markdown(
+                      path.join(__dirname, `${_baseDir}/${directory.name}`),
+                      'index.md'
+                    )
                   )
-                )
               : res
                   .location(`${directory.url}`)
                   .render(`${directory.name}/index`);

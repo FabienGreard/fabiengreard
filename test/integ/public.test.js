@@ -8,7 +8,7 @@ describe('Public', () => {
       .get(`/style.css`)
       .expect(200)
       .end(err => {
-        if (err) throw done(err);
+        if (err) throw err;
         done();
       });
   });
