@@ -1,0 +1,7 @@
+# Dependency directory
+node_modules
+package-lock.json
+config/.credentials.js
+coverage
+public/sitemap.xml
+logs/*

@@ -1,0 +1,19 @@
+extends layout
+      
+block content
+  h1=`Hello !`
+  p=`Grettings from All-in-one !`
+    
+block routes  
+  ul
+    each link in routes
+      if link.name
+        li 
+          a(href=`${link.url}`)=link.name
+        
+
+
+
+          
+
+  
