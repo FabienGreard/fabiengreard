@@ -1,12 +1,7 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-
 # Dependency directory
 node_modules
-dist
-
-#css & pug
-pug
-css
+package-lock.json
+config/.credentials.js
+coverage
+public/sitemap.xml
+logs/*

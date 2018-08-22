@@ -1,41 +1,58 @@
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    morgan = require('morgan'),
-    path = require('path'),
-    fallback = require('express-history-api-fallback'),
-    https = require('https'),
-    fs = require('fs'),
-    http = require('http'),
-    compression = require('compression');
+const app = require('express')(),
+  path = require('path'),
+  config = require('./config/main'),
+  morgan = require('morgan'),
+  { getDirectories, seo, errorHandler, servFile, winston } = require('./utils');
 
-var app = express();
+// Generate robots.txt disallow protected routes
+seo.genRobots('protected', 'robots.txt');
+seo.genRobots('routes', 'sitemap.xml');
 
-app.all('*', ensureSecure); // at top of routing calls
+// View engine setup
+app.set('views', [
+  path.join(__dirname, 'views'),
+  path.join(__dirname, 'routes'),
+  path.join(__dirname, 'protected')
+]);
+app.set('view engine', 'pug');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//logger
+app.use(morgan(config.log, { stream: winston.stream }));
 
-app.use(morgan('dev'));
+// Private folder
+servFile(app, getDirectories('protected'), {
+  exts: ['html', 'md', 'pug'],
+  isProtected: true,
+  baseDir: '../protected/'
+});
 
-app.use(compression());
-app.use('/', express.static(__dirname + '/dist'));
-app.use(fallback(__dirname + '/dist/index.html'));
+// Routes folder
+servFile(app, getDirectories('routes'), {
+  exts: ['html', 'md', 'pug'],
+  baseDir: '../routes/'
+});
 
-//This line is from the Node.js HTTPS documentation.
-var options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/fabiengreard.com/cert.pem')
-};
+// Public folder
+servFile(app, [{ name: 'public' }]);
 
-// Create an HTTPS service identical to the HTTP service.
-https.createServer(options, app).listen(443);
+app.get('/', (req, res, next) => {
+  res.render('index', {
+    routes: [
+      ...Object.values(getDirectories('protected').values),
+      ...Object.values(getDirectories('routes').values)
+    ],
+    googleAnalyticsId: config.googleAnalyticsId
+  });
+});
 
-// Create an HTTP service.
-http.createServer(app).listen(80);
+// Catch 404 and forward to error handler
+app.use((req, res, next) => {
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-function ensureSecure(req, res, next){
-  if(req.secure){
-    return next();
-  };
-  res.redirect('https://' + req.hostname + req.url);
-}
+// Error handler
+app.use(errorHandler);
+
+module.exports = app;
