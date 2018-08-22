@@ -1,8 +1,0 @@
-<div class="article-page-container">
-  <article [idArticle]="pageWrapper"></article>
-  <alert></alert>
-  <ul *ngIf="!alert" class="page-nav-container">
-    <li *ngFor="let page of pageArray" (click)="pageHandlerEvent(page)" [ngClass]="{ 'page-active': page == pageActive}">{{ page }}</li>
-  </ul>
-</div>
-<disqus class="blog-coms" [page-url]="url" [page-identifier]="'dashboard'"></disqus>
