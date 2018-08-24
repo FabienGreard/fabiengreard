@@ -60,6 +60,7 @@ p {
 .route-link-container {
   list-style: none;
   height: 185px;
+  margin: 10px 16px;
 }
 
 .route-link {

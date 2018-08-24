@@ -13,7 +13,7 @@ const app = require('express')(),
   } = require('./utils');
 
 //force https redirect
-app.use(forceHttps);
+app.all('*', forceHttps);
 
 // Generate robots.txt disallow protected routes
 seo.genRobots('protected', 'robots.txt');
