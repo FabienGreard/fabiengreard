@@ -78,13 +78,13 @@ describe('servfile', () => {
       });
   });
   it('Should serv a private folder', done => {
-    servFile(app, [{ name: 'generateHTML', url: '/html' }], {
+    servFile(app, [{ name: 'generateHTML', url: '/generateHTML' }], {
       baseDir: '../routes/',
       isProtected: true,
       exts: ['html', 'md', 'pug']
     });
     request(app)
-      .get(`/html/`)
+      .get(`/generateHTML/`)
       .set({
         Authorization:
           'Basic ' +
@@ -99,12 +99,12 @@ describe('servfile', () => {
       });
   });
   it('Should serv a public folder', done => {
-    servFile(app, [{ name: 'generateHTML', url: '/html' }], {
+    servFile(app, [{ name: 'generateHTML', url: '/generateHTML' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
     });
     request(app)
-      .get(`/html/`)
+      .get(`/generateHTML/`)
       .expect(200)
       .end(err => {
         if (err) throw done(err);
@@ -112,12 +112,12 @@ describe('servfile', () => {
       });
   });
   it('Should serv a markdown file', done => {
-    servFile(app, [{ name: 'generateMD', url: '/md' }], {
+    servFile(app, [{ name: 'generateMD', url: '/generateMD' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
     });
     request(app)
-      .get(`/md/`)
+      .get(`/generateMD/`)
       .expect(200)
       .end(err => {
         if (err) throw done(err);
@@ -128,12 +128,12 @@ describe('servfile', () => {
     app.set('views', [path.join(__dirname, '../../routes')]);
     app.set('view engine', 'pug');
 
-    servFile(app, [{ name: 'generatePUG', url: '/pug' }], {
+    servFile(app, [{ name: 'generatePUG', url: '/generatePUG' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
     });
     request(app)
-      .get(`/pug/`)
+      .get(`/generatePUG/`)
       .expect(200)
       .end(err => {
         if (err) throw done(err);
