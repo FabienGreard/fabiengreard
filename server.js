@@ -8,8 +8,12 @@ const app = require('express')(),
     seo,
     errorHandler,
     servFile,
+    forceHttps,
     winston
   } = require('./utils');
+
+//force https redirect
+app.use(forceHttps);
 
 // Generate robots.txt disallow protected routes
 seo.genRobots('protected', 'robots.txt');

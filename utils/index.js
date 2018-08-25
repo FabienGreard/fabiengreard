@@ -6,6 +6,7 @@ const getDirectories = require('./getDirectories'),
   basicAuth = require('./basicAuth'),
   servFile = require('./servFile'),
   checkFileExt = require('./checkFileExt'),
+  forceHttps = require('./forceHttps'),
   winston = require('./winston');
 
 module.exports = {
@@ -17,5 +18,6 @@ module.exports = {
   markdown,
   checkFileExt,
   servFile,
+  forceHttps,
   winston
 };
