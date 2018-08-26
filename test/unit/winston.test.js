@@ -1,7 +1,7 @@
 const winston = require('../../utils/winston');
 
 describe('Winston', () => {
-  test('Should log info', done => {
+  it('Should log info', done => {
     try {
       winston.info('This is an info');
     } catch (e) {
@@ -9,7 +9,7 @@ describe('Winston', () => {
     }
     done();
   });
-  test('Should log error', done => {
+  it('Should log error', done => {
     try {
       winston.error('This is an error');
     } catch (e) {
@@ -17,7 +17,7 @@ describe('Winston', () => {
     }
     done();
   });
-  test('Should stream a message', done => {
+  it('Should stream a message', done => {
     try {
       winston.stream.write('this is a stream message');
     } catch (e) {

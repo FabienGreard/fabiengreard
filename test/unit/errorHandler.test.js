@@ -21,7 +21,7 @@ describe('errorHandler', () => {
 
   const next = jest.fn();
 
-  test('Should handle error', () => {
+  it('Should handle error', () => {
     errorHandler(new Error(), req, res, next);
 
     expect(res.code).toBeDefined();

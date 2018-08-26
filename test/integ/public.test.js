@@ -3,7 +3,7 @@ const getDirectories = require('../../utils/getDirectories'),
   app = require('../../server.js');
 
 describe('Public', () => {
-  test('Should render public file', done => {
+  it('Should render public file', done => {
     request(app)
       .get(`/style.css`)
       .expect(200)

@@ -19,7 +19,7 @@ describe('basicAuth', () => {
     next = jest.fn();
   });
 
-  test('Should set a WWW-Authenticate', () => {
+  it('Should set a WWW-Authenticate', () => {
     basicAuth(req, res, next);
 
     expect(res.locals).toEqual({
@@ -27,7 +27,7 @@ describe('basicAuth', () => {
     });
   });
 
-  test('Should return an empty object', () => {
+  it('Should return an empty object', () => {
     req.headers = {
       authorization:
         'Basic ' +

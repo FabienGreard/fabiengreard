@@ -9,7 +9,7 @@ describe('servfile', () => {
   beforeEach(() => {
     app = express();
   });
-  test('Should serv a static folder', done => {
+  it('Should serv a static folder', done => {
     servFile(app, [{ name: 'public' }]);
     request(app)
       .get(`/style.css`)
@@ -19,7 +19,7 @@ describe('servfile', () => {
         done();
       });
   });
-  test('Should serv a private folder', done => {
+  it('Should serv a private folder', done => {
     servFile(app, [{ name: 'html', url: '/html' }], {
       baseDir: '../routes/',
       isProtected: true,
@@ -40,7 +40,7 @@ describe('servfile', () => {
         done();
       });
   });
-  test('Should serv a public folder', done => {
+  it('Should serv a public folder', done => {
     servFile(app, [{ name: 'html', url: '/html' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
@@ -53,7 +53,7 @@ describe('servfile', () => {
         done();
       });
   });
-  test('Should serv a markdown file', done => {
+  it('Should serv a markdown file', done => {
     servFile(app, [{ name: 'md', url: '/md' }], {
       baseDir: '../routes/',
       exts: ['html', 'md', 'pug']
@@ -66,7 +66,7 @@ describe('servfile', () => {
         done();
       });
   });
-  test('Should serv a pug file', done => {
+  it('Should serv a pug file', done => {
     app.set('views', [path.join(__dirname, '../../routes')]);
     app.set('view engine', 'pug');
 

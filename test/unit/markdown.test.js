@@ -36,13 +36,13 @@ describe('markdown', () => {
     }
   });
 
-  test('Should render markdown', async () => {
+  it('Should render markdown', async () => {
     await writeFile('index.md', '***markdown***');
     expect(await markdown(__dirname, 'index.md')).toBe(
       '<p><strong><em>markdown</em></strong></p>'
     );
   });
-  test('Should return an error', async () => {
+  it('Should return an error', async () => {
     try {
       await markdown(__dirname, 'do-not-exist.md');
     } catch (e) {

@@ -1,3 +1,3 @@
 console.log(
-  'Welcome to my blog, you could check my github profile here : https://github.com/FabienGreard'
+  'Welcome to All-in-One server boilerplate, https://github.com/FabienGreard/All-In-One'
 );

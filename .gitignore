@@ -1,7 +1,18 @@
 # Dependency directory
 node_modules
+
+# Package
 package-lock.json
-config/.credentials.js
+yarn.lock
+yarn-error.log
+
+# Test
 coverage
-public/sitemap.xml
+
+# Log
 logs/*
+
+# Private
+config/.credentials.js
+public/sitemap.xml
+public/robots.txt

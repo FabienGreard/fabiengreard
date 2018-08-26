@@ -1,17 +1,27 @@
 extends layout
       
 block content
-  h1=`Hello !`
-  p=`Grettings from All-in-one !`
-    
+  h1=`Welcome to my blog`
+  .content-container
+    img.picture(src=`/images/picture.jpg` alt=`fabiengreard`)
+    .p-container
+      p=`Hello, I'm Fabien Gréard a young entrepreneur,`
+      p=`I have an engineer degree in IT, this blog will be a way to trace my entrepreneur life.`
+
 block routes  
-  ul
+  ul.route-container
     each link in routes
       if link.name
-        li 
-          a(href=`${link.url}`)=link.name
+        li.route-link
+          a.link-route(href=`${link.url}` title=`${link.name}`)=link.name
         
-
+block socials  
+  ul.social-container
+    each link in socials
+      if link.name
+        li.social-link
+          a.link-social(href=`${link.url}` title=`${link.name}`)
+            img.img-social(src=`/images/brands/${link.name}.svg` alt=`${link.name}`)
 
 
           

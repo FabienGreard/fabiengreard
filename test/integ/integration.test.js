@@ -2,7 +2,7 @@ const request = require('supertest'),
   app = require('../../server.js');
 
 describe('integration', () => {
-  test('Should render index', done => {
+  it('Should render index', done => {
     request(app)
       .get(`/`)
       .expect(200)
@@ -11,7 +11,7 @@ describe('integration', () => {
         done();
       });
   });
-  test('Should throw a 404', done => {
+  it('Should throw a 404', done => {
     request(app)
       .get(`/not-found`)
       .expect(404)

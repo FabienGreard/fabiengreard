@@ -5,5 +5,13 @@ module.exports = {
   host: 'your_domain.com',
   keys: '/etc/letsencrypt/live/your_domain.com/privkey.pem',
   cert: '/etc/letsencrypt/live/your_domain.com/cert.pem',
-  googleAnalyticsId: 'your_google_analytics_id'
+  googleAnalyticsId: 'your_google_analytics_id',
+  //empty or set it to null if you don't want to use a specific social
+  socials: {
+    linkedin: 'your_url',
+    github: 'your_url',
+    codepen: 'your_url',
+    twitter: 'your_url',
+    facebook: 'your_url'
+  }
 };
