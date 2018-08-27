@@ -9,12 +9,12 @@ block content
       p=`I have an engineer degree in IT, this blog will be a way to trace my entrepreneur life.`
 
 block routes  
-  ul.route-container
+  ul.route-link-container
     each link in routes
       if link.name
         li.route-link
           a.link-route(href=`${link.url}` title=`${link.name}`)=link.name
-        
+
 block socials  
   ul.social-container
     each link in socials

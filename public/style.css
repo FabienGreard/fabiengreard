@@ -15,11 +15,19 @@ body {
 }
 
 h1 {
-  margin: 10px;
+  margin: 20px 0;
+}
+
+h2 {
+  margin: 15px 0;
+}
+
+h3 {
+  margin: 10px 0;
 }
 
 p {
-  margin: 4px;
+  margin: 5px 0;
 }
 
 /* CONTENT */
@@ -46,11 +54,12 @@ p {
 /* ROUTES */
 
 .routes {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
-.route-container {
+.route-link-container {
   list-style: none;
+  height: 185px;
 }
 
 .route-link {
@@ -66,10 +75,50 @@ p {
   text-decoration: underline;
 }
 
+.route-page-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.route-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin: 0px 2px;
+  border: 1px solid var(--main-font-color);
+}
+
+.active {
+  background-color: var(--main-font-color);
+  color: var(--main-bg-color);
+}
+
+.route-page:hover {
+  background-color: var(--main-font-color);
+  color: var(--main-bg-color);
+}
+
 /* SOCIALS */
 
 .socials {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .social-container {
@@ -89,4 +138,26 @@ p {
 .img-social {
   width: 24px;
   height: 24px;
+}
+
+/* MARKDOWN */
+
+.back-button {
+  width: 20px;
+}
+
+.back-url {
+  color: var(--main-font-color);
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 124px;
+  font-size: 20px;
 }
