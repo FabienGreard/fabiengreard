@@ -45,6 +45,7 @@ const delay = secondes =>
 describe('protected', () => {
   let app;
   beforeAll(async () => {
+    if (!fs.existsSync(`./protected`)) await writeDir(`./protected`);
     for (const path of [{ dir: 'generateHTML', file: 'index.html' }]) {
       await writeDir(`./protected/${path.dir}`);
       await writeFile(`./protected/${path.dir}/${path.file}`, 'generate-auto');

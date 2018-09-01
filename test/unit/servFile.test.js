@@ -47,6 +47,7 @@ describe('servfile', () => {
     app = express();
   });
   beforeAll(async () => {
+    if (!fs.existsSync(`./routes`)) await writeDir(`./routes`);
     for (const path of [
       { dir: 'generateHTML', file: 'index.html' },
       { dir: 'generateMD', file: 'index.md' },
