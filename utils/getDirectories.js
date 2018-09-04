@@ -23,7 +23,11 @@ module.exports = getDirectories = source => {
       ...directories.map(name => {
         return {
           name: name.slice(source.length + 1),
-          url: name.slice(source.length)
+          url: name
+            .toLowerCase()
+            .slice(source.length)
+            .split(' ')
+            .join('-')
         };
       })
     }
