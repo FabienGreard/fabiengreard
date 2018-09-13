@@ -48,10 +48,7 @@ servFile(app, [{ name: 'public' }]);
 
 app.get('/', (req, res, next) => {
   res.render('index', {
-    routes: [
-      ...Object.values(getDirectories('protected').values),
-      ...Object.values(getDirectories('routes').values)
-    ],
+    routes: [...Object.values(getDirectories('routes').values)],
     socials: getSocials(config.socials),
     googleAnalyticsId: config.googleAnalyticsId
   });
