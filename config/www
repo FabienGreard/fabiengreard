@@ -14,14 +14,11 @@ const app = require('../server'),
  * Get port from environment and store in Express.
  */
 
-const port =
-  process.env.NODE_ENV === 'development'
-    ? normalizePort(config.port)
-    : normalizePort(443);
+const port = normalizePort(config.port);
 
 app.set('port', port);
 
-let server = http.createServer(app);
+const httpServer = http.createServer(app);
 
 if (process.env.NODE_ENV === 'development') {
   console.log(`Server running under ${process.env.NODE_ENV}`);
@@ -32,17 +29,22 @@ if (process.env.NODE_ENV === 'development') {
   };
 
   //https over http
-  server = https.createServer(options, app);
+  const httpsServer = https.createServer(options, app);
+
+  httpsServer.listen(443, () => {
+    console.log(`EndPoint on https://${config.host}`);
+  });
+  httpsServer.on('error', onError);
 }
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, () => {
+httpServer.listen(port, () => {
   console.log(`EndPoint on http://localhost:${port}`);
 });
-server.on('error', onError);
+httpServer.on('error', onError);
 
 /**
  * Normalize a port into a number, string, or false.

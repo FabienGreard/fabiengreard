@@ -1,4 +1,9 @@
-<link rel="stylesheet" type="text/css" media="all" href="/style.css" />
+<!doctype html>
+
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" media="all" href="/style.css">
 <a class="back-url" href="../">
   <img class="back-button" src="/images/assets/back.svg" alt="backbutton" title="backbutton" />
   <h1>First Post</h1>

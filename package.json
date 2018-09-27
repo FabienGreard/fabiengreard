@@ -11,19 +11,25 @@
     "start": "node ./config/www",
     "dev": "cross-env NODE_ENV=development nodemon ./config/www",
     "test": "cross-env NODE_ENV=development jest --config ./config/jest.config.js",
-    "coverage": "cross-env NODE_ENV=development jest --coverage --watchAll --config ./config/jest.config.js"
+    "coverage": "cross-env NODE_ENV=development jest --coverage --watchAll --config ./config/jest.config.js",
+    "prettier": "prettier --write --single-quote"
   },
   "lint-staged": {
-    "**/*.{js,json,css,md}": ["prettier --write --single-quote", "git add"]
+    "**/*.{js,json,css,md}": [
+      "prettier --write --single-quote",
+      "git add"
+    ]
   },
   "author": "FabienGreard",
   "license": "MIT",
   "dependencies": {
+    "clean-css": "^4.2.1",
     "cross-env": "^5.1.5",
     "express": "^4.16.3",
     "marked": "^0.5.0",
     "morgan": "^1.9.0",
     "pug": "^2.0.3",
+    "uglify-js": "^3.4.9",
     "winston": "^3.0.0"
   },
   "devDependencies": {

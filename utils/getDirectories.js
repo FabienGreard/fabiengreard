@@ -1,8 +1,9 @@
-const fs = require('fs'),
-  path = require('path');
+const fs = require("fs"),
+  path = require("path");
 
 const isDirectory = source => fs.lstatSync(source).isDirectory();
 const isExist = source => fs.existsSync(source);
+
 module.exports = getDirectories = source => {
   const directories = isExist(source)
     ? fs
@@ -23,11 +24,13 @@ module.exports = getDirectories = source => {
       ...directories.map(name => {
         return {
           name: name.slice(source.length + 1),
-          url: name
-            .toLowerCase()
-            .slice(source.length)
-            .split(' ')
-            .join('-')
+          url:
+            "/" +
+            name
+              .toLowerCase()
+              .slice(source.length + 1)
+              .split(" ")
+              .join("-")
         };
       })
     }
