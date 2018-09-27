@@ -8,6 +8,8 @@ As this is my second post, I'm still nervous about writing, this (An entrepreneu
 
 This month I will write about what we have done from the last 3-4 months until now.
 
+So when I first meet Thomas, it was back in early july, then we talked about basic thing, like any other people would do when you first meet someone, we begun to discover each other, starting by who we are until what we want to do, what we expect ...
+
 <div class="post-footer">
   <p>Posted September 04, 2018</p>
   <p>Gréard Fabien.</p>
