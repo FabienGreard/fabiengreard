@@ -1,13 +1,14 @@
-const getDirectories = require('./getDirectories'),
-  getSocials = require('./getSocials'),
-  seo = require('./seo'),
-  errorHandler = require('./errorHandler'),
-  markdown = require('./markdown'),
-  basicAuth = require('./basicAuth'),
-  servFile = require('./servFile'),
-  checkFileExt = require('./checkFileExt'),
-  forceHttps = require('./forceHttps'),
-  winston = require('./winston');
+const getDirectories = require("./getDirectories"),
+  getSocials = require("./getSocials"),
+  seo = require("./seo"),
+  errorHandler = require("./errorHandler"),
+  markdown = require("./markdown"),
+  basicAuth = require("./basicAuth"),
+  servFile = require("./servFile"),
+  checkFileExt = require("./checkFileExt"),
+  forceHttps = require("./forceHttps"),
+  winston = require("./winston"),
+  build = require("./build");
 
 module.exports = {
   getDirectories,
@@ -19,5 +20,6 @@ module.exports = {
   checkFileExt,
   servFile,
   forceHttps,
-  winston
+  winston,
+  build
 };

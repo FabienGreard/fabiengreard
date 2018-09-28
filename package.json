@@ -11,10 +11,14 @@
     "start": "node ./config/www",
     "dev": "cross-env NODE_ENV=development nodemon ./config/www",
     "test": "cross-env NODE_ENV=development jest --config ./config/jest.config.js",
-    "coverage": "cross-env NODE_ENV=development jest --coverage --watchAll --config ./config/jest.config.js"
+    "coverage": "cross-env NODE_ENV=development jest --coverage --watchAll --config ./config/jest.config.js",
+    "prettier": "prettier --write --single-quote"
   },
   "lint-staged": {
-    "**/*.{js,json,css,md}": ["prettier --write --single-quote", "git add"]
+    "**/*.{js,json,css,md}": [
+      "prettier --write --single-quote",
+      "git add"
+    ]
   },
   "author": "FabienGreard",
   "license": "MIT",
