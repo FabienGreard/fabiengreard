@@ -3,9 +3,9 @@ const uglifyJS = require("uglify-js"),
   fs = require("fs");
 
 const js = path => {
-  const data = fs.readFileSync(path, "utf-8");
-  const { code } = uglifyJS.minify(data);
-  fs.writeFileSync(path, code);
+  // const data = fs.readFileSync(path, "utf-8");
+  // const { code } = uglifyJS.minify(data);
+  // //fs.writeFileSync(path, code);
 };
 
 const css = path => {

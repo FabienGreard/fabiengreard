@@ -23,11 +23,13 @@
   "author": "FabienGreard",
   "license": "MIT",
   "dependencies": {
+    "clean-css": "^4.2.1",
     "cross-env": "^5.1.5",
     "express": "^4.16.3",
     "marked": "^0.5.0",
     "morgan": "^1.9.0",
     "pug": "^2.0.3",
+    "uglify-js": "^3.4.9",
     "winston": "^3.0.0"
   },
   "devDependencies": {
