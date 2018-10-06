@@ -14,11 +14,10 @@
     "coverage": "cross-env NODE_ENV=development jest --coverage --watchAll --config ./config/jest.config.js",
     "prettier": "prettier --single-quote --write **/*.{js,json,css,md}"
   },
-  "lint-staged": {
-    "**/*.{js,json,css,md}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm prettier"
+    }
   },
   "author": "FabienGreard",
   "license": "MIT",
@@ -33,12 +32,11 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
+    "husky": "^1.1.1",
     "jest": "^23.5.0",
     "nodemon": "^1.17.4",
-    "supertest": "^3.1.0",
-    "husky": "^1.0.1",
-    "lint-staged": "^7.2.2",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "supertest": "^3.1.0"
   },
   "keywords": [
     "Server",
