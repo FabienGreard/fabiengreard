@@ -16,27 +16,27 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm prettier"
+      "pre-commit": "npm run prettier"
     }
   },
   "author": "FabienGreard",
   "license": "MIT",
   "dependencies": {
     "clean-css": "^4.2.1",
-    "cross-env": "^5.1.5",
+    "cross-env": "^5.2.0",
     "express": "^4.16.3",
-    "marked": "^0.5.0",
-    "morgan": "^1.9.0",
+    "marked": "^0.5.1",
+    "morgan": "^1.9.1",
     "pug": "^2.0.3",
     "uglify-js": "^3.4.9",
-    "winston": "^3.0.0"
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "husky": "^1.1.1",
-    "jest": "^23.5.0",
-    "nodemon": "^1.17.4",
-    "prettier": "^1.14.2",
-    "supertest": "^3.1.0"
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3",
+    "supertest": "^3.3.0"
   },
   "keywords": [
     "Server",
