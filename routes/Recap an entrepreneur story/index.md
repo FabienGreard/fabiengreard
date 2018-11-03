@@ -21,7 +21,7 @@ Anyway we finally rename the project, from Dreamyhome to Roooffer and we finally
 
 So that was the first 3-4 months, Nowadays, we did end the booklet, and will start next week to meet the professionals to kind of validate our project and start the development !
 
-Next month we have some major thing to come, first the validation process, thus the beginning or not to the development process, we will go in a kind of meeting with other entrepreneur, well it's an invitation to an event.
+Next month we have some major things to come, first the validation process, thus the beginning or not to the development process, we will go in a kind of meeting with other entrepreneur, well it's an invitation to an event.
 
 Cya next month !
 
