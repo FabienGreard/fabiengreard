@@ -1,6 +1,6 @@
-const uglifyJS = require("uglify-js"),
-  cleanCss = require("clean-css"),
-  fs = require("fs");
+const uglifyJS = require('uglify-js'),
+  cleanCss = require('clean-css'),
+  fs = require('fs');
 
 const js = path => {
   // const data = fs.readFileSync(path, "utf-8");
@@ -9,8 +9,8 @@ const js = path => {
 };
 
 const css = path => {
-  const data = fs.readFileSync(path, "utf-8");
-  const { styles } = new cleanCss({ compatibility: "*" }).minify(data);
+  const data = fs.readFileSync(path, 'utf-8');
+  const { styles } = new cleanCss({ compatibility: '*' }).minify(data);
   fs.writeFileSync(path, styles);
 };
 
