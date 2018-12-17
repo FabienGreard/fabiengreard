@@ -10,7 +10,7 @@
 
 So this month, I will not write about what we have done in the marvelous world of being an entrepreneur but more about what makes difficult the choice of a designer.
 
-Do not worry, we did find a designer, however, to make that tricky choice we found ourselves struggling with options, the prices, the availability, the how much experience he or she has, even more important the feeling you may or not have with the designer. 
+Do not worry, we did find a designer, however, to make that tricky choice we found ourselves struggling with options, the prices, the availability, the how much experience he or she has, even more important the feeling you may or not have with the designer.
 
 Well the first one is quite easy to solve because in the end it's all about how much money you can land on a designer, however finding a good balance between the others options are another story, you have to make sacrifices.
 
