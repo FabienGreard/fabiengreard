@@ -1,9 +1,11 @@
 <!doctype html>
 
 <html lang="en">
-
+<title>FakeStoreJs a way to quickly mock data</title>
+<meta name="description" content="fakeStoreJS, It provides a quick solution to mock data (or at least I believe it does), usefull when doing test or in developement mode when there is no access method to a database yet.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" media="all" href="/style.css">
+<link rel="shortcut icon" href="/images/favicon.ico" >
 <a class="back-url" href="../">
   <img class="back-button" src="/images/assets/back.svg" alt="backbutton" title="backbutton" />
   <h1>FakeStoreJs a way to quickly mock data</h1>
@@ -23,8 +25,8 @@ No need to know much more about it, but well go check this out, and please, any 
 </p>
 <br>
 <ul>
-<li>npm: https://github.com/FabienGreard/fakeStoreJs</li>
-<li>github:  https://www.npmjs.com/package/fakestorejs</li>
+<li><a href="https://github.com/FabienGreard/fakeStoreJs">npm</a></li>
+<li><a href="https://www.npmjs.com/package/fakestorejs">github</a></li>
 </ul>
 <br>
 <p>
@@ -34,3 +36,11 @@ Before leaving, I hope you guys will have the best thanksgiving possible this ye
   <p>Posted December 17, 2018</p>
   <p>Gréard Fabien.</p>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112035252-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-112035252-1');
+</script>

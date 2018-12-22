@@ -53,9 +53,25 @@ servFile(app, getDirectories("routes"), {
 // Public folder
 servFile(app, [{ name: "public" }]);
 
+const routes = [
+  {
+    name: "FakeStoreJS a way to quiclky mock data",
+    url: "/fakestorejs-a-way-to-quiclky-mock-data"
+  },
+  {
+    name: "Choosing a designer is painfull",
+    url: "/choosing-a-designer-is-painfull"
+  },
+  {
+    name: "Recap an entrepreneur story",
+    url: "/recap-an-entrepreneur-story"
+  },
+  { name: "First Post", url: "/first-post" }
+];
+
 app.get("/", (req, res, next) => {
   res.render("index", {
-    routes: [...Object.values(getDirectories("routes").values)],
+    routes: routes,
     socials: getSocials(config.socials),
     googleAnalyticsId: config.googleAnalyticsId
   });

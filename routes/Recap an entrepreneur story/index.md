@@ -1,8 +1,10 @@
 <!doctype html>
 
 <html lang="en">
-
+<title>Recap - An Entrepreneur story</title>
+<meta name="description" content="As this is my second post, I'm still nervous about writing, this (An entrepreneur story) will be published every month, I will discuss what I've done in my life as a (beginner) entrepreneur and how I launch my first startup with my associate Thomas.">
 <link rel="stylesheet" type="text/css" media="all" href="/style.css" >
+<link rel="shortcut icon" href="/images/favicon.ico" >
 <a class="back-url" href="../">
   <img class="back-button" src="/images/assets/back.svg" alt="backbutton" title="backbutton" />
   <h1>Recap - An entrepreneur story</h1>
@@ -45,3 +47,11 @@ Cya next month !
   <p>Posted October 01, 2018</p>
   <p>Gréard Fabien.</p>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112035252-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-112035252-1');
+</script>

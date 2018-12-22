@@ -1,9 +1,12 @@
 <!doctype html>
 
 <html lang="en">
-
+<title>First Post</title>
+<meta name="description" content="I read over thousand of blogs by years, discovering ideas, thoughts, new projects of passionate and successful people by clicking over the internet.
+This always amused me, everyone has access to it, better they want you to read them !">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" media="all" href="/style.css">
+<link rel="shortcut icon" href="/images/favicon.ico" >
 <a class="back-url" href="../">
   <img class="back-button" src="/images/assets/back.svg" alt="backbutton" title="backbutton" />
   <h1>First Post</h1>
@@ -27,3 +30,11 @@ Thus, joining the big family of blogs is just another step I'm willing to take t
   <p>Posted September 04, 2018</p>
   <p>Gréard Fabien.</p>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112035252-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-112035252-1');
+</script>

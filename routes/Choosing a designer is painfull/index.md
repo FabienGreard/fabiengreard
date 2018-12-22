@@ -1,8 +1,10 @@
 <!doctype html>
 
 <html lang="en">
-
+<title>Choosing a designer is painfull</title>
+<meta name="description" content="So this month, I will not write about what we have done in the marvelous world of being an entrepreneur but more about what makes difficult the choice of a designer.">
 <link rel="stylesheet" type="text/css" media="all" href="/style.css" >
+<link rel="shortcut icon" href="/images/favicon.ico" >
 <a class="back-url" href="../">
   <img class="back-button" src="/images/assets/back.svg" alt="backbutton" title="backbutton" />
   <h1>Choosing a designer is painfull</h1>
@@ -43,3 +45,11 @@ Cya next month !
   <p>Posted November 01, 2018</p>
   <p>Gréard Fabien.</p>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112035252-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-112035252-1');
+</script>
