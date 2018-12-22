@@ -1,20 +1,21 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../utils/typography';
 
 function Bio() {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author, social } = data.site.siteMetadata;
         return (
           <div
             style={{
               display: `flex`,
               marginBottom: rhythm(2.5),
+              alignItem: 'center',
             }}
           >
             <Image
@@ -27,19 +28,18 @@ function Bio() {
                 borderRadius: `100%`,
               }}
             />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+            <p style={{ maxWidth: 260, margin: 0 }}>
+              Personal blog by{' '}
+              <a href={`https://www.linkedin.com/in/${social.linkedin}`}>
+                {author}
               </a>
+              . I write about code and life.
             </p>
           </div>
-        )
+        );
       }}
     />
-  )
+  );
 }
 
 const bioQuery = graphql`
@@ -55,11 +55,11 @@ const bioQuery = graphql`
       siteMetadata {
         author
         social {
-          twitter
+          linkedin
         }
       }
     }
   }
-`
+`;
 
-export default Bio
+export default Bio;
