@@ -1,53 +1,55 @@
 {
   "name": "FabienGreard",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "FabienGreard blog",
-  "main": "server.js",
+  "dependencies": {
+    "gatsby": "^2.0.19",
+    "gatsby-image": "^2.0.22",
+    "gatsby-plugin-feed": "^2.0.8",
+    "gatsby-plugin-google-analytics": "^2.0.5",
+    "gatsby-plugin-manifest": "^2.0.5",
+    "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-sharp": "^2.0.6",
+    "gatsby-plugin-typography": "^2.2.0",
+    "gatsby-remark-copy-linked-files": "^2.0.5",
+    "gatsby-remark-images": "^2.0.4",
+    "gatsby-remark-prismjs": "^3.0.0",
+    "gatsby-remark-responsive-iframe": "^2.0.5",
+    "gatsby-remark-smartypants": "^2.0.5",
+    "gatsby-source-filesystem": "^2.0.2",
+    "gatsby-transformer-remark": "^2.1.6",
+    "gatsby-transformer-sharp": "^2.1.3",
+    "prismjs": "^1.15.0",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0",
+    "react-typography": "^0.16.13",
+    "typeface-merriweather": "0.0.43",
+    "typeface-montserrat": "0.0.43",
+    "typography": "^0.16.17",
+    "typography-theme-wordpress-2016": "^0.16.18"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.2"
+  },
+  "license": "MIT",
+  "main": "n/a",
   "repository": {
     "type": "git",
     "url": "https://github.com/FabienGreard/fabiengreard.git"
   },
   "scripts": {
-    "start": "node ./config/www",
-    "dev": "cross-env NODE_ENV=development nodemon ./config/www",
-    "test": "jest  --clearCache && cross-env NODE_ENV=development jest --config ./config/jest.config.js",
-    "coverage": "cross-env NODE_ENV=development jest --coverage --watchAll --config ./config/jest.config.js",
-    "prettier": "prettier --single-quote --write **/*.{js,json,css,md}"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier"
-    }
-  },
-  "author": "FabienGreard",
-  "license": "MIT",
-  "dependencies": {
-    "clean-css": "^4.2.1",
-    "cross-env": "^5.2.0",
-    "express": "^4.16.3",
-    "marked": "^0.5.1",
-    "morgan": "^1.9.1",
-    "pug": "^2.0.3",
-    "uglify-js": "^3.4.9",
-    "winston": "^3.1.0"
-  },
-  "devDependencies": {
-    "husky": "^1.1.1",
-    "jest": "^23.6.0",
-    "nodemon": "^1.18.4",
-    "prettier": "^1.14.3",
-    "supertest": "^3.3.0"
-  },
-  "keywords": [
-    "Server",
-    "BasicAuth",
-    "Boilerplate",
-    "nodejs",
-    "javascript",
-    "https",
-    "http",
-    "routes",
-    "blog",
-    "logs"
-  ]
+    "dev": "gatsby develop",
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'src/**/*.js' 'content/**/*.md'",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "gatsby build",
+    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
+    "now-build": "npm run build"
+  }
 }
