@@ -1,8 +1,9 @@
 import React from 'react';
-import { StaticQuery, graphql, Link } from 'gatsby';
+import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 
 import { rhythm, scale } from '../utils/typography';
+import icon from '../assets/icon.png';
 
 class Layout extends React.Component {
   render() {
@@ -59,47 +60,36 @@ class Layout extends React.Component {
   }
 }
 
-const LayoutQuery = graphql`
-  query LayoutQuery {
-    avatar: file(absolutePath: { regex: "/icon.png/" }) {
-      childImageSharp {
-        fixed(width: 64, height: 64) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-`;
-
 const NavRoot = ({ title }) => (
-  <StaticQuery
-    query={LayoutQuery}
-    render={data => (
-      <div
+  <div
+    style={{
+      ...scale(0.5),
+      marginBottom: rhythm(1.5),
+      marginTop: 0,
+    }}
+  >
+    <Link
+      style={{
+        boxShadow: `none`,
+        textDecoration: `none`,
+        color: `inherit`,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      to={`/`}
+    >
+      ←
+      <img
+        src={icon}
+        alt={title}
         style={{
-          ...scale(0.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
+          margin: 0,
+          width: 32,
+          height: 32,
         }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          ←
-          <Image
-            fixed={data.avatar.childImageSharp.fixed}
-            alt={title}
-            style={{ width: 32, height: 32, top: 8 }}
-          />
-        </Link>
-      </div>
-    )}
-  />
+      />
+    </Link>
+  </div>
 );
 
 export default Layout;

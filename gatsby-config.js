@@ -5,23 +5,16 @@ module.exports = {
     description: `Fabien greard personal blog, nodejs && javascript enthusiast !`,
     siteUrl: `https://fabiengreard.com`,
     social: {
-      linkedin: `fabiengreard`
-    }
+      linkedin: `fabiengreard`,
+    },
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`
-      }
+        path: `${__dirname}/src/pages`,
+        name: 'pages',
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -30,28 +23,28 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590
-            }
+              maxWidth: 590,
+            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
-        ]
-      }
+          `gatsby-remark-smartypants`,
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-112035252-1`
-      }
+        trackingId: `UA-112035252-1`,
+      },
     },
     `gatsby-plugin-feed`,
     {
@@ -63,16 +56,16 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#000000`,
         display: `minimal-ui`,
-        icon: `content/assets/icon.png`
-      }
+        icon: `src/assets/icon.png`,
+      },
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    }
-  ]
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
 };
