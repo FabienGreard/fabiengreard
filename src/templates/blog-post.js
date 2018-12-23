@@ -1,20 +1,25 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 
 import Bio from '../components/bio';
 import Layout, { NavRoot } from '../components/layout';
-import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
+    const siteDescription = post.excerpt;
     const { previous, next } = this.props.pageContext;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
+        <Helmet
+          htmlAttributes={{ lang: 'en' }}
+          meta={[{ name: 'description', content: siteDescription }]}
+          title={`${post.frontmatter.title} | ${siteTitle}`}
+        />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
