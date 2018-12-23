@@ -27,6 +27,17 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.date}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div style={{ margin: '0 0 24px 0', textAlign: 'right' }}>
+          <a
+            href={`https://github.com/FabienGreard/fabiengreard/content/blog/${
+              this.props.location.pathname
+            }`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Edit on github
+          </a>
+        </div>
         <hr
           style={{
             marginBottom: rhythm(1),
