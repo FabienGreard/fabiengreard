@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": ["fabiengreard.com"],
+  "alias": ["fabiengreard.com", "www.fabiengreard.com"],
   "builds": [
     {
       "src": "package.json",
