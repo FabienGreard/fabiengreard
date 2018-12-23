@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": ["fabiengreard.com"],
   "builds": [
     {
       "src": "package.json",

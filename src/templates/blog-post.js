@@ -34,9 +34,9 @@ class BlogPostTemplate extends React.Component {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <div style={{ margin: '0 0 24px 0', textAlign: 'right' }}>
           <a
-            href={`https://github.com/FabienGreard/fabiengreard/tree/master/content/blog/${
+            href={`https://github.com/FabienGreard/fabiengreard/tree/master/src/pages${
               this.props.location.pathname
-            }`}
+            }/index.md`}
             target="_blank"
             rel="noopener noreferrer"
           >
