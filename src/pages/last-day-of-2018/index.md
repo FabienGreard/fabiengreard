@@ -1,6 +1,6 @@
 ---
 title: Last day of 2018
-date: '2018-31-12'
+date: '2018-12-31'
 ---
 
 It's time for some recap', I have looked at my other posts and read many other bloggers, mainly Dan abramov on [overreacted](overreacted.io), It made me think about where I want this blog to go, and how I should write my posts. I'm assuming that if you here, reading my writings (which is probably terrible, hope it is going to get better) I'm sorry for you but I will not do any 'hit blog post' or follow up any trend to get this blog more views.
