@@ -22,7 +22,8 @@ class Footer extends React.Component {
           rel="noopener noreferrer"
         >
           twitter
-        </a>{' '}
+        </a>
+        &bull;{' '}
         <a
           href="https://www.linkedin.com/in/fabiengreard/"
           target="_blank"
