@@ -50,8 +50,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Fabien Gréard`,
-        short_name: `Fabien Gréard`,
+        name: `Fabien Gréard Blog`,
+        short_name: `FG Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#000000`,
