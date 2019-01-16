@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Fabien Greard`,
-    author: `Fabien Greard`,
-    description: `Fabien greard personal blog, nodejs && javascript enthusiast !`,
+    title: `Fabien Gréard`,
+    author: `Fabien Gréard`,
+    description: `Fabien gréard personal blog, nodejs && javascript enthusiast !`,
     siteUrl: `https://fabiengreard.com`,
     social: {
       linkedin: `fabiengreard`,
@@ -50,8 +50,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Fabien Greard`,
-        short_name: `Fabien Gréard Blog`,
+        name: `Fabien Gréard`,
+        short_name: `Fabien Gréard`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#000000`,

@@ -25,7 +25,7 @@ function Bio() {
       />
       <p style={{ maxWidth: 260, margin: 0 }}>
         Personal blog by{' '}
-        <a href="https://twitter.com/fabien_greard">Fabien Greard</a>. I write
+        <a href="https://twitter.com/fabien_greard">Fabien Gréard</a>. I write
         about code and life.
       </p>
     </div>
