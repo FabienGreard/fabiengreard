@@ -4,9 +4,9 @@ date: '2019-02-03'
 ---
 
 First of all, I'm not saying this will work for you, but it sure does for me.
-Back to earlier this year, I started with some other people a local 'meetup' call [aixTalks](https://aixtalks.com/), which is a french meetup based in aix-en-provence, based on the [humanTalks](https://humant talks.com/) format again it's in french, so basically it's 4 people talking about stuffs (mostly dev stuff) during 10 short minutes.
+Back to earlier this year, I started with some other people a local 'meetup' call [aixTalks](https://aixtalks.com/), which is a french meetup based in aix-en-provence, we took the idea from the [humanTalks](https://humant talks.com/) again it's in french, so basically it's 4 people talking about stuffs (mostly dev stuff) during 10 short minutes.
 
-## How did you got into this ? 
+## How did I got into this ? 
 
 Well, sadly I can't find the post that made me doing this, but surely it was on dev.to, saying you should improve your talking in public skill and back to 2 months ago mine was terrible, there is still a lot to improve but I'm definitely on the right path.
 
