@@ -1,5 +1,5 @@
 ---
-title: Choosing a designer is painful
+title: How I manage to overcome my fear of talking in public
 date: '2019-02-03'
 ---
 
