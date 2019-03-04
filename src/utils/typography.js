@@ -11,6 +11,7 @@ Wordpress2016.overrideThemeStyles = () => ({
   'p code': {
     fontSize: '1.1rem',
   },
+  'p > img': { display: 'flex', margin: '50px auto!important' },
 });
 
 delete Wordpress2016.googleFonts;

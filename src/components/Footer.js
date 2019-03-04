@@ -4,7 +4,7 @@ import { rhythm } from '../utils/typography';
 
 class Footer extends React.Component {
   render() {
-    const { twitter, linkedin, github, stackoverflow } = this.props;
+    const { twitter, linkedin, github, stackoverflow } = this.props.socials;
     return (
       <footer
         style={{
