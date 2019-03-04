@@ -1,27 +1,26 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer';
+import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
 
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
+    const socials = data.site.siteMetadata.socials;
     const siteDescription = data.site.siteMetadata.description;
     const posts = data.allMarkdownRemark.edges;
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
+        <SEO
           title={siteTitle}
+          keywords={['blog', 'entrepreneur', 'javascript', 'react', 'nodejs']}
         />
-        <Bio />
+        <Bio socials={socials} />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
@@ -42,7 +41,7 @@ class BlogIndex extends React.Component {
             </div>
           );
         })}
-        <Footer />
+        <Footer socials={socials} />
       </Layout>
     );
   }
@@ -56,6 +55,12 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        socials {
+          linkedin
+          twitter
+          github
+          stackoverflow
+        }
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

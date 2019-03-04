@@ -4,6 +4,7 @@ import { rhythm } from '../utils/typography';
 
 class Footer extends React.Component {
   render() {
+    const { twitter, linkedin, github, stackoverflow } = this.props;
     return (
       <footer
         style={{
@@ -17,7 +18,7 @@ class Footer extends React.Component {
           </a>
         </div>
         <a
-          href="https://twitter.com/fabien_greard"
+          href={`https://twitter.com/${twitter}`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -25,7 +26,7 @@ class Footer extends React.Component {
         </a>
         &bull;{' '}
         <a
-          href="https://www.linkedin.com/in/fabiengreard/"
+          href={`https://www.linkedin.com/in/${linkedin}`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -33,7 +34,7 @@ class Footer extends React.Component {
         </a>{' '}
         &bull;{' '}
         <a
-          href="https://github.com/FabienGreard"
+          href={`https://github.com/${linkedin}`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -41,7 +42,7 @@ class Footer extends React.Component {
         </a>{' '}
         &bull;{' '}
         <a
-          href="https://stackoverflow.com/users/6668441/fabien-greard"
+          href={`https://stackoverflow.com/users/6668441/${linkedin}`}
           target="_blank"
           rel="noopener noreferrer"
         >

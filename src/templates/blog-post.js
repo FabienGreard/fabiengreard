@@ -1,25 +1,22 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 
 import Bio from '../components/Bio';
 import Layout, { NavRoot } from '../components/Layout';
+import SEO from '../components/seo';
 import { rhythm, scale } from '../utils/typography';
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
+    const socials = this.props.data.site.siteMetadata.socials;
     const siteDescription = post.excerpt;
     const { previous, next } = this.props.pageContext;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={`${post.frontmatter.title} | ${siteTitle}`}
-        />
+        <SEO title={post.frontmatter.title} description={siteDescription} />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
@@ -49,7 +46,7 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <NavRoot title={siteTitle} />
-        <Bio />
+        <Bio socials={socials} />
 
         <ul
           style={{
@@ -88,6 +85,12 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        socials {
+          linkedin
+          twitter
+          github
+          stackoverflow
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

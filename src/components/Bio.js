@@ -3,7 +3,7 @@ import React from 'react';
 import profilePic from '../assets/profile-pic.jpg';
 import { rhythm } from '../utils/typography';
 
-function Bio() {
+function Bio({ socials }) {
   return (
     <div
       style={{
@@ -25,8 +25,8 @@ function Bio() {
       />
       <p style={{ maxWidth: 260, margin: 0 }}>
         Personal blog by{' '}
-        <a href="https://twitter.com/fabien_greard">Fabien Gréard</a>. I write
-        about code and life.
+        <a href={`https://twitter.com/${socials.twitter}`}>Fabien Gréard</a>. I
+        write about code and life.
       </p>
     </div>
   );

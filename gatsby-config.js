@@ -4,8 +4,11 @@ module.exports = {
     author: `Fabien Gréard`,
     description: `Fabien gréard personal blog, nodejs && javascript enthusiast !`,
     siteUrl: `https://fabiengreard.com`,
-    social: {
-      linkedin: `fabiengreard`,
+    socials: {
+      linkedin: `FabienGreard`,
+      twitter: `FabienGreard`,
+      github: `FabienGreard`,
+      stackoverflow: `fabien-greard`,
     },
   },
   plugins: [
