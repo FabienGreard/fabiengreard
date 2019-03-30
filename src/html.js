@@ -11,7 +11,8 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
+          /> 
+          <meta name="google-site-verification" content="8tVkc6XwXQHFkE3Zh8DMuud091oLAJh5vahu7YrghVQ" />
           {this.props.headComponents}
         </head>
         <noscript>This app require javascript to run</noscript>
