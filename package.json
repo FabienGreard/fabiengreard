@@ -30,6 +30,9 @@
     "typography": "^0.16.18",
     "typography-theme-wordpress-2016": "^0.16.18"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "devDependencies": {
     "eslint": "^5.15.0",
     "eslint-plugin-react": "^7.12.4",
