@@ -1,58 +1,26 @@
 {
-  "name": "FabienGreard",
-  "version": "3.1.0",
-  "description": "FabienGreard blog",
-  "dependencies": {
-    "gatsby": "^2.1.19",
-    "gatsby-plugin-feed": "^2.0.14",
-    "gatsby-plugin-google-analytics": "^2.0.15",
-    "gatsby-plugin-manifest": "^2.0.20",
-    "gatsby-plugin-offline": "^2.0.24",
-    "gatsby-plugin-react-helmet": "^3.0.7",
-    "gatsby-plugin-sharp": "^2.0.23",
-    "gatsby-plugin-sitemap": "^2.0.6",
-    "gatsby-plugin-typography": "^2.2.7",
-    "gatsby-remark-copy-linked-files": "^2.0.9",
-    "gatsby-remark-images": "^3.0.5",
-    "gatsby-remark-prismjs": "^3.2.4",
-    "gatsby-remark-responsive-iframe": "^2.0.9",
-    "gatsby-remark-smartypants": "^2.0.8",
-    "gatsby-source-filesystem": "^2.0.23",
-    "gatsby-transformer-remark": "^2.3.0",
-    "gatsby-transformer-sharp": "^2.1.15",
-    "prismjs": "^1.15.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.18",
-    "typeface-merriweather": "^0.0.72",
-    "typeface-montserrat": "^0.0.54",
-    "typography": "^0.16.18",
-    "typography-theme-wordpress-2016": "^0.16.18"
+  "name": "cms-takeshape",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
-  "engines": {
-    "node": "12.x"
+  "dependencies": {
+    "classnames": "2.2.6",
+    "date-fns": "2.10.0",
+    "isomorphic-unfetch": "3.0.0",
+    "next": "latest",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "remark": "11.0.2",
+    "remark-html": "10.0.0",
+    "takeshape-routing": "4.86.0"
   },
   "devDependencies": {
-    "eslint": "^5.15.0",
-    "eslint-plugin-react": "^7.12.4",
-    "prettier": "^1.16.4"
-  },
-  "license": "MIT",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/FabienGreard/fabiengreard.git"
-  },
-  "scripts": {
-    "dev": "gatsby develop",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --trailing-comma es5 --single-quote --write 'src/**/*.js' 'content/**/*.md'",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "build": "gatsby build",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js",
-    "now-build": "npm run build"
+    "@fullhuman/postcss-purgecss": "^2.1.0",
+    "dotenv": "8.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.2.0"
   }
 }
