@@ -1,26 +1,42 @@
 {
-  "name": "cms-takeshape",
-  "version": "1.0.0",
+  "name": "fabiengreard",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --open --config webpack.dev.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/FabienGreard/fabiengreard.git",
+  "author": "fabiengreard <grd.fabien@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.0.3",
+    "obsolete-webpack-plugin": "^0.5.6",
+    "prop-types": "^15.7.2",
+    "style-loader": "^1.1.3",
+    "styled-components": "^5.0.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "classnames": "2.2.6",
-    "date-fns": "2.10.0",
-    "isomorphic-unfetch": "3.0.0",
-    "next": "latest",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "remark": "11.0.2",
-    "remark-html": "10.0.0",
-    "takeshape-routing": "4.86.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^5.2.1",
+    "react-spring": "^8.0.27"
   },
-  "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.1.0",
-    "dotenv": "8.2.0",
-    "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.2.0"
-  }
+  "browserslist": [
+    ">1%",
+    "not dead",
+    "not ie 11",
+    "not op_mini all"
+  ]
 }
