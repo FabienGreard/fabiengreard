@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
@@ -10,6 +11,7 @@ module.exports = {
   entry: { app: './src/index.js' },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([{ from: './static' }]),
     new HtmlWebpackPlugin({ template: './static/index.html' }),
     new ObsoleteWebpackPlugin(),
   ],

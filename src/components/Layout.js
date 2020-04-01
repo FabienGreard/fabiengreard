@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-export const container = styled.div`
+export const Container = styled.div`
   display: flex;
 
   ${props =>
@@ -31,22 +31,22 @@ export const container = styled.div`
           `)}
 `;
 
-const Layout = styled(container)`
-  background-color: ${props => props.theme.colors.darkBackground};
+const Layout = styled(Container)`
+  background-color: ${props => props.theme.colors.Background};
   width: 100vw;
   height: 100vh;
 `;
 
 export default Layout;
 
-container.defaultProps = {
+Container.defaultProps = {
   isColumn: false,
   isCenter: false,
   isHorizontalCenter: false,
   isVerticalCenter: false,
 };
 
-container.propTypes = {
+Container.propTypes = {
   isColumn: PropTypes.bool,
   isCenter: PropTypes.bool,
   isHorizontalCenter: PropTypes.bool,
@@ -54,9 +54,9 @@ container.propTypes = {
 };
 
 Layout.defaultProps = {
-  ...container.defaultProps,
+  ...Container.defaultProps,
 };
 
 Layout.propTypes = {
-  ...container.propTypes,
+  ...Container.propTypes,
 };
