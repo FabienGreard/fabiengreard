@@ -15,25 +15,33 @@ const TypographyProps = props => css`
   font-weight: ${props.theme.text.fontWeight.default};
   font-style: normal;
 
-  ${props.isUnderline &&
+  ${
+    props.isUnderline &&
     css`
       text-decoration: underline;
-    `}
+    `
+  }
 
-  ${props.isItalic &&
+  ${
+    props.isItalic &&
     css`
       font-style: italic;
-    `}
+    `
+  }
 
-  ${props.isBold &&
+  ${
+    props.isBold &&
     css`
       font-weight: ${props.theme.text.fontWeight.bold};
-    `}
+    `
+  }
 
-  ${props.isLight &&
+  ${
+    props.isLight &&
     css`
       font-weight: ${props.theme.text.fontWeight.light};
-    `}
+    `
+  }
 `;
 
 const title = styled.h1.attrs(props => ({
@@ -81,10 +89,12 @@ Typography.defaultProps = {
   variant: 'default',
   color: null,
   size: null,
+  children: null,
 };
 
 Typography.propTypes = {
   variant: PropTypes.oneOf(['title', 'subtitle', 'text', 'caption']),
   color: PropTypes.oneOf(['white', 'green', 'yellow', 'pink', 'blue']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  children: PropTypes.node,
 };

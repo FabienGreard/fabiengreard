@@ -8,6 +8,8 @@ import hexToRgb from '../../utils/hexToRgb';
 
 import { MouseHoverContext, MouseHoverProvider } from './MouseHoverContext';
 
+const MOUSE_TRACKER_SIZE = [30, 30];
+
 const Container = styled.div`
   position: fixed;
   left: 0;
@@ -24,6 +26,7 @@ const selectColor = props =>
   props.theme.colors[props.color] || props.theme.colors.pink;
 
 const Pointer = styled.div`
+  position: absolute;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -35,7 +38,9 @@ const pulse = color => keyframes`
     box-shadow: 0 0 0 0 rgba(${hexToRgb(color).toString()}, 0.4);
   }
   70% {
-      box-shadow: 0 0 0 15px rgba(${hexToRgb(color).toString()}, 0);
+      box-shadow: 0 0 0 ${MOUSE_TRACKER_SIZE[0] / 2}px rgba(${hexToRgb(
+  color,
+).toString()}, 0);
   }
   100% {
       box-shadow: 0 0 0 0 rgba(${hexToRgb(color).toString()}, 0);
@@ -43,10 +48,9 @@ const pulse = color => keyframes`
 `;
 
 const Circle = styled.div`
-  width: 30px;
-  height: 30px;
   border-radius: 50%;
   border: 1px solid ${selectColor};
+  box-sizing: border-box;
   ${props =>
     props.isAnimated &&
     css`
@@ -58,7 +62,9 @@ const AnimatedCircle = animated(Circle);
 
 const Cursor = ({ color }) => {
   const { x, y } = useMouseCoords();
-  const { isHover } = useContext(MouseHoverContext);
+  const { isHover, isMagnet, magnetCoords, magnetSize } = useContext(
+    MouseHoverContext,
+  );
 
   useEffect(() => {
     window.document.body.style.setProperty('cursor', 'none', 'important');
@@ -84,9 +90,10 @@ const Cursor = ({ color }) => {
     return 1;
   }, [x, y]);
 
-  const { xy, opacity } = useSpring({
-    xy: [x, y],
+  const { xy, opacity, size } = useSpring({
+    xy: isMagnet ? magnetCoords : [x, y],
     opacity: isXYInViewport,
+    size: isMagnet ? magnetSize : MOUSE_TRACKER_SIZE,
     config: config.stiff,
   });
 
@@ -98,7 +105,7 @@ const Cursor = ({ color }) => {
       <Pointer
         color={color}
         style={{
-          transform: `translate3d(${x}px, ${y}px, 0) translate3d(-50%, 50%, 0)`,
+          transform: `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`,
         }}
       />
       <AnimatedCircle
@@ -106,6 +113,9 @@ const Cursor = ({ color }) => {
         isAnimated={isHover}
         style={{
           transform: xy.interpolate(followTranslate),
+          width: size.interpolate(width => `${width}px`),
+          height: size.interpolate((_, height) => `${height}px`),
+          borderRadius: isMagnet ? 0 : '50%',
         }}
       />
     </AnimatedContainer>
