@@ -10,6 +10,7 @@ module.exports = {
   devServer: {
     contentBase: './static',
     hot: true,
+    host: '0.0.0.0',
   },
   plugins: [
     new CleanWebpackPlugin(),
