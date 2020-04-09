@@ -7,6 +7,7 @@ import useMouseCoords from '../../utils/useMouseCoords';
 import hexToRgb from '../../utils/hexToRgb';
 
 import { MouseHoverContext, MouseHoverProvider } from './MouseHoverContext';
+import { useCursorBoundingMagnet } from './useCursorBoundingMagnet';
 
 const MOUSE_TRACKER_SIZE = [30, 30];
 
@@ -131,4 +132,4 @@ Cursor.propTypes = {
 };
 
 export default Cursor;
-export { MouseHoverContext, MouseHoverProvider };
+export { MouseHoverContext, MouseHoverProvider, useCursorBoundingMagnet };
