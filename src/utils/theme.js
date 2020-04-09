@@ -1,7 +1,7 @@
 const theme = {
   colors: {
     white: '#ffffff',
-    text: '#111111',
+    black: '#111111',
     green: '#06D6A0',
     yellow: '#FFD166',
     pink: '#EF476F',
@@ -26,3 +26,4 @@ const theme = {
 };
 
 export default theme;
+export const COLORS = theme.colors;
