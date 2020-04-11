@@ -1,6 +1,6 @@
-import { useEffect, useContext, useRef } from 'react';
+import { useEffect, useCallback, useContext, useRef } from 'react';
 
-import { MouseHoverContext } from './MouseHoverContext';
+import { MouseHoverContext, CursorColorContext } from './contexts';
 
 export const useCursorBoundingMagnet = (
   isParentMagnet = true,
@@ -52,4 +52,13 @@ export const useCursorBoundingMagnet = (
   }, [ref, isHover, setMagnetBounding]);
 
   return ref;
+};
+
+export const useCursorColor = () => {
+  const { setColor, color: colorContext } = useContext(CursorColorContext);
+
+  return useCallback(color => color !== colorContext && setColor(color), [
+    setColor,
+    colorContext,
+  ]);
 };

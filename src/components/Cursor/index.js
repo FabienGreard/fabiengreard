@@ -5,9 +5,15 @@ import styled, { keyframes, css } from 'styled-components';
 
 import useMouseCoords from '../../utils/useMouseCoords';
 import hexToRgb from '../../utils/hexToRgb';
+import { COLORS } from '../../utils/theme';
 
-import { MouseHoverContext, MouseHoverProvider } from './MouseHoverContext';
-import { useCursorBoundingMagnet } from './useCursorBoundingMagnet';
+import {
+  MouseHoverContext,
+  MouseHoverProvider,
+  CursorColorContext,
+  CursorColorProvider,
+} from './contexts';
+import { useCursorColor, useCursorBoundingMagnet } from './hooks';
 
 const MOUSE_TRACKER_SIZE = [30, 30];
 
@@ -32,6 +38,7 @@ const Pointer = styled.div`
   height: 5px;
   border-radius: 50%;
   background-color: ${selectColor};
+  transition: background-color 0.5s;
 `;
 
 const pulse = color => keyframes`
@@ -51,6 +58,7 @@ const pulse = color => keyframes`
 const Circle = styled.div`
   border-radius: 50%;
   border: 1px solid ${selectColor};
+  transition: border-color 0.5s;
   box-sizing: border-box;
   ${props =>
     props.isAnimated &&
@@ -67,9 +75,15 @@ const Cursor = ({ color }) => {
     MouseHoverContext,
   );
 
+  const { color: colorContext, setColor } = useContext(CursorColorContext);
+
   useEffect(() => {
     window.document.body.style.setProperty('cursor', 'none', 'important');
   }, []);
+
+  useEffect(() => {
+    setColor(color);
+  }, [setColor, color]);
 
   const isXYInViewport = useMemo(() => {
     const offset = 0.99;
@@ -104,13 +118,13 @@ const Cursor = ({ color }) => {
   return (
     <AnimatedContainer style={{ opacity }}>
       <Pointer
-        color={color}
+        color={colorContext || color}
         style={{
           transform: `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`,
         }}
       />
       <AnimatedCircle
-        color={color}
+        color={colorContext || color}
         isAnimated={isHover}
         style={{
           transform: xy.interpolate(followTranslate),
@@ -128,8 +142,15 @@ Cursor.defaultProps = {
 };
 
 Cursor.propTypes = {
-  color: PropTypes.oneOf(['white', 'green', 'yellow', 'pink', 'blue']),
+  color: PropTypes.oneOf(Object.keys(COLORS)),
 };
 
 export default Cursor;
-export { MouseHoverContext, MouseHoverProvider, useCursorBoundingMagnet };
+export {
+  CursorColorContext,
+  CursorColorProvider,
+  MouseHoverContext,
+  MouseHoverProvider,
+  useCursorBoundingMagnet,
+  useCursorColor,
+};

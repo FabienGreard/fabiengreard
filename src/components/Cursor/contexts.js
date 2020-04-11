@@ -11,7 +11,6 @@ export const MouseHoverProvider = ({
 }) => {
   const [isHover, setIsHover] = useState(initialContext);
   const [magnetBounding, setMagnetBounding] = useState(null);
-
   const toggleIsHover = () => setIsHover(!isHover);
 
   useEffect(() => {
@@ -45,5 +44,36 @@ MouseHoverProvider.defaultProps = {
 
 MouseHoverProvider.propTypes = {
   initialContext: PropTypes.bool,
+  children: PropTypes.node,
+};
+
+const initialCursorColor = 'black';
+
+export const CursorColorContext = React.createContext(initialCursorColor);
+
+export const CursorColorProvider = ({
+  initialContext = initialCursorColor,
+  children,
+}) => {
+  const [color, setColor] = useState(initialContext);
+
+  return (
+    <CursorColorContext.Provider
+      value={{
+        color,
+        setColor,
+      }}>
+      {children}
+    </CursorColorContext.Provider>
+  );
+};
+
+CursorColorProvider.defaultProps = {
+  children: null,
+  initialContext: initialCursorColor,
+};
+
+CursorColorProvider.propTypes = {
+  initialContext: PropTypes.string,
   children: PropTypes.node,
 };
