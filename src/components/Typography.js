@@ -10,7 +10,7 @@ const TypographyProps = props => css`
   color: ${
     props.color in props.theme.colors
       ? props.theme.colors[props.color]
-      : props.theme.colors.text
+      : props.theme.colors.black
   };
   font-weight: ${props.theme.text.fontWeight.default};
   font-style: normal;
@@ -86,7 +86,7 @@ export default function Typography({ variant, children, ...props }) {
 }
 
 Typography.defaultProps = {
-  variant: 'default',
+  variant: 'text',
   color: null,
   size: null,
   children: null,
@@ -94,7 +94,7 @@ Typography.defaultProps = {
 
 Typography.propTypes = {
   variant: PropTypes.oneOf(['title', 'subtitle', 'text', 'caption']),
-  color: PropTypes.oneOf(['white', 'green', 'yellow', 'pink', 'blue']),
+  color: PropTypes.oneOf(['white', 'green', 'yellow', 'pink', 'blue', 'black']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   children: PropTypes.node,
 };
