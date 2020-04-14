@@ -8,19 +8,25 @@ import theme from './utils/theme';
 
 import Layout from './components/Layout';
 import SEO from './components/SEO';
-import Cursor, { MouseHoverProvider } from './components/Cursor';
-import Button from './components/Button';
+import Cursor, {
+  MouseHoverProvider,
+  CursorColorProvider,
+} from './components/Cursor';
+
+import Slides from './slides';
 
 function App() {
   return (
     <MouseHoverProvider>
-      <ThemeProvider theme={theme}>
-        <Layout isCenter>
-          <SEO />
-          <Cursor />
-          <Button />
-        </Layout>
-      </ThemeProvider>
+      <CursorColorProvider>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Cursor color="pink" />
+            <SEO />
+            <Slides />
+          </Layout>
+        </ThemeProvider>
+      </CursorColorProvider>
     </MouseHoverProvider>
   );
 }

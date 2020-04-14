@@ -12,17 +12,7 @@ const ButtonStyle = styled.button`
 const Button = () => {
   const ref = useCursorBoundingMagnet();
 
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-      }}>
-      <ButtonStyle ref={ref}>Click Me</ButtonStyle>
-    </div>
-  );
+  return <ButtonStyle ref={ref}>Click Me</ButtonStyle>;
 };
 
 export default Button;
