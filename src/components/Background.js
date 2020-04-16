@@ -6,29 +6,49 @@ import { useCursorColor } from '../components/Cursor';
 
 import { Container } from '../components/Layout';
 
-import { COLORS } from '../utils/theme';
+import { COLORS, MEDIA } from '../utils/theme';
 import useForceUpdate from '../utils/useForceUpdate';
 import random from '../utils/random';
 
 const BackgroundContainer = styled(Container)`
   position: absolute;
   width: 100vw;
-  min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
+  min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   max-width: 100%;
   background-color: ${props => props.background || 'transparent'};
+
+  @media ${MEDIA.laptopL} {
+    min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
+  }
 `;
 
 const Wave = styled.svg`
   position: absolute;
-  bottom: ${props => `${props.bottom}px`};
+  bottom: ${props => `${props.bottom + 40}px`};
+
+  @media ${MEDIA.tablet} {
+    bottom: ${props => `${props.bottom + 20}px`};
+  }
+
+  @media ${MEDIA.laptop} {
+    bottom: ${props => `${props.bottom}px`};
+  }
 `;
 
 const WaveGap = styled.div`
   position: absolute;
   bottom: 0px;
   width: 100%;
-  height: ${props => `${props.height}px`};
+  height: ${props => `${props.height + 40}px`};
   background-color: ${props => props.color};
+
+  @media ${MEDIA.tablet} {
+    height: ${props => `${props.height + 20}px`};
+  }
+
+  @media ${MEDIA.laptop} {
+    height: ${props => `${props.height}px`};
+  }
 `;
 
 const AnimatedWave = animated(Wave);
@@ -39,6 +59,7 @@ const WaveSvg = ({
   point1 = '136.84,132.72',
   point2 = '328.72,17.27',
   bottom = -1,
+  offset,
   ...props
 }) => {
   const { path } = useSpring({
@@ -52,12 +73,14 @@ const WaveSvg = ({
     config: config.molasses,
   });
 
+  const size = bottom + offset;
+
   return (
     <>
       <AnimatedWave
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 500 150"
-        bottom={bottom}>
+        bottom={size}>
         <AnimatedPath
           fill={color}
           fillOpacity="1"
@@ -65,7 +88,7 @@ const WaveSvg = ({
           style={{ zIndex: 2 }}
           {...props}></AnimatedPath>
       </AnimatedWave>
-      <WaveGap color={color} height={bottom} />
+      <WaveGap color={color} height={size} />
     </>
   );
 };
@@ -75,10 +98,12 @@ WaveSvg.propTypes = {
   point1: PropTypes.string,
   point2: PropTypes.string,
   bottom: PropTypes.number,
+  offset: PropTypes.number,
 };
 
 const GenerateWaves = ({
   numberOfWaves,
+  offset,
   colors,
   isIntervallRefresh = false,
 }) => {
@@ -124,6 +149,7 @@ const GenerateWaves = ({
       }}
       color={colors[i]}
       bottom={numberOfWaves * 60 - (i + 1) * 60 - 1}
+      offset={offset}
       {...getPoints}
     />
   ));
@@ -133,6 +159,7 @@ const Background = ({
   numberOfWaves,
   background,
   isLarge,
+  offset,
   colors,
   ...props
 }) => (
@@ -141,6 +168,7 @@ const Background = ({
       numberOfWaves={numberOfWaves}
       colors={colors}
       isIntervallRefresh
+      offset={offset}
     />
   </BackgroundContainer>
 );
@@ -150,10 +178,12 @@ Background.defaultProps = {
   background: null,
   isLarge: false,
   colors: [COLORS.darkBackground, COLORS.pink, COLORS.background],
+  offset: 0,
 };
 
 Background.propTypes = {
   numberOfWaves: PropTypes.number,
+  offset: PropTypes.number,
   background: PropTypes.oneOf(Object.values(COLORS)),
   isLarge: PropTypes.bool,
   colors: PropTypes.arrayOf(PropTypes.oneOf(Object.values(COLORS))),

@@ -23,7 +23,21 @@ const theme = {
       bold: 600,
     },
   },
+  devices: {
+    mobileS: 320,
+    mobileM: 375,
+    mobileL: 425,
+    tablet: 768,
+    laptop: 1024,
+    laptopL: 1440,
+    desktop: 2560,
+  },
 };
 
 export default theme;
 export const COLORS = theme.colors;
+export const DEVICES = theme.devices;
+export const MEDIA = Object.entries(theme.devices).reduce((acc, cur) => {
+  const [key, value] = cur;
+  return { ...acc, [key]: `(min-width: ${value}px)` };
+}, {});

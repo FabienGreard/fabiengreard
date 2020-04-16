@@ -7,13 +7,17 @@ import Typography from '../components/Typography';
 import { Container, ParalaxContainer } from '../components/Layout';
 import { useCursorColor } from '../components/Cursor';
 
-import { COLORS } from '../utils/theme';
+import { COLORS, MEDIA } from '../utils/theme';
 
 const colorsBackground = [COLORS.darkBackground];
 
 const BioContainer = styled(Container)`
-  min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
+  min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   background-color: ${props => props.backgroundColor || props.theme.background};
+
+  @media ${MEDIA.laptopL} {
+    min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
+  }
 `;
 
 const BioContent = styled(ParalaxContainer)``;

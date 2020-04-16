@@ -8,14 +8,18 @@ import { Container, ParalaxContainer } from '../components/Layout';
 import { useCursorColor } from '../components/Cursor';
 import Button from '../components/Button';
 
-import { COLORS } from '../utils/theme';
+import { COLORS, MEDIA } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 
 const colorsBackground = [COLORS.darkBackground, COLORS.pink];
 
 const HomeContainer = styled(Container)`
-  min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
+  min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   background-color: ${props => props.backgroundColor || props.theme.background};
+
+  @media ${MEDIA.laptopL} {
+    min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
+  }
 `;
 
 const HomeContent = styled(ParalaxContainer)``;
