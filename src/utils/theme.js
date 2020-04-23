@@ -41,3 +41,9 @@ export const MEDIA = Object.entries(theme.devices).reduce((acc, cur) => {
   const [key, value] = cur;
   return { ...acc, [key]: `(min-width: ${value}px)` };
 }, {});
+
+export const scaleMargin = (width, margin = 50) => (margin * width) / 1440;
+export const scaleFontSize = (width, fontSize = 200) =>
+  (fontSize * width) / (1440 - scaleMargin(1440));
+export const scaleOffSet = (width, offset = 20) =>
+  (offset * width) / (1440 - scaleMargin(1440));

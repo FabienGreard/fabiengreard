@@ -2,18 +2,20 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Background from '../components/Background';
-import Typography from '../components/Typography';
-import { Container, ParalaxContainer } from '../components/Layout';
-import { useCursorColor } from '../components/Cursor';
-import Button from '../components/Button';
+import Background from '../../components/Background';
 
-import { COLORS, MEDIA } from '../utils/theme';
-import useIntersectionObserver from '../utils/useIntersectionObserver';
+import { Container, ParalaxContainer } from '../../components/Layout';
+import { useCursorColor } from '../../components/Cursor';
+
+import { COLORS, MEDIA } from '../../utils/theme';
+import useIntersectionObserver from '../../utils/useIntersectionObserver';
+
+import Title from './Title';
 
 const colorsBackground = [COLORS.darkBackground, COLORS.pink];
 
 const HomeContainer = styled(Container)`
+  height: 100%;
   min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   background-color: ${props => props.backgroundColor || props.theme.background};
 
@@ -22,7 +24,9 @@ const HomeContainer = styled(Container)`
   }
 `;
 
-const HomeContent = styled(ParalaxContainer)``;
+const HomeContent = styled(ParalaxContainer)`
+  height: 100%;
+`;
 
 export default function Home({ isTransitionSlide }) {
   const handleMouseColor = useCursorColor();
@@ -53,11 +57,8 @@ export default function Home({ isTransitionSlide }) {
         isLarge={isTransitionSlide}
         zIndex={1}
       />
-      <HomeContent paralaxRate={0.2} zIndex={0} isCenter isColumn>
-        <Typography variant="title" size="xl">
-          HOME
-        </Typography>
-        <Button />
+      <HomeContent paralaxRate={0.5} zIndex={0}>
+        <Title />
       </HomeContent>
     </HomeContainer>
   );

@@ -41,7 +41,12 @@ export const Container = styled.div`
 
 const AnimatedContainer = animated(Container);
 
-export const ParalaxContainer = ({ children, paralaxRate, ...props }) => {
+export const ParalaxContainer = ({
+  children,
+  paralaxRate,
+  isHorizontalParalax,
+  ...props
+}) => {
   const [x, y] = useParalax();
 
   const [{ xy }, set] = useSpring(() => ({ xy: [x, y] }));
@@ -50,13 +55,15 @@ export const ParalaxContainer = ({ children, paralaxRate, ...props }) => {
     set({ xy: [x, y] });
   }, [set, x, y]);
 
-  const interpolateParalax = xy.interpolate(
-    (x, y) => `translate3D(0, ${y * paralaxRate}px, 0)`,
+  const interpolateParalax = xy.interpolate((x, y) =>
+    isHorizontalParalax
+      ? `translate3D(${y * paralaxRate}px, 0,  0)`
+      : `translate3D(0, ${y * paralaxRate}px, 0)`,
   );
+
   return (
     <AnimatedContainer style={{ transform: interpolateParalax }} {...props}>
       {children}
-      <div style={{ backgroundColor: '#111111' }}></div>
     </AnimatedContainer>
   );
 };
@@ -86,11 +93,13 @@ Container.propTypes = {
 };
 
 ParalaxContainer.defaultProps = {
+  isHorizontalParalax: false,
   paralaxRate: 0.25,
   ...Container.defaultProps,
 };
 
 ParalaxContainer.propTypes = {
+  isHorizontalParalax: PropTypes.bool,
   paralaxRate: PropTypes.number,
   ...Container.propTypes,
 };
