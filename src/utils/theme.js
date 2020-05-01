@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 const theme = {
   colors: {
     white: '#ffffff',
@@ -43,7 +45,14 @@ export const MEDIA = Object.entries(theme.devices).reduce((acc, cur) => {
 }, {});
 
 export const scaleMargin = (width, margin = 50) => (margin * width) / 1440;
-export const scaleFontSize = (width, fontSize = 200) =>
+export const scale = (width, fontSize = 200) =>
   (fontSize * width) / (1440 - scaleMargin(1440));
-export const scaleOffSet = (width, offset = 20) =>
-  (offset * width) / (1440 - scaleMargin(1440));
+
+export const generateCssMedia = fn =>
+  Object.keys(DEVICES).map(
+    key => css`
+      @media ${MEDIA[key]} {
+        ${fn(DEVICES[key])};
+      }
+    `,
+  );

@@ -6,23 +6,22 @@ import Typography from '../../components/Typography';
 import { Container, ParalaxContainer } from '../../components/Layout';
 
 import {
-  MEDIA,
   DEVICES,
+  generateCssMedia,
   scaleMargin,
-  scaleFontSize,
-  scaleOffSet,
+  scale,
 } from '../../utils/theme';
 import useMedia from '../../utils/useMedia';
 
 const TitleInline = ({ text, style, isSubtitle }) => {
-  const media = useMedia(1440);
+  const media = useMedia();
 
   return (
     <div style={{ position: 'absolute', ...style }}>
       <Typography
         variant="title"
         style={{
-          fontSize: `${scaleFontSize(media)}px`,
+          fontSize: `${scale(media, 200)}px`,
           margin: 0,
         }}>
         {text}
@@ -56,28 +55,22 @@ const DualContainer = styled(ParalaxContainer)`
   &:nth-child(2) {
     top: 200px;
 
-    ${() =>
-      Object.keys(DEVICES).map(
-        key => css`
-          @media ${MEDIA[key]} {
-            top: ${`${scaleFontSize(DEVICES[key]) + 20}px`};
-          }
-        `,
-      )};
+    ${generateCssMedia(
+      media => css`
+        top: ${`${scale(media, 200) + 20}px`};
+      `,
+    )};
   }
 `;
 
 const TitleContainer = styled(Container)`
   overflow: hidden;
 
-  ${() =>
-    Object.keys(DEVICES).map(
-      key => css`
-        @media ${MEDIA[key]} {
-          padding: 0 ${`${scaleMargin(DEVICES[key])}px`};
-        }
-      `,
-    )};
+  ${generateCssMedia(
+    media => css`
+      padding: 0 ${`${scaleMargin(media)}px`};
+    `,
+  )};
 `;
 
 const SubtitleContainer = styled(ParalaxContainer)`
@@ -86,10 +79,12 @@ const SubtitleContainer = styled(ParalaxContainer)`
 `;
 
 export default function Title() {
-  const media = useMedia(1440);
+  const media = useMedia();
 
   const DualText = ({ text, isRightContainer, ...props }) => {
-    const media = useMedia(1440);
+    const media = useMedia();
+
+    const scaleOffSet = media => scale(media, 20);
 
     return (
       <DualContainer {...props}>

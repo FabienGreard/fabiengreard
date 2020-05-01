@@ -2,52 +2,53 @@ import { useEffect, useCallback, useContext, useRef } from 'react';
 
 import { MouseHoverContext, CursorColorContext } from './contexts';
 
-export const useCursorBoundingMagnet = (
-  isParentMagnet = true,
-  magnetArea = 20,
-) => {
-  const { isHover, toggleIsHover, setMagnetBounding } = useContext(
+export const useCursorBoundingMagnet = () => {
+  const { isHover, setIsHover, setMagnetBounding } = useContext(
     MouseHoverContext,
   );
 
   const ref = useRef();
 
   useEffect(() => {
-    if (magnetArea <= 0 || !isParentMagnet) return;
+    if (!ref.current) return;
 
     const node = ref.current;
-
-    if (document && node && node.parentNode) {
-      const element = document.createElement('div');
-      element.style = `padding:${magnetArea}px;`;
-
-      node.parentNode.appendChild(element);
-      element.appendChild(node);
-    }
-  }, [ref, isParentMagnet, magnetArea]);
-
-  useEffect(() => {
-    let node = ref.current;
     const events = ['mouseenter', 'mouseleave'];
 
-    if (node.parentNode) {
-      node = node.parentNode;
-    }
+    const handleMouseEnter = e => {
+      setIsHover(e.target.id);
+    };
 
-    if (node && toggleIsHover) {
-      events.forEach(event => node.addEventListener(event, toggleIsHover));
+    const handleMouseLeave = () => setIsHover(false);
+
+    const handleFunction = {
+      mouseenter: handleMouseEnter,
+      mouseleave: handleMouseLeave,
+    };
+
+    if (!node) return;
+
+    if (node && setIsHover) {
+      events.forEach(event =>
+        node.addEventListener(event, handleFunction[event]),
+      );
     }
 
     return () => {
-      events.forEach(event => node.removeEventListener(event, toggleIsHover));
+      if (!node) return;
+      events.forEach(event =>
+        node.removeEventListener(event, handleFunction[event]),
+      );
     };
-  }, [ref, toggleIsHover]);
+  }, [ref, setIsHover]);
 
   useEffect(() => {
+    if (!ref.current) return;
+
     const node = ref.current;
 
-    if (node && isHover) {
-      setMagnetBounding(ref.current.getBoundingClientRect());
+    if (node && node.id === isHover) {
+      setMagnetBounding(node.getBoundingClientRect());
     }
   }, [ref, isHover, setMagnetBounding]);
 

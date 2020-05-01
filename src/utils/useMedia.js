@@ -5,7 +5,7 @@ import useWindowSize from './useWindowSize';
 
 const sizes = Object.values(DEVICES);
 
-const useMedia = (initial = null) => {
+const useMedia = (initial = 1440) => {
   const [media, setMedia] = useState(initial);
   const { width } = useWindowSize();
 

@@ -21,50 +21,58 @@ const ContactContainer = styled(Container)`
   }
 `;
 
-const ContactContent = styled(ParalaxContainer)``;
+const ContactContent = styled(ParalaxContainer)`
+  height: 100%;
+`;
 
-export default function Contact({ isTransitionSlide }) {
+export default function Contact({ isTransitionSlide, slideId, setSlideView }) {
   const handleMouseColor = useCursorColor();
   const { width } = useWindowSize();
 
   const ref = useRef();
-  const isInViewport = useIntersectionObserver(ref);
+  const isInViewport = useIntersectionObserver(ref, { threshold: 0.4 });
 
   useEffect(() => {
     if (isInViewport) {
+      setSlideView('Contact');
       window.document.body.style.setProperty('background-color', COLORS.black);
     }
-  }, [isInViewport]);
+  }, [isInViewport, setSlideView]);
 
   return (
-    <ContactContainer
-      ref={ref}
-      isCenter
-      isLarge={isTransitionSlide}
-      backgroundColor={COLORS.black}
-      onMouseEnter={() => handleMouseColor('pink')}>
-      <Background
-        background={COLORS.darkBackground}
-        colors={colorsBackground}
-        numberOfWaves={1}
+    <>
+      <a id={slideId} />
+      <ContactContainer
+        ref={ref}
+        isCenter
         isLarge={isTransitionSlide}
-        offset={width <= DEVICES.laptop ? 100 : 0}
-      />
-      <ContactContent paralaxRate={-0.1} isCenter isColumn>
-        <Typography variant="title" size="xl">
-          CONTACT
-        </Typography>
-      </ContactContent>
-    </ContactContainer>
+        backgroundColor={COLORS.darkBackground}
+        onMouseEnter={() => handleMouseColor('pink')}>
+        <Background
+          colors={colorsBackground}
+          numberOfWaves={1}
+          isLarge={isTransitionSlide}
+          offset={width <= DEVICES.laptop ? 100 : 0}
+          zIndex={1}
+        />
+        <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={0}>
+          <Typography variant="title" size="xl">
+            CONTACT
+          </Typography>
+        </ContactContent>
+      </ContactContainer>
+    </>
   );
 }
 
 Contact.defaultProps = {
-  slideId: 0,
+  setSlideView: null,
+  slideId: '',
   isTransitionSlide: false,
 };
 
 Contact.propTypes = {
-  slideId: PropTypes.number,
+  setSlideView: PropTypes.func,
+  slideId: PropTypes.string,
   isTransitionSlide: PropTypes.bool,
 };

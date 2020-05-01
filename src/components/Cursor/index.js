@@ -46,7 +46,7 @@ const pulse = color => keyframes`
     box-shadow: 0 0 0 0 rgba(${hexToRgb(color).toString()}, 0.4);
   }
   70% {
-      box-shadow: 0 0 0 ${MOUSE_TRACKER_SIZE[0] / 2}px rgba(${hexToRgb(
+      box-shadow: 0 0 0 ${MOUSE_TRACKER_SIZE[0]}px rgba(${hexToRgb(
   color,
 ).toString()}, 0);
   }
@@ -130,7 +130,7 @@ const Cursor = ({ color }) => {
           transform: xy.interpolate(followTranslate),
           width: size.interpolate(width => `${width}px`),
           height: size.interpolate((_, height) => `${height}px`),
-          borderRadius: isMagnet ? 0 : '50%',
+          borderRadius: isMagnet ? '35px' : '50%',
         }}
       />
     </AnimatedContainer>
