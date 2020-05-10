@@ -1,11 +1,12 @@
 {
   "name": "fabiengreard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --open --config webpack.dev.config.js",
     "lint": "eslint src",
-    "prettier": "prettier --write 'src/**/**/*.{js,json,css,md}'"
+    "prettier": "prettier --write 'src/**/**/*.{js,json,css,md}'",
+    "bumb": "standard-version --no-verify && git push --follow-tags"
   },
   "repository": "https://github.com/FabienGreard/fabiengreard.git",
   "author": "fabiengreard <grd.fabien@gmail.com>",
@@ -33,7 +34,8 @@
     "styled-components": "^5.0.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "standard-version": "^8.0.0"
   },
   "dependencies": {
     "react": "^16.13.1",
