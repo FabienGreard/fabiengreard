@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/FabienGreard/fabiengreard/compare/v0.0.3...v0.0.4) (2020-05-10)
+
+
+### Features
+
+* navigation component ([997ab29](https://github.com/FabienGreard/fabiengreard/commit/997ab2982921a405f7683e0dcae56df15059dc9a))
+* title home component ([53f3c37](https://github.com/FabienGreard/fabiengreard/commit/53f3c37986cc9305226b922dce587f5c1325f36c))
+
+
+### Bug Fixes
+
+* revert changelog ([7a024a7](https://github.com/FabienGreard/fabiengreard/commit/7a024a740ee687d42db9d16114faf65f80bdd06c))
+
 ### [0.0.2](https://github.com/FabienGreard/fabiengreard/compare/v2.0.0...v0.0.2) (2020-05-10)
 
 ### Features
