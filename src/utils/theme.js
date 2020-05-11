@@ -40,19 +40,15 @@ const theme = {
 export default theme;
 export const COLORS = theme.colors;
 export const DEVICES = theme.devices;
-export const MEDIA = Object.entries(theme.devices).reduce((acc, cur) => {
-  const [key, value] = cur;
-  return { ...acc, [key]: `(min-width: ${value}px)` };
-}, {});
 
 export const scaleMargin = (width, margin = 50) => (margin * width) / 1440;
 export const scale = (width, fontSize = 200) =>
   (fontSize * width) / (1440 - scaleMargin(1440));
 
-export const generateCssMedia = fn =>
+export const generateCssMedia = (fn, mediaRule = 'min-width') =>
   Object.keys(DEVICES).map(
     key => css`
-      @media ${MEDIA[key]} {
+      @media (${`${mediaRule}: ${DEVICES[key]}px`}) {
         ${fn(DEVICES[key])};
       }
     `,

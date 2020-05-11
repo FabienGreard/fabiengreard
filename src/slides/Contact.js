@@ -7,7 +7,7 @@ import Typography from '../components/Typography';
 import { Container, ParalaxContainer } from '../components/Layout';
 import { useCursorColor } from '../components/Cursor';
 
-import { COLORS, MEDIA, DEVICES } from '../utils/theme';
+import { COLORS, DEVICES } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 import useWindowSize from '../utils/useWindowSize';
 const colorsBackground = [COLORS.black];
@@ -16,16 +16,16 @@ const ContactContainer = styled(Container)`
   min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   background-color: ${props => props.backgroundColor || props.theme.background};
 
-  @media ${MEDIA.laptopL} {
+  @media (min-width: ${`${DEVICES.laptopL}px`}) {
     min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
   }
 
-  @media (orientation: landscape) {
+  @media (max-width: ${`${DEVICES.laptop}px`}) and (orientation: landscape) {
     min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
+  }
 
-    @media ${MEDIA.laptopL} {
-      min-height: ${props => (props.isLarge ? '130vw' : '100vw')};
-    }
+  @media (min-aspect-ratio: 2/1) {
+    min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
   }
 `;
 

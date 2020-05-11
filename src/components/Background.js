@@ -6,7 +6,7 @@ import { useCursorColor } from '../components/Cursor';
 
 import { Container } from '../components/Layout';
 
-import { COLORS, MEDIA } from '../utils/theme';
+import { COLORS, DEVICES } from '../utils/theme';
 import useForceUpdate from '../utils/useForceUpdate';
 import random from '../utils/random';
 
@@ -17,16 +17,16 @@ const BackgroundContainer = styled(Container)`
   max-width: 100%;
   background-color: ${props => props.background || 'transparent'};
 
-  @media ${MEDIA.laptopL} {
+  @media (min-width: ${`${DEVICES.laptopL}px`}) {
     min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
   }
 
-  @media (orientation: landscape) {
+  @media (max-width: ${`${DEVICES.laptop}px`}) and (orientation: landscape) {
     min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
+  }
 
-    @media ${MEDIA.laptopL} {
-      min-height: ${props => (props.isLarge ? '130vw' : '100vw')};
-    }
+  @media (min-aspect-ratio: 2/1) {
+    min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
   }
 `;
 
@@ -34,11 +34,11 @@ const Wave = styled.svg`
   position: absolute;
   bottom: ${props => `${props.bottom + 40}px`};
 
-  @media ${MEDIA.tablet} {
+  @media (min-width: ${`${DEVICES.tablet}px`}) {
     bottom: ${props => `${props.bottom + 20}px`};
   }
 
-  @media ${MEDIA.laptop} {
+  @media (min-width: ${`${DEVICES.laptop}px`}) {
     bottom: ${props => `${props.bottom}px`};
   }
 `;
@@ -50,11 +50,11 @@ const WaveGap = styled.div`
   height: ${props => `${props.height + 40}px`};
   background-color: ${props => props.color};
 
-  @media ${MEDIA.tablet} {
+  @media (min-width: ${`${DEVICES.tablet}px`}) {
     height: ${props => `${props.height + 20}px`};
   }
 
-  @media ${MEDIA.laptop} {
+  @media (min-width: ${`${DEVICES.laptop}px`}) {
     height: ${props => `${props.height}px`};
   }
 `;
