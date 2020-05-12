@@ -32,7 +32,7 @@ const TitleInline = ({ text, style, isSubtitle, isRandomColor }) => {
 
   return (
     <div style={{ position: 'absolute', ...style }}>
-      <Typography variant="title" fontSize={200} noMargin>
+      <Typography variant="title" fontSize={200} noMargin isScaling>
         {isRandomColor ? RandomColorLetterFromText : text}
       </Typography>
       {media >= DEVICES.laptop && isSubtitle && (

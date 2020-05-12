@@ -15,7 +15,7 @@ import {
 } from './contexts';
 import { useCursorColor, useCursorBoundingMagnet } from './hooks';
 
-const MOUSE_TRACKER_SIZE = [30, 30];
+const MOUSE_TRACKER_SIZE = [40, 40];
 
 const Container = styled.div`
   position: fixed;
@@ -60,6 +60,11 @@ const Circle = styled.div`
   border: 1px solid ${selectColor};
   transition: border-color 0.5s;
   box-sizing: border-box;
+  ${props =>
+    props.isHover &&
+    css`
+      background: ${props => `rgba(${hexToRgb(selectColor(props))}, 0.4)`};
+    `};
   ${props =>
     props.isAnimated &&
     css`
@@ -116,25 +121,29 @@ const Cursor = ({ color }) => {
   const followTranslate = (x, y) =>
     `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`;
 
-  return (
-    <AnimatedContainer style={{ opacity }}>
-      <Pointer
-        color={colorContext || color}
-        style={{
-          transform: `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`,
-        }}
-      />
-      <AnimatedCircle
-        color={colorContext || color}
-        isAnimated={isHover}
-        style={{
-          transform: xy.interpolate(followTranslate),
-          width: size.interpolate(width => `${width}px`),
-          height: size.interpolate((_, height) => `${height}px`),
-          borderRadius: isMagnet ? '35px' : '50%',
-        }}
-      />
-    </AnimatedContainer>
+  return useMemo(
+    () => (
+      <AnimatedContainer style={{ opacity }}>
+        <Pointer
+          color={colorContext || color}
+          style={{
+            transform: `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`,
+          }}
+        />
+        <AnimatedCircle
+          color={colorContext || color}
+          isAnimated={isMagnet && isHover}
+          isHover={!isMagnet && isHover}
+          style={{
+            transform: xy.interpolate(followTranslate),
+            width: size.interpolate(width => `${width}px`),
+            height: size.interpolate((_, height) => `${height}px`),
+            borderRadius: isMagnet ? '35px' : '50%',
+          }}
+        />
+      </AnimatedContainer>
+    ),
+    [color, colorContext, isHover, isMagnet, opacity, size, x, xy, y],
   );
 };
 

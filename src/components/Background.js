@@ -346,7 +346,7 @@ const GeneratePolygons = ({ numberOfPolygons, paralaxRate }) => {
       </PolygonsContainer>
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [ArrayOfPolygonsID],
+    [ArrayOfPolygonsID, width],
   );
 };
 

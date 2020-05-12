@@ -1,15 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+
+import useRequestAnimationFrame from './useRequestAnimationFrame';
+import { useThrottle } from './useDelayed';
 
 const useMouseCoords = (element = window) => {
-  const [{ x, y }, setCoords] = useState({ x: 0, y: 0 });
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  const animate = useRequestAnimationFrame();
+
+  const { x, y } = useThrottle(coords, 60);
+
+  const handler = useCallback(
+    ({ clientX: x, clientY: y }) => animate(() => setCoords({ x, y })),
+    [animate],
+  );
 
   useEffect(() => {
-    const handler = ({ clientX: x, clientY: y }) => setCoords({ x, y });
-
     element.addEventListener('mousemove', handler);
 
     return () => element.removeEventListener('mousemove', handler);
-  }, [element]);
+  }, [element, handler]);
 
   return { x, y };
 };

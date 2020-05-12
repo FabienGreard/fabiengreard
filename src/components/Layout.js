@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { useSpring, animated } from 'react-spring';
@@ -47,9 +47,11 @@ export const ParalaxContainer = ({
   children,
   paralaxRate,
   isHorizontalParalax,
+  isRelative,
   ...props
 }) => {
-  const [x, y] = useParalax();
+  const ref = useRef();
+  const [x, y] = useParalax(isRelative ? ref : null);
 
   const { setIsBlockedHover } = useContext(MouseHoverContext);
 
@@ -70,7 +72,10 @@ export const ParalaxContainer = ({
   );
 
   return (
-    <AnimatedContainer style={{ transform: interpolateParalax }} {...props}>
+    <AnimatedContainer
+      ref={ref}
+      style={{ transform: interpolateParalax }}
+      {...props}>
       {children}
     </AnimatedContainer>
   );
@@ -103,12 +108,14 @@ Container.propTypes = {
 ParalaxContainer.defaultProps = {
   isHorizontalParalax: false,
   paralaxRate: 0.25,
+  isRelative: false,
   ...Container.defaultProps,
 };
 
 ParalaxContainer.propTypes = {
   isHorizontalParalax: PropTypes.bool,
   paralaxRate: PropTypes.number,
+  isRelative: PropTypes.bool,
   ...Container.propTypes,
 };
 

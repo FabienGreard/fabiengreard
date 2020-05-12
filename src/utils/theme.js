@@ -13,11 +13,11 @@ const theme = {
   },
   text: {
     fontSize: {
-      xs: '0.5em',
-      sm: '0.75em',
-      md: '1em',
-      lg: '2em',
-      xl: '3em',
+      xs: 8,
+      sm: 12,
+      md: 16,
+      lg: 32,
+      xl: 64,
     },
     fontWeight: {
       extraLight: 100,
@@ -42,9 +42,10 @@ export default theme;
 export const COLORS = theme.colors;
 export const DEVICES = theme.devices;
 
-export const scaleMargin = (width, margin = 50) => (margin * width) / 1440;
-export const scale = (width, value = 200) =>
-  (value * width) / (1440 - scaleMargin(1440));
+export const scaleMargin = (width, margin = 50, baseDevice = DEVICES.laptopL) =>
+  (margin * width) / baseDevice;
+export const scale = (width, value = 200, baseDevice = DEVICES.laptopL) =>
+  (value * width) / (baseDevice - scaleMargin(baseDevice));
 
 export const generateCssMedia = (fn, mediaRule = 'min-width') =>
   Object.keys(DEVICES).map(

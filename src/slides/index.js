@@ -24,6 +24,7 @@ export default function Slides() {
       {media > DEVICES.tablet && (
         <Navigation isBackground={slideView !== 'Bio'} />
       )}
+
       {SLIDES.map((slide, i) =>
         React.createElement(slide, {
           setSlideView,

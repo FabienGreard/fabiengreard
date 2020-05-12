@@ -1,16 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
 
-export const useThrottle = (value, delay) => {
-  const [throttledValue, setThrottledValue] = useState(value);
-  const timer = useRef(Date.now());
+const perf = typeof performance !== 'undefined' ? performance : Date;
+const now = () => perf.now();
+
+export const useThrottle = (value, fps) => {
+  const [throttledValue, setThrottledValue] = useState(() => value);
+  const timer = useRef(now());
+
+  const delay = (fps = 1000 / fps);
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      if (Date.now() - timer.current >= delay) {
+      if (now() - timer.current >= delay) {
         setThrottledValue(value);
-        timer.current = Date.now();
+        timer.current = now();
       }
-    }, delay - (Date.now() - timer.current));
+    }, delay - (now() - timer.current));
     return () => clearTimeout(handler);
   }, [value, delay]);
 

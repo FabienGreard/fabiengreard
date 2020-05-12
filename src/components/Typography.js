@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 // Load fonts
 import '../../static/fonts/index.css';
 
-import { scale, generateCssMedia } from '../utils/theme';
+import { DEVICES, scale, generateCssMedia } from '../utils/theme';
 
 const TypographyProps = props => css`
   font-family: 'Nunito';
@@ -14,12 +14,22 @@ const TypographyProps = props => css`
     : props.theme.colors.black};
   font-weight: ${props.theme.text.fontWeight.default};
   font-style: normal;
-  font-size: ${props.fontSize
-    ? `${props.fontSize}px`
-    : props.theme.text.fontSize.md};
+  font-size: ${`${props.fontSize || props.theme.text.fontSize.md}px`};
+
+  @media (max-width: ${`${DEVICES.tablet}px`}) {
+    font-size: ${props => `${props.fontSize * 0.8}px`};
+  }
+
+  @media (max-width: ${`${DEVICES.mobileL}px`}) {
+    font-size: ${props => `${props.fontSize * 0.7}px`};
+  }
+
+  @media (max-width: ${`${DEVICES.mobileM}px`}) {
+    font-size: ${props => `${props.fontSize * 0.6}px`};
+  }
 
   ${props =>
-    typeof props.fontSize !== 'string' &&
+    props.isScaling &&
     generateCssMedia(
       media => css`
         font-size: ${`${scale(media, props.fontSize)}px`};

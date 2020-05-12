@@ -2,8 +2,8 @@ import { useState, useLayoutEffect } from 'react';
 
 const useWindowSize = () => {
   const getSize = () => ({
-    width: window.outerWidth,
-    height: window.outerHeight,
+    width: Math.min(window.outerWidth, window.innerWidth),
+    height: Math.min(window.outerHeight, window.innerHeight),
   });
 
   const [size, setSize] = useState(getSize);
