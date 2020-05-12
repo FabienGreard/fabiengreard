@@ -43,8 +43,8 @@ export const COLORS = theme.colors;
 export const DEVICES = theme.devices;
 
 export const scaleMargin = (width, margin = 50) => (margin * width) / 1440;
-export const scale = (width, fontSize = 200) =>
-  (fontSize * width) / (1440 - scaleMargin(1440));
+export const scale = (width, value = 200) =>
+  (value * width) / (1440 - scaleMargin(1440));
 
 export const generateCssMedia = (fn, mediaRule = 'min-width') =>
   Object.keys(DEVICES).map(

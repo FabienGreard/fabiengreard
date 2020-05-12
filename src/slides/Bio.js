@@ -37,7 +37,7 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
 
   const ref = useRef();
-  const isInViewport = useIntersectionObserver(ref, { threshold: 0.4 });
+  const isInViewport = useIntersectionObserver(ref, { threshold: 0.6 });
 
   useEffect(() => {
     if (isInViewport) {
@@ -51,7 +51,8 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
       isCenter
       isLarge={isTransitionSlide}
       backgroundColor={COLORS.pink}
-      onMouseOver={() => handleMouseColor('white')}>
+      onMouseOver={() => handleMouseColor('white')}
+      zIndex={2}>
       <Background
         background={COLORS.pink}
         colors={colorsBackground}

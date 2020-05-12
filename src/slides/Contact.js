@@ -2,17 +2,18 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Background from '../components/Background';
+import Background, { BackgroundPolygon } from '../components/Background';
 import Typography from '../components/Typography';
 import { Container, ParalaxContainer } from '../components/Layout';
 import { useCursorColor } from '../components/Cursor';
 
 import { COLORS, DEVICES } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
-import useWindowSize from '../utils/useWindowSize';
+import useMedia from '../utils/useMedia';
 const colorsBackground = [COLORS.black];
 
 const ContactContainer = styled(Container)`
+  position: relative;
   min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   background-color: ${props => props.backgroundColor || props.theme.background};
 
@@ -35,7 +36,7 @@ const ContactContent = styled(ParalaxContainer)`
 
 export default function Contact({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
-  const { width } = useWindowSize();
+  const media = useMedia();
 
   const ref = useRef();
   const isInViewport = useIntersectionObserver(ref, { threshold: 0.4 });
@@ -53,13 +54,20 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
       isCenter
       isLarge={isTransitionSlide}
       backgroundColor={COLORS.darkBackground}
-      onMouseEnter={() => handleMouseColor('pink')}>
+      onMouseEnter={() => handleMouseColor('pink')}
+      zIndex={3}>
       <Background
         colors={colorsBackground}
         numberOfWaves={1}
         isLarge={isTransitionSlide}
-        offset={width <= DEVICES.laptop ? 100 : 0}
+        offset={media >= DEVICES.tablet ? 0 : 100}
         zIndex={1}
+      />
+      <BackgroundPolygon
+        isLarge={isTransitionSlide}
+        paralaxRate={-0.15}
+        zIndex={0}
+        numberOfPolygons={media >= DEVICES.tablet ? 20 : 10}
       />
       <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={0}>
         <Typography variant="title" size="xl">

@@ -20,11 +20,15 @@ const LETTER_COLORS = [COLORS.yellow, COLORS.pink, COLORS.blue, COLORS.green];
 const TitleInline = ({ text, style, isSubtitle, isRandomColor }) => {
   const media = useMedia();
 
-  const RandomColorLetterFromText = Object.values(text).map((letter, i) => (
-    <span key={i + letter} style={{ color: LETTER_COLORS[random(4)] }}>
-      {letter}
-    </span>
-  ));
+  const RandomColorLetterFromText = useMemo(
+    () =>
+      Object.values(text).map((letter, i) => (
+        <span key={i + letter} style={{ color: LETTER_COLORS[random(4)] }}>
+          {letter}
+        </span>
+      )),
+    [text],
+  );
 
   return (
     <div style={{ position: 'absolute', ...style }}>

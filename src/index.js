@@ -14,14 +14,18 @@ import Cursor, {
 } from './components/Cursor';
 
 import Slides from './slides';
+import useMedia from './utils/useMedia';
+import { DEVICES } from './utils/theme';
 
 function App() {
+  const media = useMedia();
+
   return (
     <MouseHoverProvider>
       <CursorColorProvider>
         <ThemeProvider theme={theme}>
           <Layout>
-            <Cursor color="pink" />
+            {media >= DEVICES.laptop && <Cursor color="pink" />}
             <SEO />
             <Slides />
           </Layout>

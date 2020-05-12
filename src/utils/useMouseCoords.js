@@ -8,7 +8,7 @@ const useMouseCoords = (element = window) => {
 
     element.addEventListener('mousemove', handler);
 
-    return () => element.removeEventListener(handler);
+    return () => element.removeEventListener('mousemove', handler);
   }, [element]);
 
   return { x, y };

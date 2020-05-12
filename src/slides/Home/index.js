@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-import Background from '../../components/Background';
+import Background, { BackgroundPolygon } from '../../components/Background';
 
 import { Container, ParalaxContainer } from '../../components/Layout';
 import { useCursorColor } from '../../components/Cursor';
@@ -21,6 +21,7 @@ import Title from './Title';
 const colorsBackground = [COLORS.darkBackground, COLORS.pink];
 
 const HomeContainer = styled(Container)`
+  position: relative;
   height: 100%;
   min-height: ${props => (props.isLarge ? '120vh' : '90vh')};
   background-color: ${props => props.backgroundColor || props.theme.background};
@@ -77,9 +78,15 @@ export default function Home({ isTransitionSlide, setSlideView }) {
         colors={colorsBackground}
         numberOfWaves={2}
         isLarge={isTransitionSlide}
-        zIndex={1}
+        zIndex={2}
       />
-      <HomeContent paralaxRate={0.5} zIndex={0}>
+      <BackgroundPolygon
+        isLarge={isTransitionSlide}
+        paralaxRate={-0.5}
+        zIndex={0}
+        numberOfPolygons={media >= DEVICES.tablet ? 30 : 15}
+      />
+      <HomeContent paralaxRate={0.5} zIndex={1}>
         <Title text="fabien gréard" />
       </HomeContent>
     </HomeContainer>

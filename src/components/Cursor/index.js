@@ -71,6 +71,7 @@ const AnimatedCircle = animated(Circle);
 
 const Cursor = ({ color }) => {
   const { x, y } = useMouseCoords();
+
   const { isHover, isMagnet, magnetCoords, magnetSize } = useContext(
     MouseHoverContext,
   );
