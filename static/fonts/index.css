@@ -126,7 +126,7 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: local('Montserrat-Thin'), local('Montserrat-Thin'),
+  src: local('Montserrat Thin'), local('Montserrat-Thin'),
     url('Montserrat-Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
@@ -138,6 +138,24 @@
   src: local('Montserrat ThinItalic'), local('Montserrat-ThinItalic'),
     url('Montserrat-ThinItalic.ttf') format('truetype');
   font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'),
+    url('Montserrat-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat ExtraBoldItalic'), local('Montserrat-ExtraBoldItalic'),
+    url('Montserrat-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
   font-style: italic;
   font-display: swap;
 }

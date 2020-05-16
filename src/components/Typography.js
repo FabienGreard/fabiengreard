@@ -14,7 +14,9 @@ const TypographyProps = props => css`
     : props.theme.colors.black};
   font-weight: ${props.theme.text.fontWeight.default};
   font-style: normal;
-  font-size: ${props.fontSize || props.theme.text.fontSize.md};
+  font-size: ${props.fontSize
+    ? `${props.fontSize}px`
+    : props.theme.text.fontSize.md};
 
   ${props =>
     typeof props.fontSize !== 'string' &&
@@ -49,10 +51,15 @@ const TypographyProps = props => css`
   css`
     font-weight: ${props.theme.text.fontWeight.extraLight};
   `};
+
+  ${props.isExtraBold &&
+  css`
+    font-weight: ${props.theme.text.fontWeight.extraBold};
+  `};
 `;
 
 const title = styled.h1.attrs(props => ({
-  isExtraLight: true,
+  isExtraBold: true,
   fontSize:
     props.fontSize ||
     props.theme.text.fontSize[props.size] ||

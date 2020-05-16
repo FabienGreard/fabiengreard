@@ -33,7 +33,7 @@ const ContactContent = styled(ParalaxContainer)`
   height: 100%;
 `;
 
-export default function Contact({ isTransitionSlide, slideId, setSlideView }) {
+export default function Contact({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
   const { width } = useWindowSize();
 
@@ -48,28 +48,25 @@ export default function Contact({ isTransitionSlide, slideId, setSlideView }) {
   }, [isInViewport, setSlideView]);
 
   return (
-    <>
-      <a id={slideId} />
-      <ContactContainer
-        ref={ref}
-        isCenter
+    <ContactContainer
+      ref={ref}
+      isCenter
+      isLarge={isTransitionSlide}
+      backgroundColor={COLORS.darkBackground}
+      onMouseEnter={() => handleMouseColor('pink')}>
+      <Background
+        colors={colorsBackground}
+        numberOfWaves={1}
         isLarge={isTransitionSlide}
-        backgroundColor={COLORS.darkBackground}
-        onMouseEnter={() => handleMouseColor('pink')}>
-        <Background
-          colors={colorsBackground}
-          numberOfWaves={1}
-          isLarge={isTransitionSlide}
-          offset={width <= DEVICES.laptop ? 100 : 0}
-          zIndex={1}
-        />
-        <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={0}>
-          <Typography variant="title" size="xl">
-            CONTACT
-          </Typography>
-        </ContactContent>
-      </ContactContainer>
-    </>
+        offset={width <= DEVICES.laptop ? 100 : 0}
+        zIndex={1}
+      />
+      <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={0}>
+        <Typography variant="title" size="xl">
+          CONTACT
+        </Typography>
+      </ContactContent>
+    </ContactContainer>
   );
 }
 

@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { useSpring, animated } from 'react-spring';
+
+import { MouseHoverContext } from '../components/Cursor';
 
 import useParalax from '../utils/useParalax';
 
@@ -49,11 +51,17 @@ export const ParalaxContainer = ({
 }) => {
   const [x, y] = useParalax();
 
-  const [{ xy }, set] = useSpring(() => ({ xy: [x, y] }));
+  const { setIsBlockedHover } = useContext(MouseHoverContext);
+
+  const [{ xy }, set] = useSpring(() => ({
+    xy: [x, y],
+    onRest: () => setIsBlockedHover(false),
+  }));
 
   useEffect(() => {
+    setIsBlockedHover(true);
     set({ xy: [x, y] });
-  }, [set, x, y]);
+  }, [set, setIsBlockedHover, x, y]);
 
   const interpolateParalax = xy.interpolate((x, y) =>
     isHorizontalParalax

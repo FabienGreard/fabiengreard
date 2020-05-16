@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
@@ -10,16 +10,26 @@ import {
   generateCssMedia,
   scaleMargin,
   scale,
+  COLORS,
 } from '../../utils/theme';
 import useMedia from '../../utils/useMedia';
+import random from '../../utils/random';
 
-const TitleInline = ({ text, style, isSubtitle }) => {
+const LETTER_COLORS = [COLORS.yellow, COLORS.pink, COLORS.blue, COLORS.green];
+
+const TitleInline = ({ text, style, isSubtitle, isRandomColor }) => {
   const media = useMedia();
+
+  const RandomColorLetterFromText = Object.values(text).map((letter, i) => (
+    <span key={i + letter} style={{ color: LETTER_COLORS[random(4)] }}>
+      {letter}
+    </span>
+  ));
 
   return (
     <div style={{ position: 'absolute', ...style }}>
       <Typography variant="title" fontSize={200} noMargin>
-        {text}
+        {isRandomColor ? RandomColorLetterFromText : text}
       </Typography>
       {media >= DEVICES.laptop && isSubtitle && (
         <Typography
@@ -37,9 +47,11 @@ TitleInline.defaultProps = {
   text: '',
   style: null,
   isSubtitle: false,
+  isRandomColor: false,
 };
 
 TitleInline.propTypes = {
+  isRandomColor: PropTypes.bool,
   text: PropTypes.string,
   style: PropTypes.object,
   isSubtitle: PropTypes.bool,
@@ -75,58 +87,74 @@ const SubtitleContainer = styled(ParalaxContainer)`
   height: 100%;
 `;
 
-export default function Title() {
+const DualText = ({ text, isRightContainer, ...props }) => {
   const media = useMedia();
 
-  const DualText = ({ text, isRightContainer, ...props }) => {
-    const media = useMedia();
-
-    const scaleOffSet = media => scale(media, 20);
-
-    return (
-      <DualContainer {...props}>
-        <TitleInline
-          text={text}
-          style={isRightContainer ? { right: scaleOffSet(media) } : { left: 0 }}
-        />
-        <TitleInline
-          text={text}
-          style={
-            isRightContainer
-              ? { top: scaleOffSet(media), right: 0 }
-              : { top: scaleOffSet(media), left: scaleOffSet(media) }
-          }
-          isSubtitle={isRightContainer}
-        />
-      </DualContainer>
-    );
-  };
+  const scaleOffSet = media => scale(media, 20);
 
   return (
-    <TitleContainer isColumn>
-      <>
-        <DualText text="FABIEN" paralaxRate={-0.2} isHorizontalParalax />
-        <DualText
-          text="GRÉARD"
-          paralaxRate={0.5}
+    <DualContainer {...props}>
+      <TitleInline
+        text={text}
+        style={isRightContainer ? { right: scaleOffSet(media) } : { left: 0 }}
+      />
+      <TitleInline
+        text={text}
+        isRandomColor
+        style={
           isRightContainer
-          isHorizontalParalax
-        />
-      </>
-      {media < DEVICES.laptop && (
-        <SubtitleContainer paralaxRate={-0.6}>
-          <Typography
-            variant="subtitle"
-            noMargin
-            style={{
-              textAlign: 'center',
-              fontWeight: 'normal',
-            }}>
-            👋 Hello, I’m a JavaScript Developer !
-          </Typography>
-        </SubtitleContainer>
-      )}
-    </TitleContainer>
+            ? { top: scaleOffSet(media), right: 0 }
+            : { top: scaleOffSet(media), left: scaleOffSet(media) }
+        }
+        isSubtitle={isRightContainer}
+      />
+    </DualContainer>
+  );
+};
+
+DualText.defaultProps = {
+  text: '',
+  isRightContainer: false,
+};
+
+DualText.propTypes = {
+  text: PropTypes.string,
+  isRightContainer: PropTypes.bool,
+};
+
+export default function Title({ text }) {
+  const media = useMedia();
+
+  const [leftText, rightText] = text.toUpperCase().split(' ');
+
+  return useMemo(
+    () => (
+      <TitleContainer isColumn>
+        <>
+          <DualText text={leftText} paralaxRate={-0.2} isHorizontalParalax />
+          <DualText
+            text={rightText}
+            paralaxRate={0.5}
+            isRightContainer
+            isHorizontalParalax
+          />
+        </>
+        {media < DEVICES.laptop && (
+          <SubtitleContainer paralaxRate={-0.6}>
+            <Typography
+              variant="subtitle"
+              noMargin
+              style={{
+                textAlign: 'center',
+                fontWeight: 'normal',
+              }}>
+              👋 Hello, I’m a JavaScript Developer !
+            </Typography>
+          </SubtitleContainer>
+        )}
+      </TitleContainer>
+    ),
+    [leftText, rightText, media],
   );
 }
 

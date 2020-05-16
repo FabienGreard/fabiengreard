@@ -117,12 +117,14 @@ const GenerateWaves = ({
 }) => {
   const handleMouseColor = useCursorColor();
 
-  const ArrayOfWavesID = useMemo(() => {
-    return Array.from(
-      Array(numberOfWaves),
-      () => Math.random().toString(16).split('.')[1],
-    );
-  }, [numberOfWaves]);
+  const ArrayOfWavesID = useMemo(
+    () =>
+      Array.from(
+        Array(numberOfWaves),
+        () => Math.random().toString(16).split('.')[1],
+      ),
+    [numberOfWaves],
+  );
 
   const randomPoint = (max = 180, min = 0) =>
     `${random(max, min)},${random(max, min)}`;

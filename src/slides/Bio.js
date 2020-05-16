@@ -33,7 +33,7 @@ const BioContent = styled(ParalaxContainer)`
   height: 100%;
 `;
 
-export default function Bio({ isTransitionSlide, slideId, setSlideView }) {
+export default function Bio({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
 
   const ref = useRef();
@@ -46,38 +46,33 @@ export default function Bio({ isTransitionSlide, slideId, setSlideView }) {
   }, [isInViewport, setSlideView]);
 
   return (
-    <>
-      <a id={slideId} />
-      <BioContainer
-        ref={ref}
-        isCenter
+    <BioContainer
+      ref={ref}
+      isCenter
+      isLarge={isTransitionSlide}
+      backgroundColor={COLORS.pink}
+      onMouseOver={() => handleMouseColor('white')}>
+      <Background
+        background={COLORS.pink}
+        colors={colorsBackground}
+        numberOfWaves={1}
         isLarge={isTransitionSlide}
-        backgroundColor={COLORS.pink}
-        onMouseOver={() => handleMouseColor('white')}>
-        <Background
-          background={COLORS.pink}
-          colors={colorsBackground}
-          numberOfWaves={1}
-          isLarge={isTransitionSlide}
-        />
-        <BioContent paralaxRate={-0.2} isCenter isColumn>
-          <Typography variant="title" size="xl">
-            BIO
-          </Typography>
-        </BioContent>
-      </BioContainer>
-    </>
+      />
+      <BioContent paralaxRate={-0.2} isCenter isColumn>
+        <Typography variant="title" size="xl">
+          BIO
+        </Typography>
+      </BioContent>
+    </BioContainer>
   );
 }
 
 Bio.defaultProps = {
   setSlideView: null,
-  slideId: '',
   isTransitionSlide: false,
 };
 
 Bio.propTypes = {
   setSlideView: PropTypes.func,
-  slideId: PropTypes.string,
   isTransitionSlide: PropTypes.bool,
 };

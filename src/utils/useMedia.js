@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 import { DEVICES } from './theme';
 import useWindowSize from './useWindowSize';
@@ -14,7 +14,7 @@ const useMedia = (initial = 1440) => {
       Math.abs(number - a) < Math.abs(number - b) ? a : b,
     );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setMedia(closestNumber(width));
   }, [width]);
 

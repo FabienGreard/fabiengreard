@@ -10,6 +10,7 @@ export const MouseHoverProvider = ({
   children,
 }) => {
   const [isHover, setIsHover] = useState(initialContext);
+  const [isBlockedHover, setIsBlockedHover] = useState(false);
   const [magnetBounding, setMagnetBounding] = useState(null);
 
   useEffect(() => {
@@ -24,7 +25,10 @@ export const MouseHoverProvider = ({
     <MouseHoverContext.Provider
       value={{
         isHover,
-        setIsHover,
+        setIsBlockedHover,
+        setIsHover: isHover => {
+          setIsHover(isBlockedHover ? false : isHover);
+        },
         isMagnet: !!magnetBounding,
         magnetCoords: magnetBounding ? [x + width / 2, y + height / 2] : [],
         magnetSize: [width, height],

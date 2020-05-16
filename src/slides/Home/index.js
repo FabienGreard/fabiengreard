@@ -48,7 +48,7 @@ const HomeContent = styled(ParalaxContainer)`
   )};
 `;
 
-export default function Home({ isTransitionSlide, slideId, setSlideView }) {
+export default function Home({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
   const media = useMedia();
 
@@ -66,38 +66,32 @@ export default function Home({ isTransitionSlide, slideId, setSlideView }) {
   }, [isInViewport, setSlideView]);
 
   return (
-    <>
-      <a id={slideId} />
-      <HomeContainer
-        ref={ref}
-        id={slideId}
-        isCenter
+    <HomeContainer
+      ref={ref}
+      isCenter
+      isLarge={isTransitionSlide}
+      backgroundColor={COLORS.background}
+      onMouseOver={() => handleMouseColor('pink')}>
+      <Background
+        offset={media >= DEVICES.tablet ? -80 : 60}
+        colors={colorsBackground}
+        numberOfWaves={2}
         isLarge={isTransitionSlide}
-        backgroundColor={COLORS.background}
-        onMouseOver={() => handleMouseColor('pink')}>
-        <Background
-          offset={media >= DEVICES.tablet ? -80 : 60}
-          colors={colorsBackground}
-          numberOfWaves={2}
-          isLarge={isTransitionSlide}
-          zIndex={1}
-        />
-        <HomeContent paralaxRate={0.5} zIndex={0}>
-          <Title />
-        </HomeContent>
-      </HomeContainer>
-    </>
+        zIndex={1}
+      />
+      <HomeContent paralaxRate={0.5} zIndex={0}>
+        <Title text="fabien gréard" />
+      </HomeContent>
+    </HomeContainer>
   );
 }
 
 Home.defaultProps = {
   setSlideView: null,
-  slideId: '',
   isTransitionSlide: false,
 };
 
 Home.propTypes = {
   setSlideView: PropTypes.func,
-  slideId: PropTypes.string,
   isTransitionSlide: PropTypes.bool,
 };

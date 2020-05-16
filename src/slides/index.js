@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Container } from '../components/Layout';
-import Navigation from '../components/Navigation';
+import Navigation, { WithAnchor } from '../components/Navigation';
 
 import Home from './Home';
 import Bio from './Bio';
@@ -13,7 +13,7 @@ import { DEVICES } from '../utils/theme';
 
 const SlideContainer = styled(Container)``;
 
-const SLIDES = [Home, Bio, Contact];
+const SLIDES = [Home, Bio, Contact].map(WithAnchor);
 
 export default function Slides() {
   const [slideView, setSlideView] = useState();
@@ -28,7 +28,6 @@ export default function Slides() {
         React.createElement(slide, {
           setSlideView,
           key: slide.name,
-          slideId: slide.name.toLowerCase(),
           isTransitionSlide: i % 3 === 1,
         }),
       )}

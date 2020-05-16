@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useContext, useRef } from 'react';
+import { useLayoutEffect, useCallback, useContext, useRef } from 'react';
 
 import { MouseHoverContext, CursorColorContext } from './contexts';
 
@@ -9,40 +9,39 @@ export const useCursorBoundingMagnet = () => {
 
   const ref = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ref.current) return;
 
     const node = ref.current;
-    const events = ['mouseenter', 'mouseleave'];
 
-    const handleMouseEnter = e => {
-      setIsHover(e.target.id);
+    const handleMouseEnter = () => {
+      setIsHover(node.id);
     };
 
     const handleMouseLeave = () => setIsHover(false);
 
     const handleFunction = {
-      mouseenter: handleMouseEnter,
+      mouseover: handleMouseEnter,
       mouseleave: handleMouseLeave,
     };
 
     if (!node) return;
 
     if (node && setIsHover) {
-      events.forEach(event =>
-        node.addEventListener(event, handleFunction[event]),
+      Object.entries(handleFunction).forEach(([key, event]) =>
+        node.addEventListener(key, event),
       );
     }
 
     return () => {
       if (!node) return;
-      events.forEach(event =>
-        node.removeEventListener(event, handleFunction[event]),
+      Object.entries(handleFunction).forEach(([key, event]) =>
+        node.removeEventListener(key, event),
       );
     };
-  }, [ref, setIsHover]);
+  }, [isHover, ref, setIsHover]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ref.current) return;
 
     const node = ref.current;

@@ -41,7 +41,7 @@ const LinkContainer = styled.a`
 const Link = ({ href, children, backgroundColor, id }) => {
   const setCursorColor = useCursorColor();
 
-  const ref = useCursorBoundingMagnet(false);
+  const ref = useCursorBoundingMagnet();
 
   return (
     <LinkContainer
@@ -49,7 +49,7 @@ const Link = ({ href, children, backgroundColor, id }) => {
       id={id}
       backgroundColor={backgroundColor}
       href={href}
-      onMouseEnter={() => setCursorColor(backgroundColor)}>
+      onMouseOver={() => setCursorColor(backgroundColor)}>
       <Typography noMargin fontSize={24}>
         {children}
       </Typography>
@@ -92,4 +92,19 @@ Navigation.defaultProps = {
 
 Navigation.propTypes = {
   isBackground: PropTypes.bool,
+};
+
+export const WithAnchor = WrappedComponent => {
+  const WithAnchor = props => (
+    <>
+      <a id={WrappedComponent.name.toLowerCase()} className="link" />
+      <WrappedComponent {...props} />
+    </>
+  );
+
+  Object.defineProperty(WithAnchor, 'name', {
+    value: `${WrappedComponent.name}WithAnchor`,
+  });
+
+  return WithAnchor;
 };

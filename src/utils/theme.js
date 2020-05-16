@@ -24,6 +24,7 @@ const theme = {
       light: 300,
       default: 400,
       bold: 600,
+      extraBold: 800,
     },
   },
   devices: {

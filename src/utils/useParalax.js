@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useLayoutEffect } from 'react';
 
 const useParalax = () => {
   const [scrollPos, setScrollPos] = useState([0, 0]);
@@ -9,7 +9,7 @@ const useParalax = () => {
     [setScrollPos],
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (window && window.document) {
       window.addEventListener('scroll', onScroll);
     }
