@@ -63,20 +63,20 @@ export default function Navigation({ isBackground }) {
   return (
     <NavigationContainer paralaxRate={1}>
       <Link
-        href="http://localhost:8080/#home"
+        href="/#home"
         id="homeLink"
         backgroundColor={getBackgroundColor('blue')}>
         🏠
       </Link>
       <Link
-        href="http://localhost:8080/#bio"
+        href="/#bio"
         id="bioLink"
         backgroundColor={getBackgroundColor('green')}
         isBackground={isBackground}>
         👨
       </Link>
       <Link
-        href="http://localhost:8080/#contact"
+        href="/#contact"
         id="contactLink"
         backgroundColor={getBackgroundColor('yellow')}
         isBackground={isBackground}>
@@ -94,16 +94,16 @@ Navigation.propTypes = {
   isBackground: PropTypes.bool,
 };
 
-export const WithAnchor = WrappedComponent => {
+export const WithAnchor = (WrappedComponent, name) => {
   const WithAnchor = props => (
     <>
-      <a id={WrappedComponent.name.toLowerCase()} className="link" />
+      <a id={name.toLowerCase()} className="link" />
       <WrappedComponent {...props} />
     </>
   );
 
   Object.defineProperty(WithAnchor, 'name', {
-    value: `${WrappedComponent.name}WithAnchor`,
+    value: `${name}WithAnchor`,
   });
 
   return WithAnchor;

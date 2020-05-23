@@ -5,6 +5,7 @@ const useIntersectionObserver = (ref, config = {}) => {
 
   useEffect(() => {
     if (!ref.current) return;
+    if (!('IntersectionObserver' in window)) return;
 
     const target = ref.current;
 

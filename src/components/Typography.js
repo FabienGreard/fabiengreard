@@ -48,20 +48,18 @@ const TypographyProps = props => css`
   css`
     font-style: italic;
   `};
-  ${props.isBold &&
+  ${props.isExtraLight &&
   css`
-    font-weight: ${props.theme.text.fontWeight.bold};
+    font-weight: ${props.theme.text.fontWeight.extraLight};
   `};
   ${props.isLight &&
   css`
     font-weight: ${props.theme.text.fontWeight.light};
   `};
-
-  ${props.isExtraLight &&
+  ${props.isBold &&
   css`
-    font-weight: ${props.theme.text.fontWeight.extraLight};
+    font-weight: ${props.theme.text.fontWeight.bold};
   `};
-
   ${props.isExtraBold &&
   css`
     font-weight: ${props.theme.text.fontWeight.extraBold};

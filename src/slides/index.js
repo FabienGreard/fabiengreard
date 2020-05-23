@@ -13,7 +13,11 @@ import { DEVICES } from '../utils/theme';
 
 const SlideContainer = styled(Container)``;
 
-const SLIDES = [Home, Bio, Contact].map(WithAnchor);
+const SLIDES = [
+  { component: Home, name: 'Home' },
+  { component: Bio, name: 'Bio' },
+  { component: Contact, name: 'Contact' },
+].map(({ component, name }) => WithAnchor(component, name));
 
 export default function Slides() {
   const [slideView, setSlideView] = useState();

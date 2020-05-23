@@ -15,6 +15,7 @@ import {
 } from '../../utils/theme';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import useMedia from '../../utils/useMedia';
+import { firstname, lastname } from '../../utils/config';
 
 import Title from './Title';
 
@@ -84,10 +85,10 @@ export default function Home({ isTransitionSlide, setSlideView }) {
         isLarge={isTransitionSlide}
         paralaxRate={-0.5}
         zIndex={0}
-        numberOfPolygons={media >= DEVICES.tablet ? 30 : 15}
+        numberOfPolygons={media >= DEVICES.tablet ? 30 : 25}
       />
       <HomeContent paralaxRate={0.5} zIndex={1}>
-        <Title text="fabien gréard" />
+        <Title text={`${firstname} ${lastname}`} />
       </HomeContent>
     </HomeContainer>
   );

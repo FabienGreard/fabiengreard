@@ -172,6 +172,7 @@ const Background = ({
   isLarge,
   offset,
   colors,
+  children,
   ...props
 }) => (
   <BackgroundContainer isLarge={isLarge} background={background} {...props}>
@@ -181,6 +182,7 @@ const Background = ({
       isIntervallRefresh
       offset={offset}
     />
+    {children}
   </BackgroundContainer>
 );
 
@@ -190,6 +192,7 @@ Background.defaultProps = {
   isLarge: false,
   colors: [COLORS.darkBackground, COLORS.pink, COLORS.background],
   offset: 0,
+  children: null,
 };
 
 Background.propTypes = {
@@ -198,6 +201,7 @@ Background.propTypes = {
   background: PropTypes.oneOf(Object.values(COLORS)),
   isLarge: PropTypes.bool,
   colors: PropTypes.arrayOf(PropTypes.oneOf(Object.values(COLORS))),
+  children: PropTypes.node,
 };
 
 export default Background;
@@ -326,7 +330,7 @@ const GeneratePolygons = ({ numberOfPolygons, paralaxRate }) => {
 
   return useMemo(
     () => (
-      <PolygonsContainer paralaxRate={paralaxRate}>
+      <PolygonsContainer paralaxRate={paralaxRate} isRelative>
         {ArrayOfPolygonsID.map(key =>
           React.createElement(POLYGONS[random(POLYGONS.length)], {
             key,

@@ -1,15 +1,18 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Background, { BackgroundPolygon } from '../components/Background';
 import Typography from '../components/Typography';
 import { Container, ParalaxContainer } from '../components/Layout';
 import { useCursorColor } from '../components/Cursor';
+import Link from '../components/Link';
 
-import { COLORS, DEVICES } from '../utils/theme';
+import { COLORS, DEVICES, generateCssMedia, scaleMargin } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 import useMedia from '../utils/useMedia';
+import { email } from '../utils/config';
+
 const colorsBackground = [COLORS.black];
 
 const ContactContainer = styled(Container)`
@@ -31,7 +34,25 @@ const ContactContainer = styled(Container)`
 `;
 
 const ContactContent = styled(ParalaxContainer)`
-  height: 100%;
+  height: 50%;
+
+  ${generateCssMedia(
+    media => css`
+      padding: 0 ${`${scaleMargin(media, 100)}px`};
+    `,
+  )};
+`;
+
+const ContactFootter = styled(Container)`
+  position: absolute;
+  bottom: 0;
+  width: auto;
+
+  ${generateCssMedia(
+    media => css`
+      margin: ${`${scaleMargin(media, 20)}px`} ${`${scaleMargin(media, 25)}px`};
+    `,
+  )};
 `;
 
 export default function Contact({ isTransitionSlide, setSlideView }) {
@@ -61,17 +82,40 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
         numberOfWaves={1}
         isLarge={isTransitionSlide}
         offset={media >= DEVICES.tablet ? 0 : 100}
-        zIndex={1}
-      />
+        zIndex={2}>
+        <ContactFootter onMouseOver={() => handleMouseColor('white')}>
+          <Typography variant="caption" isBold color="white">
+            Made with ❤️ from France
+          </Typography>
+        </ContactFootter>
+      </Background>
       <BackgroundPolygon
         isLarge={isTransitionSlide}
         paralaxRate={-0.15}
         zIndex={0}
-        numberOfPolygons={media >= DEVICES.tablet ? 20 : 10}
+        numberOfPolygons={media >= DEVICES.tablet ? 20 : 15}
       />
-      <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={0}>
-        <Typography variant="title" size="xl">
-          CONTACT
+      <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={2}>
+        <Typography variant="subtitle" style={{ textAlign: 'center' }}>
+          Available for{' '}
+          <Link
+            href={`mailto:${email}`}
+            alt="mailto"
+            color={COLORS.green}
+            onMouseOver={() => handleMouseColor('green')}
+            onMouseOut={() => handleMouseColor('pink')}>
+            hire
+          </Link>{' '}
+          or for any{' '}
+          <Link
+            href={`mailto:${email}`}
+            alt="mailto"
+            color={COLORS.blue}
+            onMouseOver={() => handleMouseColor('blue')}
+            onMouseOut={() => handleMouseColor('pink')}>
+            freelance
+          </Link>{' '}
+          gig
         </Typography>
       </ContactContent>
     </ContactContainer>

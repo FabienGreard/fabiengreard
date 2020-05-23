@@ -85,6 +85,8 @@ const Cursor = ({ color }) => {
 
   useEffect(() => {
     window.document.body.style.setProperty('cursor', 'none', 'important');
+    return () =>
+      window.document.body.style.setProperty('cursor', 'inherit', 'important');
   }, []);
 
   useEffect(() => {

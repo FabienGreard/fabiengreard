@@ -1,7 +1,9 @@
 const path = require('path');
+const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'development',
@@ -14,8 +16,14 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({ template: './static/index.html' }),
+    new HtmlWebpackPlugin({
+      template: './static/index.html',
+    }),
     new ObsoleteWebpackPlugin(),
+    new EnvironmentPlugin({
+      NODE_ENV: 'development',
+    }),
+    new BundleAnalyzerPlugin(),
   ],
   output: {
     filename: '[name].bundle.js',

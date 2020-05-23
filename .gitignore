@@ -116,3 +116,4 @@ dist
 
 # MAC
 .DS_STORE
+.vercel

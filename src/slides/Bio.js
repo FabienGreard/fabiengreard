@@ -56,8 +56,8 @@ const BioTextContainer = styled(ParalaxContainer)`
   ${generateCssMedia(media =>
     media > DEVICES.tablet
       ? css`
-          width: calc(50% - ${`${scaleMargin(media) * 2}px`});
-          margin: 0 ${`${scaleMargin(media)}px`};
+          width: calc(50% - ${`${scaleMargin(media, 75) * 2}px`});
+          margin: 0 ${`${scaleMargin(media, 75)}px`};
         `
       : css`
           width: calc(100% - ${`${scaleMargin(media, 100) * 2}px`});
@@ -70,8 +70,8 @@ const FeatureContainer = styled(ParalaxContainer)`
   ${generateCssMedia(media =>
     media > DEVICES.tablet
       ? css`
-          width: calc(50% - ${`${scaleMargin(media) * 2}px`});
-          margin: 0 ${`${scaleMargin(media)}px`};
+          width: calc(50% - ${`${scaleMargin(media, 75) * 2}px`});
+          margin: 0 ${`${scaleMargin(media, 75)}px`};
         `
       : css`
           width: calc(100% - ${`${scaleMargin(media, 100) * 2}px`});
@@ -178,6 +178,8 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
   useEffect(() => {
     if (isInViewport) {
       setSlideView('Bio');
+    } else {
+      setSlideView(null);
     }
   }, [isInViewport, setSlideView]);
 

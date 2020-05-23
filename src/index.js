@@ -7,7 +7,6 @@ import '../static/default.css';
 import theme from './utils/theme';
 
 import Layout from './components/Layout';
-import SEO from './components/SEO';
 import Cursor, {
   MouseHoverProvider,
   CursorColorProvider,
@@ -26,7 +25,6 @@ function App() {
         <ThemeProvider theme={theme}>
           <Layout>
             {media >= DEVICES.laptop && <Cursor color="pink" />}
-            <SEO />
             <Slides />
           </Layout>
         </ThemeProvider>
