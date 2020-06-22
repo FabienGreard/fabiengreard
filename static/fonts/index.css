@@ -123,3 +123,21 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat-Thin'), local('Montserrat-Thin'),
+    url('Montserrat-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat ThinItalic'), local('Montserrat-ThinItalic'),
+    url('Montserrat-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
