@@ -7,7 +7,6 @@ import { ParalaxContainer } from './Layout';
 import Typography from './Typography';
 
 import { COLORS, generateCssMedia, scale, scaleMargin } from '../utils/theme';
-import useMedia from '../utils/useMedia';
 
 const NavigationContainer = styled(ParalaxContainer)`
   position: absolute;
@@ -42,8 +41,6 @@ const LinkContainer = styled.a`
 const Link = ({ href, children, backgroundColor, id }) => {
   const setCursorColor = useCursorColor();
 
-  const media = useMedia();
-
   const ref = useCursorBoundingMagnet(false);
 
   return (
@@ -53,7 +50,9 @@ const Link = ({ href, children, backgroundColor, id }) => {
       backgroundColor={backgroundColor}
       href={href}
       onMouseEnter={() => setCursorColor(backgroundColor)}>
-      <Typography style={{ fontSize: scale(media, 24) }}>{children}</Typography>
+      <Typography noMargin fontSize={24}>
+        {children}
+      </Typography>
     </LinkContainer>
   );
 };

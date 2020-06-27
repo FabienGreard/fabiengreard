@@ -5,6 +5,8 @@ import styled, { css } from 'styled-components';
 // Load fonts
 import '../../static/fonts/index.css';
 
+import { scale, generateCssMedia } from '../utils/theme';
+
 const TypographyProps = props => css`
   font-family: 'Nunito';
   color: ${props.color in props.theme.colors
@@ -12,8 +14,20 @@ const TypographyProps = props => css`
     : props.theme.colors.black};
   font-weight: ${props.theme.text.fontWeight.default};
   font-style: normal;
-  font-size: ${props.theme.text.fontSize.md};
+  font-size: ${props.fontSize || props.theme.text.fontSize.md};
 
+  ${props =>
+    typeof props.fontSize !== 'string' &&
+    generateCssMedia(
+      media => css`
+        font-size: ${`${scale(media, props.fontSize)}px`};
+      `,
+    )};
+
+  ${props.noMargin &&
+  css`
+    margin: 0;
+  `};
   ${props.isUnderline &&
   css`
     text-decoration: underline;
@@ -30,43 +44,51 @@ const TypographyProps = props => css`
   css`
     font-weight: ${props.theme.text.fontWeight.light};
   `};
+
+  ${props.isExtraLight &&
+  css`
+    font-weight: ${props.theme.text.fontWeight.extraLight};
+  `};
 `;
 
 const title = styled.h1.attrs(props => ({
-  isBold: true,
+  isExtraLight: true,
   fontSize:
-    props.theme.text.fontSize[props.size] || props.theme.text.fontSize.xl,
+    props.fontSize ||
+    props.theme.text.fontSize[props.size] ||
+    props.theme.text.fontSize.xl,
 }))`
   ${TypographyProps};
-  font-size: ${props => props.fontSize};
   font-family: 'Montserrat';
-  font-weight: 100;
 `;
 
 const subtitle = styled.h2.attrs(props => ({
   isBold: true,
   fontSize:
-    props.theme.text.fontSize[props.size] || props.theme.text.fontSize.lg,
+    props.fontSize ||
+    props.theme.text.fontSize[props.size] ||
+    props.theme.text.fontSize.lg,
 }))`
   ${TypographyProps};
-  font-size: ${props => props.fontSize};
 `;
 
 const text = styled.p.attrs(props => ({
   fontSize:
-    props.theme.text.fontSize[props.size] || props.theme.text.fontSize.md,
+    props.fontSize ||
+    props.theme.text.fontSize[props.size] ||
+    props.theme.text.fontSize.md,
 }))`
   ${TypographyProps};
-  font-size: ${props => props.fontSize};
 `;
 
 const caption = styled.span.attrs(props => ({
   isLight: true,
   fontSize:
-    props.theme.text.fontSize[props.size] || props.theme.text.fontSize.sm,
+    props.fontSize ||
+    props.theme.text.fontSize[props.size] ||
+    props.theme.text.fontSize.sm,
 }))`
   ${TypographyProps};
-  font-size: ${props => props.fontSize};
 `;
 
 const Typography = React.forwardRef(({ variant, children, ...props }, ref) => {

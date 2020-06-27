@@ -10,10 +10,12 @@ import { useCursorColor } from '../../components/Cursor';
 import {
   COLORS,
   MEDIA,
+  DEVICES,
   generateCssMedia,
   scaleMargin,
 } from '../../utils/theme';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
+import useMedia from '../../utils/useMedia';
 
 import Title from './Title';
 
@@ -27,6 +29,14 @@ const HomeContainer = styled(Container)`
   @media ${MEDIA.laptopL} {
     min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
   }
+
+  @media (orientation: landscape) {
+    min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
+
+    @media ${MEDIA.laptopL} {
+      min-height: ${props => (props.isLarge ? '130vw' : '100vw')};
+    }
+  }
 `;
 
 const HomeContent = styled(ParalaxContainer)`
@@ -34,13 +44,14 @@ const HomeContent = styled(ParalaxContainer)`
 
   ${generateCssMedia(
     media => css`
-      margin-top: ${`${scaleMargin(media, 75)}px`};
+      margin-top: ${`${scaleMargin(media, 175)}px`};
     `,
   )};
 `;
 
 export default function Home({ isTransitionSlide, slideId, setSlideView }) {
   const handleMouseColor = useCursorColor();
+  const media = useMedia();
 
   const ref = useRef();
   const isInViewport = useIntersectionObserver(ref, { threshold: 0.4 });
@@ -66,6 +77,7 @@ export default function Home({ isTransitionSlide, slideId, setSlideView }) {
         backgroundColor={COLORS.background}
         onMouseOver={() => handleMouseColor('pink')}>
         <Background
+          offset={media >= DEVICES.tablet ? -80 : 60}
           colors={colorsBackground}
           numberOfWaves={2}
           isLarge={isTransitionSlide}

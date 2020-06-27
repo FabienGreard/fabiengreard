@@ -18,18 +18,14 @@ const TitleInline = ({ text, style, isSubtitle }) => {
 
   return (
     <div style={{ position: 'absolute', ...style }}>
-      <Typography
-        variant="title"
-        style={{
-          fontSize: `${scale(media, 200)}px`,
-          margin: 0,
-        }}>
+      <Typography variant="title" fontSize={200} noMargin>
         {text}
       </Typography>
-      {media >= DEVICES.tablet && isSubtitle && (
+      {media >= DEVICES.laptop && isSubtitle && (
         <Typography
           variant="subtitle"
-          style={{ textAlign: 'center', fontWeight: 'normal', margin: 0 }}>
+          noMargin
+          style={{ textAlign: 'center', fontWeight: 'normal' }}>
           👋 Hello, I’m a JavaScript Developer !
         </Typography>
       )}
@@ -75,6 +71,7 @@ const TitleContainer = styled(Container)`
 
 const SubtitleContainer = styled(ParalaxContainer)`
   align-items: center;
+  justify-content: center;
   height: 100%;
 `;
 
@@ -116,14 +113,14 @@ export default function Title() {
           isHorizontalParalax
         />
       </>
-      {media < DEVICES.tablet && (
+      {media < DEVICES.laptop && (
         <SubtitleContainer paralaxRate={-0.6}>
           <Typography
             variant="subtitle"
+            noMargin
             style={{
               textAlign: 'center',
               fontWeight: 'normal',
-              margin: 0,
             }}>
             👋 Hello, I’m a JavaScript Developer !
           </Typography>

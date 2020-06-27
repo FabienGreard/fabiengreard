@@ -19,6 +19,14 @@ const ContactContainer = styled(Container)`
   @media ${MEDIA.laptopL} {
     min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
   }
+
+  @media (orientation: landscape) {
+    min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
+
+    @media ${MEDIA.laptopL} {
+      min-height: ${props => (props.isLarge ? '130vw' : '100vw')};
+    }
+  }
 `;
 
 const ContactContent = styled(ParalaxContainer)`

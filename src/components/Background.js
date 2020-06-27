@@ -20,6 +20,14 @@ const BackgroundContainer = styled(Container)`
   @media ${MEDIA.laptopL} {
     min-height: ${props => (props.isLarge ? '130vh' : '100vh')};
   }
+
+  @media (orientation: landscape) {
+    min-height: ${props => (props.isLarge ? '120vw' : '90vw')};
+
+    @media ${MEDIA.laptopL} {
+      min-height: ${props => (props.isLarge ? '130vw' : '100vw')};
+    }
+  }
 `;
 
 const Wave = styled.svg`
@@ -119,7 +127,7 @@ const GenerateWaves = ({
   const randomPoint = (max = 180, min = 0) =>
     `${random(max, min)},${random(max, min)}`;
 
-  const [timestamp] = useForceUpdate(isIntervallRefresh && 10000);
+  const [timestamp] = useForceUpdate(isIntervallRefresh && 5000);
 
   const getPoints = useMemo(
     () => ({

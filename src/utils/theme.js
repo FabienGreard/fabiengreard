@@ -20,6 +20,7 @@ const theme = {
       xl: '3em',
     },
     fontWeight: {
+      extraLight: 100,
       light: 300,
       default: 400,
       bold: 600,
