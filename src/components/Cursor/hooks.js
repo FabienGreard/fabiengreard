@@ -3,9 +3,7 @@ import { useLayoutEffect, useCallback, useContext, useRef } from 'react';
 import { MouseHoverContext, CursorColorContext } from './contexts';
 
 export const useCursorBoundingMagnet = () => {
-  const { isHover, setIsHover, setMagnetBounding } = useContext(
-    MouseHoverContext,
-  );
+  const { isHover, setIsHover, setMagnetBounding } = useContext(MouseHoverContext);
 
   const ref = useRef();
 
@@ -28,9 +26,7 @@ export const useCursorBoundingMagnet = () => {
     if (!node) return;
 
     if (node && setIsHover) {
-      Object.entries(handleFunction).forEach(([key, event]) =>
-        node.addEventListener(key, event),
-      );
+      Object.entries(handleFunction).forEach(([key, event]) => node.addEventListener(key, event));
     }
 
     return () => {
@@ -57,8 +53,5 @@ export const useCursorBoundingMagnet = () => {
 export const useCursorColor = () => {
   const { setColor, color: colorContext } = useContext(CursorColorContext);
 
-  return useCallback(color => color !== colorContext && setColor(color), [
-    setColor,
-    colorContext,
-  ]);
+  return useCallback(color => color !== colorContext && setColor(color), [setColor, colorContext]);
 };

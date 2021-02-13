@@ -29,8 +29,7 @@ const Container = styled.div`
 
 const AnimatedContainer = animated(Container);
 
-const selectColor = props =>
-  props.theme.colors[props.color] || props.theme.colors.pink;
+const selectColor = props => props.theme.colors[props.color] || props.theme.colors.pink;
 
 const Pointer = styled.div`
   position: absolute;
@@ -46,9 +45,7 @@ const pulse = color => keyframes`
     box-shadow: 0 0 0 0 rgba(${hexToRgb(color).toString()}, 0.4);
   }
   70% {
-      box-shadow: 0 0 0 ${MOUSE_TRACKER_SIZE[0]}px rgba(${hexToRgb(
-  color,
-).toString()}, 0);
+      box-shadow: 0 0 0 ${MOUSE_TRACKER_SIZE[0]}px rgba(${hexToRgb(color).toString()}, 0);
   }
   100% {
       box-shadow: 0 0 0 0 rgba(${hexToRgb(color).toString()}, 0);
@@ -77,16 +74,13 @@ const AnimatedCircle = animated(Circle);
 const Cursor = ({ color }) => {
   const { x, y } = useMouseCoords();
 
-  const { isHover, isMagnet, magnetCoords, magnetSize } = useContext(
-    MouseHoverContext,
-  );
+  const { isHover, isMagnet, magnetCoords, magnetSize } = useContext(MouseHoverContext);
 
   const { color: colorContext, setColor } = useContext(CursorColorContext);
 
   useEffect(() => {
     window.document.body.style.setProperty('cursor', 'none', 'important');
-    return () =>
-      window.document.body.style.setProperty('cursor', 'inherit', 'important');
+    return () => window.document.body.style.setProperty('cursor', 'inherit', 'important');
   }, []);
 
   useEffect(() => {
@@ -96,17 +90,11 @@ const Cursor = ({ color }) => {
   const isXYInViewport = useMemo(() => {
     const offset = 0.99;
 
-    if (
-      x >= window.innerWidth * offset ||
-      x <= window.innerWidth * (1 - offset)
-    ) {
+    if (x >= window.innerWidth * offset || x <= window.innerWidth * (1 - offset)) {
       return 0;
     }
 
-    if (
-      y >= window.innerHeight * offset ||
-      y <= window.innerHeight * (1 - offset)
-    ) {
+    if (y >= window.innerHeight * offset || y <= window.innerHeight * (1 - offset)) {
       return 0;
     }
 
@@ -120,8 +108,7 @@ const Cursor = ({ color }) => {
     config: config.stiff,
   });
 
-  const followTranslate = (x, y) =>
-    `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`;
+  const followTranslate = (x, y) => `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`;
 
   return useMemo(
     () => (

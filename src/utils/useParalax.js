@@ -13,10 +13,7 @@ const useParalax = (ref = null) => {
         offset = Math.max(ref.current.offsetParent.offsetTop, y + height);
       }
 
-      setScrollPos([
-        e.currentTarget.pageXOffset,
-        Math.abs(offset - e.currentTarget.pageYOffset),
-      ]);
+      setScrollPos([e.currentTarget.pageXOffset, Math.abs(offset - e.currentTarget.pageYOffset)]);
     },
     [setScrollPos, ref],
   );

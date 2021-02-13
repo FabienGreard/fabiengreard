@@ -68,10 +68,7 @@ const TypographyProps = props => css`
 
 const title = styled.h1.attrs(props => ({
   isExtraBold: true,
-  fontSize:
-    props.fontSize ||
-    props.theme.text.fontSize[props.size] ||
-    props.theme.text.fontSize.xl,
+  fontSize: props.fontSize || props.theme.text.fontSize[props.size] || props.theme.text.fontSize.xl,
 }))`
   ${TypographyProps};
   font-family: 'Montserrat';
@@ -79,29 +76,20 @@ const title = styled.h1.attrs(props => ({
 
 const subtitle = styled.h2.attrs(props => ({
   isBold: true,
-  fontSize:
-    props.fontSize ||
-    props.theme.text.fontSize[props.size] ||
-    props.theme.text.fontSize.lg,
+  fontSize: props.fontSize || props.theme.text.fontSize[props.size] || props.theme.text.fontSize.lg,
 }))`
   ${TypographyProps};
 `;
 
 const text = styled.p.attrs(props => ({
-  fontSize:
-    props.fontSize ||
-    props.theme.text.fontSize[props.size] ||
-    props.theme.text.fontSize.md,
+  fontSize: props.fontSize || props.theme.text.fontSize[props.size] || props.theme.text.fontSize.md,
 }))`
   ${TypographyProps};
 `;
 
 const caption = styled.span.attrs(props => ({
   isLight: true,
-  fontSize:
-    props.fontSize ||
-    props.theme.text.fontSize[props.size] ||
-    props.theme.text.fontSize.sm,
+  fontSize: props.fontSize || props.theme.text.fontSize[props.size] || props.theme.text.fontSize.sm,
 }))`
   ${TypographyProps};
 `;

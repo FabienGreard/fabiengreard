@@ -10,10 +10,9 @@ const useMouseCoords = (element = window) => {
 
   const { x, y } = useThrottle(coords, 60);
 
-  const handler = useCallback(
-    ({ clientX: x, clientY: y }) => animate(() => setCoords({ x, y })),
-    [animate],
-  );
+  const handler = useCallback(({ clientX: x, clientY: y }) => animate(() => setCoords({ x, y })), [
+    animate,
+  ]);
 
   useEffect(() => {
     element.addEventListener('mousemove', handler);

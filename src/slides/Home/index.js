@@ -7,12 +7,7 @@ import Background, { BackgroundPolygon } from '../../components/Background';
 import { Container, ParalaxContainer } from '../../components/Layout';
 import { useCursorColor } from '../../components/Cursor';
 
-import {
-  COLORS,
-  DEVICES,
-  generateCssMedia,
-  scaleMargin,
-} from '../../utils/theme';
+import { COLORS, DEVICES, generateCssMedia, scaleMargin } from '../../utils/theme';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import useMedia from '../../utils/useMedia';
 import { firstname, lastname } from '../../utils/config';
@@ -60,10 +55,7 @@ export default function Home({ isTransitionSlide, setSlideView }) {
   useEffect(() => {
     if (isInViewport) {
       setSlideView('Home');
-      window.document.body.style.setProperty(
-        'background-color',
-        COLORS.background,
-      );
+      window.document.body.style.setProperty('background-color', COLORS.background);
     }
   }, [isInViewport, setSlideView]);
 

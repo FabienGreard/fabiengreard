@@ -25,9 +25,7 @@ export default function Slides() {
 
   return (
     <SlideContainer isColumn>
-      {media > DEVICES.tablet && (
-        <Navigation isBackground={slideView !== 'Bio'} />
-      )}
+      {media > DEVICES.tablet && <Navigation isBackground={slideView !== 'Bio'} />}
 
       {SLIDES.map((slide, i) =>
         React.createElement(slide, {

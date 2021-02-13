@@ -5,13 +5,7 @@ import styled, { css } from 'styled-components';
 import Typography from '../../components/Typography';
 import { Container, ParalaxContainer } from '../../components/Layout';
 
-import {
-  DEVICES,
-  generateCssMedia,
-  scaleMargin,
-  scale,
-  COLORS,
-} from '../../utils/theme';
+import { DEVICES, generateCssMedia, scaleMargin, scale, COLORS } from '../../utils/theme';
 import useMedia from '../../utils/useMedia';
 import random from '../../utils/random';
 
@@ -136,12 +130,7 @@ export default function Title({ text }) {
       <TitleContainer isColumn>
         <>
           <DualText text={leftText} paralaxRate={-0.2} isHorizontalParalax />
-          <DualText
-            text={rightText}
-            paralaxRate={0.5}
-            isRightContainer
-            isHorizontalParalax
-          />
+          <DualText text={rightText} paralaxRate={0.5} isRightContainer isHorizontalParalax />
         </>
         {media < DEVICES.laptop && (
           <SubtitleContainer paralaxRate={-0.6}>

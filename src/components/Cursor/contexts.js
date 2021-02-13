@@ -5,10 +5,7 @@ const initialMouseHover = false;
 
 export const MouseHoverContext = React.createContext(initialMouseHover);
 
-export const MouseHoverProvider = ({
-  initialContext = initialMouseHover,
-  children,
-}) => {
+export const MouseHoverProvider = ({ initialContext = initialMouseHover, children }) => {
   const [isHover, setIsHover] = useState(initialContext);
   const [isBlockedHover, setIsBlockedHover] = useState(false);
   const [magnetBounding, setMagnetBounding] = useState(null);
@@ -53,10 +50,7 @@ const initialCursorColor = 'black';
 
 export const CursorColorContext = React.createContext(initialCursorColor);
 
-export const CursorColorProvider = ({
-  initialContext = initialCursorColor,
-  children,
-}) => {
+export const CursorColorProvider = ({ initialContext = initialCursorColor, children }) => {
   const [color, setColor] = useState(initialContext);
 
   return (

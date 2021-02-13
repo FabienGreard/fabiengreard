@@ -72,10 +72,7 @@ export const ParalaxContainer = ({
   );
 
   return (
-    <AnimatedContainer
-      ref={ref}
-      style={{ transform: interpolateParalax }}
-      {...props}>
+    <AnimatedContainer ref={ref} style={{ transform: interpolateParalax }} {...props}>
       {children}
     </AnimatedContainer>
   );

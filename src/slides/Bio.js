@@ -8,14 +8,9 @@ import { Container, ParalaxContainer } from '../components/Layout';
 import { useCursorColor } from '../components/Cursor';
 import Link from '../components/Link';
 
-import {
-  COLORS,
-  DEVICES,
-  generateCssMedia,
-  scaleMargin,
-  scale,
-} from '../utils/theme';
+import { COLORS, DEVICES, generateCssMedia, scaleMargin, scale } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
+import { socials } from '../utils/config.json';
 
 import profile from '../../static/profile.png';
 
@@ -111,10 +106,8 @@ const TextWithIcon = styled(Container)`
 const ResponsiveSVG = styled.svg`
   ${generateCssMedia(
     media => css`
-      width: ${props =>
-        `${Math.max(scale(media, props.width), props.width / 1.75)}px`};
-      height: ${props =>
-        `${Math.max(scale(media, props.height), props.height / 1.75)}px`};
+      width: ${props => `${Math.max(scale(media, props.width), props.width / 1.75)}px`};
+      height: ${props => `${Math.max(scale(media, props.height), props.height / 1.75)}px`};
     `,
   )};
 `;
@@ -122,10 +115,8 @@ const ResponsiveSVG = styled.svg`
 const ResponsiveIMG = styled.img`
   ${generateCssMedia(
     media => css`
-      width: ${props =>
-        `${Math.max(scale(media, props.width), props.width / 2)}px`};
-      height: ${props =>
-        `${Math.max(scale(media, props.height), props.height / 2)}px`};
+      width: ${props => `${Math.max(scale(media, props.width), props.width / 2)}px`};
+      height: ${props => `${Math.max(scale(media, props.height), props.height / 2)}px`};
     `,
   )};
 `;
@@ -169,6 +160,7 @@ const ArticleSVG = ({ color }) => (
     />
   </ResponsiveSVG>
 );
+
 export default function Bio({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
 
@@ -198,20 +190,10 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
         isLarge={isTransitionSlide}
       />
       <BioContent paralaxRate={-0.2} isCenter>
-        <BioTextContainer
-          isColumn
-          paralaxRate={-0.3}
-          isRelative
-          isHorizontalParalax>
+        <BioTextContainer isColumn paralaxRate={-0.3} isRelative isHorizontalParalax>
           <Typography variant="text" size="lg" color="white" isBold>
-            <ResponsiveIMG
-              src={profile}
-              alt="profile_pic"
-              width="150"
-              height="150"
-            />{' '}
-            Hi, I’m Fabien an enthusiast{' '}
-            <TextColor color={COLORS.black}>JavaScript</TextColor> Developer.
+            <ResponsiveIMG src={profile} alt="profile_pic" width="150" height="150" /> Hi, I’m
+            Fabien an enthusiast <TextColor color={COLORS.black}>JavaScript</TextColor> Developer.
           </Typography>
           <Typography variant="text" size="lg" color="white" isBold>
             I live in France, where I graduate from an{' '}
@@ -226,18 +208,15 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
             Love design, UX and quality code.
           </Typography>
         </BioTextContainer>
-        <FeatureContainer
-          paralaxRate={0.3}
-          isRelative
-          isColumn
-          isHorizontalParalax>
+        <FeatureContainer paralaxRate={0.3} isRelative isColumn isHorizontalParalax>
           <TextWithIcon>
             <ArticleSVG color={COLORS.green} />
             <Typography variant="text" size="lg" color="white" isBold>
               Sometimes,{' '}
               <Link
                 alt="post"
-                href="/post"
+                href={`${socials.linkedin}/detail/recent-activity/shares/`}
+                rel="noopener noreferrer"
                 color={COLORS.green}
                 onMouseOver={() => handleMouseColor('green')}>
                 I wrote
@@ -251,11 +230,12 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
               You may also find my latest{' '}
               <Link
                 alt="projects"
-                href="/projects"
+                href={socials.linkedin}
+                rel="noopener noreferrer"
                 color={COLORS.yellow}
                 onMouseOver={() => handleMouseColor('yellow')}>
                 projects.
-              </Link>{' '}
+              </Link>
             </Typography>
           </TextWithIcon>
         </FeatureContainer>

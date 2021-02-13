@@ -7,10 +7,7 @@ import '../static/default.css';
 import theme from './utils/theme';
 
 import Layout from './components/Layout';
-import Cursor, {
-  MouseHoverProvider,
-  CursorColorProvider,
-} from './components/Cursor';
+import Cursor, { MouseHoverProvider, CursorColorProvider } from './components/Cursor';
 
 import Slides from './slides';
 import useMedia from './utils/useMedia';

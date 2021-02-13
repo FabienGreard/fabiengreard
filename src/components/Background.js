@@ -73,8 +73,7 @@ const WaveSVG = ({
 }) => {
   const { path } = useSpring({
     from: {
-      path:
-        'M0.00,49.98 C136.84,132.72 328.72,17.27 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
+      path: 'M0.00,49.98 C136.84,132.72 328.72,17.27 500.00,49.98 L500.00,150.00 L0.00,150.00 Z',
     },
     to: {
       path: `M0.00,49.98 C${point1} ${point2} 500.00,49.98 L500.00,150.00 L0.00,150.00 Z`,
@@ -86,10 +85,7 @@ const WaveSVG = ({
 
   return (
     <>
-      <AnimatedWave
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 500 150"
-        bottom={size}>
+      <AnimatedWave xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" bottom={size}>
         <AnimatedPath
           fill={color}
           fillOpacity="1"
@@ -110,25 +106,15 @@ WaveSVG.propTypes = {
   offset: PropTypes.number,
 };
 
-const GenerateWaves = ({
-  numberOfWaves,
-  offset,
-  colors,
-  isIntervallRefresh = false,
-}) => {
+const GenerateWaves = ({ numberOfWaves, offset, colors, isIntervallRefresh = false }) => {
   const handleMouseColor = useCursorColor();
 
   const ArrayOfWavesID = useMemo(
-    () =>
-      Array.from(
-        Array(numberOfWaves),
-        () => Math.random().toString(16).split('.')[1],
-      ),
+    () => Array.from(Array(numberOfWaves), () => Math.random().toString(16).split('.')[1]),
     [numberOfWaves],
   );
 
-  const randomPoint = (max = 140, min = 0) =>
-    `${random(max, min)},${random(max, min)}`;
+  const randomPoint = (max = 140, min = 0) => `${random(max, min)},${random(max, min)}`;
 
   const [timestamp] = useForceUpdate(isIntervallRefresh && 5000);
 
@@ -166,15 +152,7 @@ const GenerateWaves = ({
   ));
 };
 
-const Background = ({
-  numberOfWaves,
-  background,
-  isLarge,
-  offset,
-  colors,
-  children,
-  ...props
-}) => (
+const Background = ({ numberOfWaves, background, isLarge, offset, colors, children, ...props }) => (
   <BackgroundContainer isLarge={isLarge} background={background} {...props}>
     <GenerateWaves
       numberOfWaves={numberOfWaves}
@@ -223,10 +201,7 @@ const TriangleSVG = ({ color, rotate = 90, size, scale, pos }) => {
         transform: ` ${scale} rotate(${rotate}deg)`,
         transformOrigin: 'left',
       }}>
-      <path
-        d="M12.8435 48.7147L21.0034 7.95423L52.2231 35.4011L12.8435 48.7147Z"
-        stroke={color}
-      />
+      <path d="M12.8435 48.7147L21.0034 7.95423L52.2231 35.4011L12.8435 48.7147Z" stroke={color} />
     </svg>
   );
 };
@@ -248,10 +223,7 @@ const SquareSVG = ({ color, rotate = 90, size, scale, pos }) => {
         transform: ` ${scale} rotate(${rotate}deg)`,
         transformOrigin: 'left',
       }}>
-      <path
-        d="M0.707107 25L25 0.707107L49.2929 25L25 49.2929L0.707107 25Z"
-        stroke={color}
-      />
+      <path d="M0.707107 25L25 0.707107L49.2929 25L25 49.2929L0.707107 25Z" stroke={color} />
     </svg>
   );
 };
@@ -312,19 +284,10 @@ const GeneratePolygons = ({ numberOfPolygons, paralaxRate }) => {
   const POLYGON_WIDTH = scale(width, 50);
   const POLYGON_MAX_WIDTH = POLYGON_WIDTH * 1.5;
   const SCALING = 2;
-  const POLYGONS_COLORS = [
-    COLORS.yellow,
-    COLORS.green,
-    COLORS.pink,
-    COLORS.blue,
-  ];
+  const POLYGONS_COLORS = [COLORS.yellow, COLORS.green, COLORS.pink, COLORS.blue];
 
   const ArrayOfPolygonsID = useMemo(
-    () =>
-      Array.from(
-        Array(numberOfPolygons),
-        () => Math.random().toString(16).split('.')[1],
-      ),
+    () => Array.from(Array(numberOfPolygons), () => Math.random().toString(16).split('.')[1]),
     [numberOfPolygons],
   );
 
@@ -340,10 +303,7 @@ const GeneratePolygons = ({ numberOfPolygons, paralaxRate }) => {
             scale: `scale(${random(100 * SCALING) / 100})`,
             pos: [
               random(height),
-              Math.max(
-                random(width) - POLYGON_MAX_WIDTH * SCALING,
-                POLYGON_MAX_WIDTH * SCALING,
-              ),
+              Math.max(random(width) - POLYGON_MAX_WIDTH * SCALING, POLYGON_MAX_WIDTH * SCALING),
             ],
           }),
         )}
@@ -384,17 +344,9 @@ const BackgroundPolygonContainer = styled(Container)`
   }
 `;
 
-const BackgroundPolygon = ({
-  isLarge,
-  numberOfPolygons,
-  paralaxRate,
-  ...props
-}) => (
+const BackgroundPolygon = ({ isLarge, numberOfPolygons, paralaxRate, ...props }) => (
   <BackgroundPolygonContainer isLarge={isLarge} {...props}>
-    <GeneratePolygons
-      numberOfPolygons={numberOfPolygons}
-      paralaxRate={paralaxRate}
-    />
+    <GeneratePolygons numberOfPolygons={numberOfPolygons} paralaxRate={paralaxRate} />
   </BackgroundPolygonContainer>
 );
 

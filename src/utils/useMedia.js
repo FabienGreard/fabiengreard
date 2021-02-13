@@ -10,9 +10,7 @@ const useMedia = (initial = 1440) => {
   const { width } = useWindowSize();
 
   const closestNumber = number =>
-    sizes.reduce((a, b) =>
-      Math.abs(number - a) < Math.abs(number - b) ? a : b,
-    );
+    sizes.reduce((a, b) => (Math.abs(number - a) < Math.abs(number - b) ? a : b));
 
   useLayoutEffect(() => {
     setMedia(closestNumber(width));
