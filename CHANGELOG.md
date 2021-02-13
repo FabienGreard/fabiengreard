@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/FabienGreard/fabiengreard/compare/v0.0.4...v0.0.5) (2021-02-13)
+
+
+### Features
+
+* background polygon ([06f35d9](https://github.com/FabienGreard/fabiengreard/commit/06f35d9cb921324508aab79802bdb8f89f0282ec))
+* contact ([7bb907b](https://github.com/FabienGreard/fabiengreard/commit/7bb907b85635935df4f69a0ff0dd977cd5eab5c5))
+* prerendering and initial perf audit ([2f110c1](https://github.com/FabienGreard/fabiengreard/commit/2f110c1e627b10c02f241cee6a3e381ca2b5e3eb))
+
+
+### Bug Fixes
+
+* landscape mode ([f517418](https://github.com/FabienGreard/fabiengreard/commit/f517418b761e0cf37a929c2ed33d5347ccb1111f))
+* multiple fixes ([c29f2cf](https://github.com/FabienGreard/fabiengreard/commit/c29f2cfeae86826c5692ad3f7cc62bc7868c3605))
+
 ### [0.0.4](https://github.com/FabienGreard/fabiengreard/compare/v0.0.3...v0.0.4) (2020-05-10)
 
 

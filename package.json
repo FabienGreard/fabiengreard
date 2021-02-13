@@ -1,6 +1,6 @@
 {
   "name": "fabiengreard",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --open --config webpack.dev.config.js",
