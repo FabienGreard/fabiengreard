@@ -212,15 +212,15 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
         </BioTextContainer>
         <FeatureContainer paralaxRate={0.3} isRelative isColumn isHorizontalParalax>
           <TextWithIcon>
-            <ArticleSVG color={COLORS.blue} />
+            <ArticleSVG color={COLORS.green} />
             <Typography variant="text" size="lg" color="white" isBold>
               Sometimes,{' '}
               <Link
                 title="post"
                 href={`${socials.linkedin}/detail/recent-activity/shares/`}
                 rel="noopener noreferrer"
-                color={COLORS.blue}
-                onMouseOver={() => handleMouseColor('blue')}>
+                color={COLORS.green}
+                onMouseOver={() => handleMouseColor('green')}>
                 I wrote
               </Link>{' '}
               about myself, javaScript and others things.
