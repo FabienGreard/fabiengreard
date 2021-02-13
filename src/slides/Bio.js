@@ -113,6 +113,8 @@ const ResponsiveSVG = styled.svg`
 `;
 
 const ResponsiveIMG = styled.img`
+  border-radius: 20px;
+
   ${generateCssMedia(
     media => css`
       width: ${props => `${Math.max(scale(media, props.width), props.width / 2)}px`};

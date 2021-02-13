@@ -156,7 +156,7 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
       backgroundColor={COLORS.darkBackground}
       onMouseEnter={() => handleMouseColor('pink')}
       zIndex={3}>
-      <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={2}>
+      <ContactContent paralaxRate={-0.1} isCenter isColumn zIndex={3}>
         <Typography variant="subtitle" style={{ textAlign: 'center' }}>
           Available for{' '}
           <Link
