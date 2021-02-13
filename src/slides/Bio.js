@@ -12,7 +12,7 @@ import { COLORS, DEVICES, generateCssMedia, scaleMargin, scale } from '../utils/
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 import { socials } from '../utils/config.json';
 
-import profile from '../../static/profile.png';
+import profile from '../../static/profile.jpeg';
 
 const colorsBackground = [COLORS.darkBackground];
 
@@ -194,8 +194,15 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
       <BioContent paralaxRate={-0.2} isCenter>
         <BioTextContainer isColumn paralaxRate={-0.3} isRelative isHorizontalParalax>
           <Typography variant="text" size="lg" color="white" isBold>
-            <ResponsiveIMG src={profile} alt="profile_pic" width="150" height="150" /> Hi, I’m
-            Fabien an enthusiast <TextColor color={COLORS.black}>JavaScript</TextColor> Developer.
+            <ResponsiveIMG
+              src={profile}
+              alt="profile_pic"
+              width="150"
+              height="150"
+              loading="lazy"
+            />{' '}
+            Hi, I’m Fabien an enthusiast <TextColor color={COLORS.black}>JavaScript</TextColor>{' '}
+            Developer.
           </Typography>
           <Typography variant="text" size="lg" color="white" isBold>
             I live in France, where I graduate from an{' '}
