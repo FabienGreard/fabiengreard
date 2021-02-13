@@ -21,6 +21,7 @@ module.exports = {
       },
       { from: './static/robots.txt' },
       { from: './static/og-image.png' },
+      { from: './static/sw.js' },
     ]),
     new HtmlWebpackPlugin({
       template: '!!prerender-loader?string!./static/index.html',

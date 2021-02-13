@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
   "rules": { "react/prop-types": [2, { "skipUndeclared": true }] },
   "parser": "babel-eslint",
   "env": {
@@ -14,5 +10,5 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["webpack.*"]
+  "ignorePatterns": ["webpack.*", "static/*"]
 }
