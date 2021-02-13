@@ -1,7 +1,7 @@
 {
   "name": "fabiengreard",
   "short_name": "fg",
-  "start_url": ".",
+  "start_url": "/",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",

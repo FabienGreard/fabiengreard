@@ -21,15 +21,27 @@
     href=’https://www.google.com’ rel=’preconnect’ crossorigin>
   </head>
   <body>
+    <noscript>
+      <h1>This page Doesn't work without JavaScript.</h1>
+    </noscript>
     <div id="app"></div>
   </body>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112035252-1"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(
+          registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          },
+          err => {
+            console.log('ServiceWorker registration failed: ', err);
+          },
+        );
+      });
     }
-
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112035252-1"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
