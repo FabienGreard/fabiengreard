@@ -1,95 +1,125 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { useRef, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
-import { rhythm, scale } from '../utils/typography';
-import icon from '../assets/icon.png';
+import { MouseHoverContext } from '../components/Cursor';
 
-class Layout extends React.Component {
-  render() {
-    const { location, title, children } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
-    let header;
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </h1>
-      );
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-            marginBottom: rhythm(-1),
-          }}
-        >
-          <NavRoot title={title} />
-        </h3>
-      );
-    }
-    return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        {header}
-        {children}
-      </div>
-    );
-  }
-}
+import useParalax from '../utils/useParalax';
 
-const NavRoot = ({ title }) => (
-  <div
-    style={{
-      ...scale(0.5),
-      marginBottom: rhythm(1.5),
-      marginTop: 0,
-    }}
-  >
-    <Link
-      style={{
-        boxShadow: `none`,
-        textDecoration: `none`,
-        color: `inherit`,
-        display: 'flex',
-        alignItems: 'center',
-      }}
-      to={`/`}
-    >
-      ←
-      <img
-        src={icon}
-        alt={title}
-        style={{
-          margin: 0,
-          width: 32,
-          height: 32,
-        }}
-      />
-    </Link>
-  </div>
-);
+export const Container = styled.div`
+  display: flex;
+  width: 100%;
+
+  ${props =>
+    props.zIndex &&
+    css`
+      z-index: ${props.zIndex};
+    `};
+  ${props =>
+    props.isColumn &&
+    css`
+      flex-direction: column;
+    `};
+  ${props =>
+    (props.isCenter || props.isHorizontalCenter) &&
+    (props.isColumn
+      ? css`
+          align-items: center;
+        `
+      : css`
+          justify-content: center;
+        `)};
+  ${props =>
+    (props.isCenter || props.isVerticalCenter) &&
+    (props.isColumn
+      ? css`
+          justify-content: center;
+        `
+      : css`
+          align-items: center;
+        `)};
+`;
+
+const AnimatedContainer = animated(Container);
+
+export const ParalaxContainer = ({
+  children,
+  paralaxRate,
+  isHorizontalParalax,
+  isRelative,
+  ...props
+}) => {
+  const ref = useRef();
+  const [x, y] = useParalax(isRelative ? ref : null);
+
+  const { setIsBlockedHover } = useContext(MouseHoverContext);
+
+  const [{ xy }, set] = useSpring(() => ({
+    xy: [x, y],
+    onRest: () => setIsBlockedHover(false),
+  }));
+
+  useEffect(() => {
+    setIsBlockedHover(true);
+    set({ xy: [x, y] });
+  }, [set, setIsBlockedHover, x, y]);
+
+  const interpolateParalax = xy.interpolate((x, y) =>
+    isHorizontalParalax
+      ? `translate3D(${y * paralaxRate}px, 0,  0)`
+      : `translate3D(0, ${y * paralaxRate}px, 0)`,
+  );
+
+  return (
+    <AnimatedContainer ref={ref} style={{ transform: interpolateParalax }} {...props}>
+      {children}
+    </AnimatedContainer>
+  );
+};
+
+const Layout = styled(Container)`
+  background-color: ${props => props.theme.colors.Background};
+`;
 
 export default Layout;
-export { NavRoot };
+
+Container.defaultProps = {
+  isColumn: false,
+  isCenter: false,
+  isHorizontalCenter: false,
+  isVerticalCenter: false,
+  children: null,
+  zIndex: null,
+};
+
+Container.propTypes = {
+  zIndex: PropTypes.number,
+  isColumn: PropTypes.bool,
+  isCenter: PropTypes.bool,
+  isHorizontalCenter: PropTypes.bool,
+  isVerticalCenter: PropTypes.bool,
+  children: PropTypes.node,
+};
+
+ParalaxContainer.defaultProps = {
+  isHorizontalParalax: false,
+  paralaxRate: 0.25,
+  isRelative: false,
+  ...Container.defaultProps,
+};
+
+ParalaxContainer.propTypes = {
+  isHorizontalParalax: PropTypes.bool,
+  paralaxRate: PropTypes.number,
+  isRelative: PropTypes.bool,
+  ...Container.propTypes,
+};
+
+Layout.defaultProps = {
+  ...Container.defaultProps,
+};
+
+Layout.propTypes = {
+  ...Container.propTypes,
+};
