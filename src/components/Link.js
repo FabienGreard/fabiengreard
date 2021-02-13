@@ -11,13 +11,13 @@ const LinkButton = styled.a`
   cursor: none;
 `;
 
-const Link = ({ alt, href, children, target, color, ...props }) => {
+const Link = ({ title, href, children, target, color, ...props }) => {
   const { setIsHover } = useContext(MouseHoverContext);
 
   return (
     <LinkButton
       href={href}
-      alt={alt}
+      title={title}
       target={target}
       color={color}
       onMouseEnter={() => setIsHover(true)}
@@ -31,7 +31,7 @@ const Link = ({ alt, href, children, target, color, ...props }) => {
 export default Link;
 
 Link.defaultProps = {
-  alt: null,
+  title: null,
   href: null,
   target: '_blank',
   color: COLORS.blue,
@@ -39,7 +39,7 @@ Link.defaultProps = {
 
 Link.propTypes = {
   color: PropTypes.oneOf(Object.values(COLORS)),
-  alt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   target: PropTypes.string,

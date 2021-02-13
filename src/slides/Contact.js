@@ -161,7 +161,7 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
           Available for{' '}
           <Link
             href={`mailto:${email}`}
-            alt="mailto"
+            title="mailto"
             color={COLORS.green}
             onMouseOver={() => handleMouseColor('green')}
             onMouseOut={() => handleMouseColor('pink')}>
@@ -170,7 +170,7 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
           or for any{' '}
           <Link
             href={`mailto:${email}`}
-            alt="mailto"
+            title="mailto"
             color={COLORS.blue}
             onMouseOver={() => handleMouseColor('blue')}
             onMouseOut={() => handleMouseColor('pink')}>
@@ -196,7 +196,7 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
                 href={url}
                 rel="noopener noreferrer"
                 color={COLORS.white}
-                alt="social links"
+                title="social links"
                 onMouseOver={() => handleMouseColor('white')}
                 onMouseOut={() => handleMouseColor('white')}>
                 {React.createElement(SOCIAL_ICONS[social], { width: 25 })}

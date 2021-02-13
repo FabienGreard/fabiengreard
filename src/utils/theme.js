@@ -4,9 +4,9 @@ const theme = {
   colors: {
     white: '#ffffff',
     black: '#111111',
-    green: '#06D6A0',
-    yellow: '#FFD166',
-    pink: '#EF476F',
+    green: '#00a47a',
+    yellow: '#ffdc8a',
+    pink: '#ED315D',
     blue: '#0094f7',
     background: '#ffffff',
     darkBackground: '#fafafa',

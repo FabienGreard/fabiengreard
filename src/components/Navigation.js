@@ -32,8 +32,8 @@ const LinkContainer = styled.a`
   ${generateCssMedia(
     media => css`
       margin: 0 ${`${scaleMargin(media, 20)}px`};
-      width: ${`${scale(media, 80)}px`};
-      height: ${`${scale(media, 40)}px`};
+      width: ${`${Math.max(scale(media, 80), 40)}px`};
+      height: ${`${Math.max(scale(media, 40), 20)}px`};
     `,
   )}
 `;
@@ -94,7 +94,12 @@ Navigation.propTypes = {
 export const WithAnchor = (WrappedComponent, name) => {
   const WithAnchor = props => (
     <>
-      <a id={name.toLowerCase()} className="link" href={`#${name.toLowerCase()}`} />
+      <a
+        id={name.toLowerCase()}
+        className="link"
+        href={`#${name.toLowerCase()}`}
+        title={`#${name.toLowerCase()}`}
+      />
       <WrappedComponent {...props} />
     </>
   );
