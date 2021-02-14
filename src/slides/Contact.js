@@ -63,7 +63,7 @@ const Socials = styled(Container)`
 
   ${generateCssMedia(
     media => css`
-      width: ${scale(media, 100)}px;
+      width: ${Math.max(scale(media, 100), 100 / 1.75)}px;
     `,
   )};
 `;

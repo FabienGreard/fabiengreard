@@ -16,9 +16,9 @@
     <meta name="theme-color" content="#ffffff" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta name="description" content="Fabien Gréard‘s universe." />
-    <link href=’https://www.google-analytics.com’ rel=’preconnect’ crossorigin> <link
-    href=’https://stats.g.doubleclick.net’ rel=’preconnect’ crossorigin> <link
-    href=’https://www.google.com’ rel=’preconnect’ crossorigin>
+    <link href=’https://www.google-analytics.com’ rel=’preconnect’ crossorigin/> <link
+    href=’https://stats.g.doubleclick.net’ rel=’preconnect’ crossorigin/> <link
+    href=’https://www.google.com’ rel=’preconnect’ crossorigin/>
   </head>
   <body>
     <noscript>
@@ -34,7 +34,7 @@
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
           },
           err => {
-            console.log('ServiceWorker registration failed: ', err);
+            console.error('ServiceWorker registration failed: ', err);
           },
         );
       });
