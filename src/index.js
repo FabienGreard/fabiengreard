@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
 // normalize.css
-import(/* webpackPreload: true */ /* webpackChunkName: 'normalize' */ '../static/default.css');
+import(/* webpackPrefetch: true */ /* webpackChunkName: 'normalize' */ '../static/normalize.css');
 
 import theme from './utils/theme';
 
