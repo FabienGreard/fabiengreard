@@ -31,10 +31,19 @@ module.exports = {
       NODE_ENV: 'production',
     }),
     new BundleAnalyzerPlugin({ analyzerMode: process.env.CI ? 'disable' : 'static' }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      insert: linkTag => {
+        const preloadLinkTag = document.createElement('link');
+        preloadLinkTag.rel = 'preload';
+        preloadLinkTag.as = 'style';
+        preloadLinkTag.href = linkTag.href;
+        document.head.appendChild(preloadLinkTag);
+        document.head.appendChild(linkTag);
+      },
+    }),
   ],
   output: {
-    filename: '[contenthash].bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
   },
