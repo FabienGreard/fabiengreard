@@ -35,6 +35,7 @@ module.exports = {
   ],
   output: {
     filename: '[contenthash].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
   },
   module: {
@@ -49,7 +50,6 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-
         type: 'asset/resource',
       },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
