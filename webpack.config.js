@@ -30,7 +30,7 @@ module.exports = {
     new EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
-    new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+    new BundleAnalyzerPlugin({ analyzerMode: process.env.CI ? 'disable' : 'static' }),
     new MiniCssExtractPlugin(),
   ],
   output: {
