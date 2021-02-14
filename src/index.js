@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
-import(/* webpackPreload: true */ '../static/default.css');
+// normalize.css
+import(/* webpackPreload: true */ /* webpackChunkName: 'normalize' */ '../static/default.css');
 
 import theme from './utils/theme';
 
