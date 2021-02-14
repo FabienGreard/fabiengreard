@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
-import '../static/default.css';
+import(/* webpackPreload: true */ '../static/default.css');
 
 import theme from './utils/theme';
 
@@ -12,7 +12,7 @@ import Cursor, { MouseHoverProvider, CursorColorProvider } from './components/Cu
 import Slides from './slides';
 import useMedia from './utils/useMedia';
 import { DEVICES } from './utils/theme';
-import { socials } from './utils/config.json';
+import { socials } from './utils/constants';
 
 function App() {
   const media = useMedia();
