@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -28,13 +27,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './static/index.html',
     }),
-    new ObsoleteWebpackPlugin(),
     new EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
     new BundleAnalyzerPlugin({ analyzerMode: process.env.CI ? 'disable' : 'static' }),
     new MiniCssExtractPlugin({
+      filename: '[name].bundle.css',
       insert: linkTag => {
+        document.querySelector("[href='/main.bundle.css']").remove();
         const preloadLinkTag = document.createElement('link');
         preloadLinkTag.rel = 'preload';
         preloadLinkTag.as = 'style';
