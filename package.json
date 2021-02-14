@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "build:ci": "CI=true webpack --config webpack.config.js",
-    "start": "webpack serve --open --config webpack.dev.config.js",
+    "start": "webpack serve --open --config webpack.config.js",
     "lint": "eslint src",
     "prettier": "prettier --write 'src/**/**/*.{js,json,css,md}'",
     "bumb": "standard-version --no-verify && git push --follow-tags"

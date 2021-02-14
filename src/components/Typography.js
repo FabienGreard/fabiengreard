@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 // Load fonts
-import '../../static/fonts/index.css';
+import(/* webpackChunkName: 'fonts' */ '../../static/fonts/index.css');
 
 import { DEVICES, scale, generateCssMedia } from '../utils/theme';
 

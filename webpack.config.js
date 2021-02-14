@@ -3,7 +3,6 @@ const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
@@ -31,18 +30,6 @@ module.exports = {
       NODE_ENV: 'production',
     }),
     new BundleAnalyzerPlugin({ analyzerMode: process.env.CI ? 'disable' : 'static' }),
-    new MiniCssExtractPlugin({
-      filename: '[name].bundle.css',
-      insert: linkTag => {
-        document.querySelector("[href='/main.bundle.css']").remove();
-        const preloadLinkTag = document.createElement('link');
-        preloadLinkTag.rel = 'preload';
-        preloadLinkTag.as = 'style';
-        preloadLinkTag.href = linkTag.href;
-        document.head.appendChild(preloadLinkTag);
-        document.head.appendChild(linkTag);
-      },
-    }),
   ],
   output: {
     filename: '[name].bundle.js',
@@ -53,7 +40,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
