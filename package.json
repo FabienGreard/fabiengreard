@@ -3,8 +3,7 @@
   "version": "0.0.5",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "build:ci": "CI=true webpack --config webpack.config.js",
-    "start": "webpack serve --open --config webpack.config.js",
+    "dev": "webpack serve --open --config webpack.dev.config.js",
     "lint": "eslint src",
     "prettier": "prettier --write 'src/**/**/*.{js,json,css,md}'",
     "bumb": "standard-version --no-verify && git push --follow-tags"
@@ -29,7 +28,6 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "html-webpack-plugin": "^5.1.0",
     "husky": "^4.2.3",
-    "mini-css-extract-plugin": "^1.3.6",
     "prettier": "^2.0.4",
     "prop-types": "^15.7.2",
     "standard-version": "^9.1.0",

@@ -29,10 +29,10 @@ module.exports = {
     new EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
-    new BundleAnalyzerPlugin({ analyzerMode: process.env.CI ? 'disable' : 'static' }),
+    new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
   },
