@@ -1,13 +1,12 @@
 const path = require('path');
 const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'development',
-  entry: { app: './src/index.js' },
+  entry: './src/index.js',
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './static',
@@ -19,7 +18,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './static/index.html',
     }),
-    new ObsoleteWebpackPlugin(),
     new EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
@@ -37,13 +35,24 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
   },
 };

@@ -1,40 +1,38 @@
 const path = require('path');
 const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
   mode: 'production',
-  entry: { app: './src/index.js' },
+  entry: './src/index.js',
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: './static/favicon',
-        to: 'favicon/',
-      },
-      { from: './static/robots.txt' },
-      { from: './static/og-image.png' },
-      { from: './static/sw.js' },
-    ]),
-    new HtmlWebpackPlugin({
-      template: '!!prerender-loader?string!./static/index.html',
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './static/favicon',
+          to: 'favicon/',
+        },
+        { from: './static/robots.txt' },
+        { from: './static/og-image.png' },
+        { from: './static/sw.js' },
+      ],
     }),
-    new ObsoleteWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './static/index.html',
+    }),
     new EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
     new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
-    new MiniCssExtractPlugin(),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: ASSET_PATH,
   },
@@ -42,17 +40,28 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
   },
 };

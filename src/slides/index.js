@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { Container } from '../components/Layout';
 import Navigation, { WithAnchor } from '../components/Navigation';
 
+import useMedia from '../utils/useMedia';
+import { DEVICES } from '../utils/theme';
+
 import Home from './Home';
 import Bio from './Bio';
 import Contact from './Contact';
-
-import useMedia from '../utils/useMedia';
-import { DEVICES } from '../utils/theme';
 
 const SlideContainer = styled(Container)``;
 

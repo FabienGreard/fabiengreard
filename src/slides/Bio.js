@@ -10,7 +10,7 @@ import Link from '../components/Link';
 
 import { COLORS, DEVICES, generateCssMedia, scaleMargin, scale } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
-import { socials } from '../utils/config.json';
+import { socials } from '../utils/constants';
 
 import profile from '../../static/profile.jpeg';
 

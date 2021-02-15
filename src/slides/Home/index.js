@@ -10,7 +10,7 @@ import { useCursorColor } from '../../components/Cursor';
 import { COLORS, DEVICES, generateCssMedia, scaleMargin } from '../../utils/theme';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import useMedia from '../../utils/useMedia';
-import { firstname, lastname } from '../../utils/config';
+import { profile } from '../../utils/constants';
 
 import Title from './Title';
 
@@ -80,7 +80,7 @@ export default function Home({ isTransitionSlide, setSlideView }) {
         numberOfPolygons={media >= DEVICES.tablet ? 30 : 25}
       />
       <HomeContent paralaxRate={0.5} zIndex={1}>
-        <Title text={`${firstname} ${lastname}`} />
+        <Title text={`${profile.firstname} ${profile.lastname}`} />
       </HomeContent>
     </HomeContainer>
   );

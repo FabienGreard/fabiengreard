@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
-import '../static/default.css';
+// normalize.css
+import(/* webpackChunkName: 'normalize' */ '../static/normalize.css');
 
 import theme from './utils/theme';
 
@@ -12,9 +13,17 @@ import Cursor, { MouseHoverProvider, CursorColorProvider } from './components/Cu
 import Slides from './slides';
 import useMedia from './utils/useMedia';
 import { DEVICES } from './utils/theme';
+import { socials } from './utils/constants';
 
 function App() {
   const media = useMedia();
+
+  useEffect(() => {
+    console.log(
+      `%c Hey 👋, you may be interested in the code : ${socials.github}/fabiengreard.git`,
+      'font-size: 16px; color: #111',
+    );
+  }, []);
 
   return (
     <MouseHoverProvider>

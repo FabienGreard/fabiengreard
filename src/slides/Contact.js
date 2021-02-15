@@ -11,7 +11,7 @@ import Link from '../components/Link';
 import { COLORS, DEVICES, generateCssMedia, scaleMargin, scale } from '../utils/theme';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 import useMedia from '../utils/useMedia';
-import { email, socials } from '../utils/config';
+import { profile, socials } from '../utils/constants';
 
 const colorsBackground = [COLORS.black];
 
@@ -63,7 +63,7 @@ const Socials = styled(Container)`
 
   ${generateCssMedia(
     media => css`
-      width: ${scale(media, 100)}px;
+      width: ${Math.max(scale(media, 100), 100 / 1.75)}px;
     `,
   )};
 `;
@@ -160,7 +160,7 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
         <Typography variant="subtitle" style={{ textAlign: 'center' }}>
           Available for{' '}
           <Link
-            href={`mailto:${email}`}
+            href={`mailto:${profile.email}`}
             title="mailto"
             color={COLORS.green}
             onMouseOver={() => handleMouseColor('green')}
@@ -169,7 +169,7 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
           </Link>{' '}
           or for any{' '}
           <Link
-            href={`mailto:${email}`}
+            href={`mailto:${profile.email}`}
             title="mailto"
             color={COLORS.blue}
             onMouseOver={() => handleMouseColor('blue')}
