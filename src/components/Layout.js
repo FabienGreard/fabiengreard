@@ -48,6 +48,7 @@ export const ParalaxContainer = ({
   paralaxRate,
   isHorizontalParalax,
   isRelative,
+  pad = 0,
   ...props
 }) => {
   const ref = useRef();
@@ -67,8 +68,8 @@ export const ParalaxContainer = ({
 
   const interpolateParalax = xy.interpolate((x, y) =>
     isHorizontalParalax
-      ? `translate3D(${y * paralaxRate}px, 0,  0)`
-      : `translate3D(0, ${y * paralaxRate}px, 0)`,
+      ? `translate3D(${(pad + y) * paralaxRate}px, 0,  0)`
+      : `translate3D(0, ${(pad + y) * paralaxRate}px, 0)`,
   );
 
   return (

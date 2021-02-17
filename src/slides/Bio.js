@@ -9,6 +9,7 @@ import { useCursorColor } from '../components/Cursor';
 import Link from '../components/Link';
 
 import { COLORS, DEVICES, generateCssMedia, scaleMargin, scale } from '../utils/theme';
+import useMedia from '../utils/useMedia';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 import { socials } from '../utils/constants';
 
@@ -166,6 +167,7 @@ const ArticleSVG = ({ color }) => (
 export default function Bio({ isTransitionSlide, setSlideView }) {
   const handleMouseColor = useCursorColor();
 
+  const media = useMedia();
   const ref = useRef();
   const isInViewport = useIntersectionObserver(ref, { threshold: 0.6 });
 
@@ -192,7 +194,12 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
         isLarge={isTransitionSlide}
       />
       <BioContent paralaxRate={-0.2} isCenter>
-        <BioTextContainer isColumn paralaxRate={-0.3} isRelative isHorizontalParalax>
+        <BioTextContainer
+          isColumn
+          paralaxRate={-0.3}
+          pad={-scaleMargin(media)}
+          isRelative
+          isHorizontalParalax>
           <Typography variant="text" size="lg" color="white" isBold>
             <ResponsiveIMG
               src={profile}
@@ -217,7 +224,12 @@ export default function Bio({ isTransitionSlide, setSlideView }) {
             Love design, UX and quality code.
           </Typography>
         </BioTextContainer>
-        <FeatureContainer paralaxRate={0.3} isRelative isColumn isHorizontalParalax>
+        <FeatureContainer
+          paralaxRate={0.3}
+          pad={-scaleMargin(media)}
+          isRelative
+          isColumn
+          isHorizontalParalax>
           <TextWithIcon>
             <ArticleSVG color={COLORS.green} />
             <Typography variant="text" size="lg" color="white" isBold>
