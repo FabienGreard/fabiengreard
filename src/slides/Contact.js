@@ -55,6 +55,12 @@ const ContactFootter = styled(Container)`
       width: calc(100% - ${scaleMargin(media, 25 * 2)}px);
     `,
   )};
+
+  @media (max-width: ${`${DEVICES.tablet}px`}) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const Socials = styled(Container)`
@@ -63,7 +69,11 @@ const Socials = styled(Container)`
 
   ${generateCssMedia(
     media => css`
-      width: ${Math.max(scale(media, 100), 100 / 1.75)}px;
+      width: ${Math.max(
+        scale(media, media >= DEVICES.tablet ? 100 : 150),
+        (media > DEVICES.tablet ? 100 : 150) / 1.75,
+      )}px;
+      margin: ${`${scaleMargin(media, media > DEVICES.tablet ? 0 : 25)}px`} 0;
     `,
   )};
 `;
@@ -183,10 +193,14 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
         colors={colorsBackground}
         numberOfWaves={1}
         isLarge={isTransitionSlide}
-        offset={media >= DEVICES.tablet ? 0 : 100}
+        offset={media > DEVICES.tablet ? 0 : 100}
         zIndex={2}>
         <ContactFootter onMouseOver={() => handleMouseColor('white')}>
-          <Typography variant="caption" isBold color="white">
+          <Typography
+            variant="caption"
+            isBold
+            color="white"
+            size={media > DEVICES.tablet ? 'sm' : 'md'}>
             Made with ❤️ from France
           </Typography>
           <Socials>
@@ -199,7 +213,9 @@ export default function Contact({ isTransitionSlide, setSlideView }) {
                 title="social links"
                 onMouseOver={() => handleMouseColor('white')}
                 onMouseOut={() => handleMouseColor('white')}>
-                {React.createElement(SOCIAL_ICONS[social], { width: 25 })}
+                {React.createElement(SOCIAL_ICONS[social], {
+                  width: media > DEVICES.tablet ? 25 : 35,
+                })}
               </Link>
             ))}
           </Socials>
