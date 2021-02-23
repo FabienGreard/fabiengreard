@@ -14,7 +14,7 @@
   "author": "fabiengreard <grd.fabien@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.9.4",
     "@commitlint/cli": "^11.0.0",
