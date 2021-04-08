@@ -33,7 +33,7 @@
     "prettier": "^2.0.4",
     "prop-types": "^15.7.2",
     "serve": "^11.3.2",
-    "standard-version": "^9.1.1",
+    "standard-version": "^9.2.0",
     "style-loader": "^2.0.0",
     "styled-components": "^5.0.1",
     "webpack": "^5.30.0",
