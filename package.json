@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
@@ -37,7 +37,7 @@
     "style-loader": "^2.0.0",
     "styled-components": "^5.2.3",
     "webpack": "^5.36.2",
-    "webpack-bundle-analyzer": "^4.4.1",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
