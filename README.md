@@ -16,7 +16,7 @@
   <br/>
   <br/>
 
-  <img width="" src="https://github-readme-stats-fabien-omiso.vercel.app/api/top-langs/?username=fabiengreard&layout=compact" alt="Top language used in my repos" />
+  <img width="" src="https://github-readme-stats-fabien-omiso.vercel.app/api/top-langs/?username=fabiengreard&layout=compact&card_width=400px" alt="Top language used in my repos" />
    <br/>
   <small>Languages used in my public repos - big fan of JavaScript / TypeScript 😛</small>
 </div>
