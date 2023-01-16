@@ -7,7 +7,7 @@
 
   <br/>
   
-  <h3>I'm a Software Engineeer, working remotly from Europe ✈️</h3>
+  <h3>I'm a Software Engineer, working remotly from Europe ✈️</h3>
   
   <br/>
 
